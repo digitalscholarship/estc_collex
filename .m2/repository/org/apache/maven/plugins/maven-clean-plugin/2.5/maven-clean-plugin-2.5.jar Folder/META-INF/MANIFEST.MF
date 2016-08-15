@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: olamy
+Build-Jdk: 1.6.0_31
+Specification-Title: Maven Clean Plugin
+Specification-Version: 2.5
+Specification-Vendor: The Apache Software Foundation
+Implementation-Title: Maven Clean Plugin
+Implementation-Version: 2.5
+Implementation-Vendor-Id: org.apache.maven.plugins
+Implementation-Vendor: The Apache Software Foundation
+

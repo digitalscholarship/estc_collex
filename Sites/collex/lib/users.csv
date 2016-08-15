@@ -1,0 +1,4 @@
+id,username,password_hash,fullname,email,institution,link,about_me,image_id,hide_email
+1,bib-test,test,bibligrapher,bib@ucdavis.edu,ucdavis,www.google.com,,,
+2,scholar-test,scholar,scholar user,scholar@ucdavis.edu,,,,,
+3,user-test,user,normal user,user@ucdavis.edu,,,,,

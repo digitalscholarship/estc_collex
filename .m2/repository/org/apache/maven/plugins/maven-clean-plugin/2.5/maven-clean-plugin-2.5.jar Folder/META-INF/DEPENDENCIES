@@ -1,0 +1,19 @@
+// ------------------------------------------------------------------
+// Transitive dependencies of this project determined from the
+// maven pom organized by organization.
+// ------------------------------------------------------------------
+
+Maven Clean Plugin
+
+
+From: 'an unknown organization'
+  - Plexus Common Utilities (http://plexus.codehaus.org/plexus-utils) org.codehaus.plexus:plexus-utils:jar:3.0
+    License: Apache Public License 2.0  (http://www.apache.org/licenses/LICENSE-2.0)
+
+From: 'Apache Software Foundation' (http://www.apache.org/)
+  - Maven Plugin API (http://maven.apache.org/maven-plugin-api) org.apache.maven:maven-plugin-api:jar:2.0.6
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+
+
+
+

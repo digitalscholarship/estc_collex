@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:gl="http://bl.uk.org/schema#"
+    xmlns:dct="http://purl.org/dc/terms/#" 
+    xmlns:dc="http://purl.org/dc/elements/1.1/#"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/#"
+    xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos/#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema/#"
+    xmlns:role="http://www.loc.gov/loc.terms/relators/"
+    xmlns:bf="http://bibframe.org/vocab/"
+    xmlns:relators="http://id.loc.gov/vocabulary/relators/"
+    xmlns:collex="http://www.collex.org/schema#" 
+    xmlns:scm="http://schema.org/" >
+ 
+    <gl:bl rdf:about="http://bl.uk/id/20054">
+        <collex:federation>estc</collex:federation>
+                <collex:archive>bl</collex:archive>
+
+			
+                        <dct:title>A Carousse to the Emperor, the Royal Pole, and the Much Wrong'd Duke of Lorrain.</dct:title>
+
+						<role:ART>Thomas D'Urfey</role:ART>
+						
+						<role:ASN>Thomas D'Urfey</role:ASN>
+                        
+                         <role:ATT>Thomas D'Urfey</role:ATT>
+                        
+                        <role:AUT>Thomas D'Urfey</role:AUT>
+						
+                        <role:DUB>Thomas D'Urfey</role:DUB>						
+						
+                        <role:BND>Thomas D'Urfey</role:BND>						
+						
+                        <role:BSL>Thomas D'Urfey</role:BSL>
+						
+                        <role:CTG>Thomas D'Urfey</role:CTG>
+						
+                        <role:COL>Thomas D'Urfey</role:COL>	
+											
+                        <role:CLR>Thomas D'Urfey</role:CLR>						
+												
+                        <role:CMM>Thomas D'Urfey</role:CMM>						
+						
+                        <role:CMP>Thomas D'Urfey</role:CMP>
+						
+                        <role:CMT>Thomas D'Urfey</role:CMT>						
+						
+                        <role:CCP>Thomas D'Urfey</role:CCP>						
+						
+	                    <role:CTB>Thomas D'Urfey</role:CTB>					
+						
+                        <role:CPC>Thomas D'Urfey</role:CPC>												
+						
+                        <role:CRE>Thomas D'Urfey</role:CRE>
+						
+                        <role:EDT>Thomas D'Urfey</role:EDT>						
+						
+                        <role:ELT>Thomas D'Urfey</role:ELT>						
+						
+                        <role:EGR>Thomas D'Urfey</role:EGR>						
+						
+                        <role:ETR>Thomas D'Urfey</role:ETR>						
+						
+                        <role:FMO>Thomas D'Urfey</role:FMO>	
+						
+						<role:ILU>Thomas D'Urfey</role:ILU>	
+						
+						<role:ILL>Thomas D'Urfey</role:ILL>				
+						
+                        <role:INS>Thomas D'Urfey</role:INS>		
+						
+                        <role:LSE>Thomas D'Urfey</role:LSE>						
+						
+						<role:LSO>Thomas D'Urfey</role:LSO>
+						
+                        <role:MTE>Thomas D'Urfey</role:MTE>						
+						
+		                <role:PPM>Thomas D'Urfey</role:PPM>				
+						
+		                <role:PLT>Thomas D'Urfey</role:PLT>				
+						
+			            <role:PRT>Thomas D'Urfey</role:PRT>			
+						
+			            <role:PRO>Thomas D'Urfey</role:PRO>
+						
+			            <role:PRN>Thomas D'Urfey</role:PRN>	
+						
+						<role:PRD>Thomas D'Urfey</role:PRD>		
+						
+						<role:AUT>Thomas D'Urfey</role:AUT>																
+						
+						<role:PBL>Thomas D'Urfey</role:PBL>
+
+						<role:RPY>Thomas D'Urfey</role:RPY>
+
+						<role:SCR>Thomas D'Urfey</role:SCR>
+						
+						<role:SLL>Thomas D'Urfey</role:SLL>
+
+						<role:TRC>Thomas D'Urfey</role:TRC>
+
+						<role:TRL>Thomas D'Urfey</role:TRL>
+						
+						<role:WDE>Thomas D'Urfey</role:WDE>
+						
+						<role:WDC>Thomas D'Urfey</role:WDC>
+
+						<relators:PUP>Thomas D'Urfey</relators:PUP>
+						
+                        <dc:date>1672-1696</dc:date>
+                        
+                        <dct:subject>Ballads, English 17th century</dct:subject>
+			<dct:subject>Broadside, English 17th century</dct:subject>
+                        
+                        <scm:url>http://www.someplace.org/path/to/digital/surrogate</scm:url>
+                        <scm:url>http://www.someplace.org/path/to/digital/surrogate</scm:url>
+                        <scm:url>http://www.someplace.org/path/to/digital/surrogate</scm:url>
+                        <scm:url>http://www.someplace.org/path/to/digital/surrogate</scm:url>
+                        
+                        <bf:instanceOf>http://estc.bl.uk/id/manifestation/R227226</bf:instanceOf>
+ 
+ 
+    </gl:bl>
+ 
+</rdf:RDF>
+ 

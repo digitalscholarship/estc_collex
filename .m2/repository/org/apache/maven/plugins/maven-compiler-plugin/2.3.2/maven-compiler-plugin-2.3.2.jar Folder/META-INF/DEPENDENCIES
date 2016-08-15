@@ -1,0 +1,55 @@
+// ------------------------------------------------------------------
+// Transitive dependencies of this project determined from the
+// maven pom organized by organization.
+// ------------------------------------------------------------------
+
+Maven Compiler Plugin
+
+
+From: 'Apache Software Foundation' (http://www.apache.org/)
+  - Maven Artifact (http://maven.apache.org/maven-artifact) org.apache.maven:maven-artifact:jar:2.0.6
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Maven Artifact Manager (http://maven.apache.org/maven-artifact-manager) org.apache.maven:maven-artifact-manager:jar:2.0.6
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Maven Core (http://maven.apache.org/maven-core) org.apache.maven:maven-core:jar:2.0.6
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Maven Error Diagnostics (http://maven.apache.org/maven-error-diagnostics) org.apache.maven:maven-error-diagnostics:jar:2.0.6
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Maven Model (http://maven.apache.org/maven-model) org.apache.maven:maven-model:jar:2.0.6
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Maven Monitor (http://maven.apache.org/maven-monitor) org.apache.maven:maven-monitor:jar:2.0.6
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Maven Plugin API (http://maven.apache.org/maven-plugin-api) org.apache.maven:maven-plugin-api:jar:2.0.6
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Maven Plugin Descriptor Model (http://maven.apache.org/maven-plugin-descriptor) org.apache.maven:maven-plugin-descriptor:jar:2.0.6
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Maven Plugin Parameter Documenter API (http://maven.apache.org/maven-plugin-parameter-documenter) org.apache.maven:maven-plugin-parameter-documenter:jar:2.0.6
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Maven Plugin Registry Model (http://maven.apache.org/maven-plugin-registry) org.apache.maven:maven-plugin-registry:jar:2.0.6
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Maven Profile Model (http://maven.apache.org/maven-profile) org.apache.maven:maven-profile:jar:2.0.6
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Maven Project Builder (http://maven.apache.org/maven-project) org.apache.maven:maven-project:jar:2.0.6
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Maven Repository Metadata Model (http://maven.apache.org/maven-repository-metadata) org.apache.maven:maven-repository-metadata:jar:2.0.6
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Maven Local Settings Model (http://maven.apache.org/maven-settings) org.apache.maven:maven-settings:jar:2.0.6
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Maven Toolchains (http://maven.apache.org) org.apache.maven:maven-toolchain:jar:1.0
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Maven Wagon API (http://maven.apache.org/wagon/wagon-provider-api) org.apache.maven.wagon:wagon-provider-api:jar:1.0-beta-2
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+
+From: 'Codehaus' (http://www.codehaus.org/)
+  - Plexus Compiler Api (http://plexus.codehaus.org/plexus-components/plexus-compiler/plexus-compiler-api) org.codehaus.plexus:plexus-compiler-api:jar:1.8.1
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Plexus Javac Component (http://plexus.codehaus.org/plexus-components/plexus-compiler/plexus-compilers/plexus-compiler-javac) org.codehaus.plexus:plexus-compiler-javac:jar:1.8.1
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Plexus Compiler Manager (http://plexus.codehaus.org/plexus-components/plexus-compiler/plexus-compiler-manager) org.codehaus.plexus:plexus-compiler-manager:jar:1.8.1
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Plexus Common Utilities (http://plexus.codehaus.org/plexus-utils) org.codehaus.plexus:plexus-utils:jar:2.0.5
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+
+
+
+

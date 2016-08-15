@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: herve
+Build-Jdk: 1.6.0_32
+Specification-Title: Maven Plugin Java 5 Annotations
+Specification-Version: 3.1
+Specification-Vendor: The Apache Software Foundation
+Implementation-Title: Maven Plugin Java 5 Annotations
+Implementation-Version: 3.1
+Implementation-Vendor-Id: org.apache.maven.plugin-tools
+Implementation-Vendor: The Apache Software Foundation
+

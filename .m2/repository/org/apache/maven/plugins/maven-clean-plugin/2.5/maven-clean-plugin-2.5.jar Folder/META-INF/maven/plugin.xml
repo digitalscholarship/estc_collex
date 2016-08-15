@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+  <name>Maven Clean Plugin</name>
+  <description>The Maven Clean Plugin is a plugin that removes files generated at build-time in a project&apos;s directory.</description>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-clean-plugin</artifactId>
+  <version>2.5</version>
+  <goalPrefix>clean</goalPrefix>
+  <isolatedRealm>false</isolatedRealm>
+  <inheritedByDefault>true</inheritedByDefault>
+  <mojos>
+    <mojo>
+      <goal>clean</goal>
+      <description>Goal which cleans the build.
+
+&lt;P&gt;This attempts to clean a project&apos;s working directory of the files that
+were generated at build-time. By default, it discovers and deletes the
+directories configured in &lt;code&gt;project.build.directory&lt;/code&gt;,
+&lt;code&gt;project.build.outputDirectory&lt;/code&gt;,
+&lt;code&gt;project.build.testOutputDirectory&lt;/code&gt;, and
+&lt;code&gt;project.reporting.outputDirectory&lt;/code&gt;. &lt;/P&gt;
+
+&lt;P&gt;Files outside the default may also be included in the deletion by
+configuring the &lt;code&gt;filesets&lt;/code&gt; tag.&lt;/P&gt;</description>
+      <requiresDirectInvocation>false</requiresDirectInvocation>
+      <requiresProject>true</requiresProject>
+      <requiresReports>false</requiresReports>
+      <aggregator>false</aggregator>
+      <requiresOnline>false</requiresOnline>
+      <inheritedByDefault>true</inheritedByDefault>
+      <implementation>org.apache.maven.plugin.clean.CleanMojo</implementation>
+      <language>java</language>
+      <instantiationStrategy>per-lookup</instantiationStrategy>
+      <executionStrategy>once-per-session</executionStrategy>
+      <threadSafe>true</threadSafe>
+      <parameters>
+        <parameter>
+          <name>directory</name>
+          <type>java.io.File</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description>This is where build results go.</description>
+        </parameter>
+        <parameter>
+          <name>excludeDefaultDirectories</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Disables the deletion of the default output directories configured for a project. If set to &lt;code&gt;true&lt;/code&gt;,
+only the files/directories selected via the parameter {@link #filesets} will be deleted.</description>
+        </parameter>
+        <parameter>
+          <name>failOnError</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Indicates whether the build will continue even if there are clean errors.</description>
+        </parameter>
+        <parameter>
+          <name>filesets</name>
+          <type>org.apache.maven.plugin.clean.Fileset[]</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The list of file sets to delete, in addition to the default directories. For example:
+&lt;pre&gt;
+&amp;lt;filesets&amp;gt;
+  &amp;lt;fileset&amp;gt;
+    &amp;lt;directory&amp;gt;src/main/generated&amp;lt;/directory&amp;gt;
+    &amp;lt;followSymlinks&amp;gt;false&amp;lt;/followSymlinks&amp;gt;
+    &amp;lt;useDefaultExcludes&amp;gt;true&amp;lt;/useDefaultExcludes&amp;gt;
+    &amp;lt;includes&amp;gt;
+      &amp;lt;include&amp;gt;*.java&amp;lt;/include&amp;gt;
+    &amp;lt;/includes&amp;gt;
+    &amp;lt;excludes&amp;gt;
+      &amp;lt;exclude&amp;gt;Template*&amp;lt;/exclude&amp;gt;
+    &amp;lt;/excludes&amp;gt;
+  &amp;lt;/fileset&amp;gt;
+&amp;lt;/filesets&amp;gt;
+&lt;/pre&gt;</description>
+        </parameter>
+        <parameter>
+          <name>followSymLinks</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Sets whether the plugin should follow symbolic links while deleting files from the default output directories of
+the project. Not following symlinks requires more IO operations and heap memory, regardless whether symlinks are
+actually present. So projects with a huge output directory that knowingly does not contain symlinks can improve
+performance by setting this parameter to &lt;code&gt;true&lt;/code&gt;.</description>
+        </parameter>
+        <parameter>
+          <name>outputDirectory</name>
+          <type>java.io.File</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description>This is where compiled classes go.</description>
+        </parameter>
+        <parameter>
+          <name>reportDirectory</name>
+          <type>java.io.File</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description>This is where the site plugin generates its pages.</description>
+        </parameter>
+        <parameter>
+          <name>retryOnError</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Indicates whether the plugin should undertake additional attempts (after a short delay) to delete a file if the
+first attempt failed. This is meant to help deleting files that are temporarily locked by third-party tools like
+virus scanners or search indexing.</description>
+        </parameter>
+        <parameter>
+          <name>skip</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Disables the plugin execution.</description>
+        </parameter>
+        <parameter>
+          <name>testOutputDirectory</name>
+          <type>java.io.File</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description>This is where compiled test classes go.</description>
+        </parameter>
+        <parameter>
+          <name>verbose</name>
+          <type>java.lang.Boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Sets whether the plugin runs in verbose mode. As of plugin version 2.3, the default value is derived from Maven&apos;s
+global debug flag (compare command line switch &lt;code&gt;-X&lt;/code&gt;).</description>
+        </parameter>
+      </parameters>
+      <configuration>
+        <directory implementation="java.io.File" default-value="${project.build.directory}"/>
+        <excludeDefaultDirectories implementation="boolean" default-value="false">${clean.excludeDefaultDirectories}</excludeDefaultDirectories>
+        <failOnError implementation="boolean" default-value="true">${maven.clean.failOnError}</failOnError>
+        <followSymLinks implementation="boolean" default-value="false">${clean.followSymLinks}</followSymLinks>
+        <outputDirectory implementation="java.io.File" default-value="${project.build.outputDirectory}"/>
+        <reportDirectory implementation="java.io.File" default-value="${project.reporting.outputDirectory}"/>
+        <retryOnError implementation="boolean" default-value="true">${maven.clean.retryOnError}</retryOnError>
+        <skip implementation="boolean" default-value="false">${clean.skip}</skip>
+        <testOutputDirectory implementation="java.io.File" default-value="${project.build.testOutputDirectory}"/>
+        <verbose implementation="java.lang.Boolean">${clean.verbose}</verbose>
+      </configuration>
+    </mojo>
+    <mojo>
+      <goal>help</goal>
+      <description>Display help information on maven-clean-plugin.&lt;br/&gt; Call &lt;pre&gt;  mvn clean:help -Ddetail=true -Dgoal=&amp;lt;goal-name&amp;gt;&lt;/pre&gt; to display parameter details.</description>
+      <requiresDirectInvocation>false</requiresDirectInvocation>
+      <requiresProject>false</requiresProject>
+      <requiresReports>false</requiresReports>
+      <aggregator>false</aggregator>
+      <requiresOnline>false</requiresOnline>
+      <inheritedByDefault>true</inheritedByDefault>
+      <implementation>org.apache.maven.plugin.clean.HelpMojo</implementation>
+      <language>java</language>
+      <instantiationStrategy>per-lookup</instantiationStrategy>
+      <executionStrategy>once-per-session</executionStrategy>
+      <threadSafe>true</threadSafe>
+      <parameters>
+        <parameter>
+          <name>detail</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>If &lt;code&gt;true&lt;/code&gt;, display all settable properties for each goal.</description>
+        </parameter>
+        <parameter>
+          <name>goal</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The name of the goal for which to show help. If unspecified, all goals will be displayed.</description>
+        </parameter>
+        <parameter>
+          <name>indentSize</name>
+          <type>int</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The number of spaces per indentation level, should be positive.</description>
+        </parameter>
+        <parameter>
+          <name>lineLength</name>
+          <type>int</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The maximum length of a display line, should be positive.</description>
+        </parameter>
+      </parameters>
+      <configuration>
+        <detail implementation="boolean" default-value="false">${detail}</detail>
+        <goal implementation="java.lang.String">${goal}</goal>
+        <indentSize implementation="int" default-value="2">${indentSize}</indentSize>
+        <lineLength implementation="int" default-value="80">${lineLength}</lineLength>
+      </configuration>
+    </mojo>
+  </mojos>
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-plugin-api</artifactId>
+      <type>jar</type>
+      <version>2.0.6</version>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.plexus</groupId>
+      <artifactId>plexus-utils</artifactId>
+      <type>jar</type>
+      <version>3.0</version>
+    </dependency>
+  </dependencies>
+</plugin>

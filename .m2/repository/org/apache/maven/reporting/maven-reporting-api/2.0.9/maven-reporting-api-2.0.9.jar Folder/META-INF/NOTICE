@@ -1,0 +1,12 @@
+// ------------------------------------------------------------------
+// NOTICE file corresponding to the section 4d of The Apache License,
+// Version 2.0, in this case for Maven Reporting API
+// ------------------------------------------------------------------
+
+Maven Reporting API
+Copyright 2005-2008 The Apache Software Foundation
+
+This product includes/uses software(s) developed by 'The Apache Software Foundation' (http://www.apache.org/)
+  - Doxia :: Sink API (http://maven.apache.org/doxia/doxia/doxia-sink-api)
+
+

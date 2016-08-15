@@ -1,0 +1,35 @@
+<component-set>
+  <components>
+    <component>
+      <role>org.apache.maven.shared.filtering.MavenFileFilter</role>
+      <role-hint>default</role-hint>
+      <implementation>org.apache.maven.shared.filtering.DefaultMavenFileFilter</implementation>
+      <description></description>
+      <requirements>
+        <requirement>
+          <role>org.sonatype.plexus.build.incremental.BuildContext</role>
+          <role-hint></role-hint>
+          <field-name>buildContext</field-name>
+        </requirement>
+      </requirements>
+    </component>
+    <component>
+      <role>org.apache.maven.shared.filtering.MavenResourcesFiltering</role>
+      <role-hint>default</role-hint>
+      <implementation>org.apache.maven.shared.filtering.DefaultMavenResourcesFiltering</implementation>
+      <description></description>
+      <requirements>
+        <requirement>
+          <role>org.sonatype.plexus.build.incremental.BuildContext</role>
+          <role-hint></role-hint>
+          <field-name>buildContext</field-name>
+        </requirement>
+        <requirement>
+          <role>org.apache.maven.shared.filtering.MavenFileFilter</role>
+          <role-hint>default</role-hint>
+          <field-name>mavenFileFilter</field-name>
+        </requirement>
+      </requirements>
+    </component>
+  </components>
+</component-set>

@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: Brett
+Build-Jdk: 1.5.0_04
+Extension-Name: plexus-interactivity-api
+Specification-Vendor: Codehaus
+Implementation-Vendor: Codehaus
+Implementation-Title: plexus-interactivity-api
+Implementation-Version: 1.0-alpha-4
+

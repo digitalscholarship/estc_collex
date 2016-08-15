@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: dlg01
+Build-Jdk: 1.4.2_18
+Specification-Title: Doxia Sitetools :: Decoration Model
+Specification-Version: 1.0
+Specification-Vendor: The Apache Software Foundation
+Implementation-Title: Doxia Sitetools :: Decoration Model
+Implementation-Version: 1.0
+Implementation-Vendor-Id: org.apache.maven.doxia
+Implementation-Vendor: The Apache Software Foundation
+

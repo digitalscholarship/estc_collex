@@ -1,0 +1,12 @@
+<component-set>
+  <components>
+    <component>
+      <role>org.apache.maven.shared.invoker.Invoker</role>
+      <role-hint>default</role-hint>
+      <implementation>org.apache.maven.shared.invoker.DefaultInvoker</implementation>
+      <description>Class intended to be used by clients who wish to invoke a forked Maven
+process from their applications</description>
+      <isolated-realm>false</isolated-realm>
+    </component>
+  </components>
+</component-set>

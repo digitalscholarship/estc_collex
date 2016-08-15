@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:role="http://www.loc.gov/loc.terms/relators/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:dcterms="http://purl.org/dc/terms/"
+         xmlns:collex="http://www.collex.org/schema#"
+         xmlns:nlx="http://pm.nlx.com">
+   <nlx:collections rdf:about="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.52">
+      <collex:archive>intelexAugustine</collex:archive>
+      <collex:federation>MESA</collex:federation>
+      <rdfs:seeAlso rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.52"/>
+      <dc:title>Sermons
+</dc:title>
+      <dc:source>The Works of Saint Augustine (3rd Release). Electronic edition.</dc:source>
+      <dc:source>The Works of Saint Augustine</dc:source>
+      <role:AUT>Augustine</role:AUT>
+      <role:EDT>Rotelle, John E.</role:EDT>
+      <collex:genre>Philosophy</collex:genre>
+      <collex:genre>Religion</collex:genre><collex:discipline>Religious Studies</collex:discipline>
+      <collex:freeculture>FALSE</collex:freeculture>
+      <dc:date>
+         <collex:date>
+            <rdfs:label>354-430</rdfs:label>
+            <rdf:value>0354,0430</rdf:value>
+         </collex:date>
+      </dc:date>
+      <collex:text rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;doc.view=print;chunk.id=div.aug.sermons.v8.52"/>
+      <dcterms:isPartOf rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.53"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.64"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.67"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.72"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.78"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.98"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.102"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.118"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.133"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.141"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.146"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.151"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.157"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.165"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.174"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.183"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.189"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.196"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.204"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.213"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.221"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.231"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.245"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.253"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.260"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.264"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.271"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.276"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.298"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.308"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.325"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.338"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.345"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.359"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.363"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.370"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.377"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.386"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.393"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.400"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.409"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.420"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.431"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.455"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.459"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.465"/>
+      <dcterms:hasPart rdf:resource="http://pm.nlx.com/xtf/view?docId=augustine_iii/augustine_iii.26.xml;chunk.id=div.aug.sermons.v8.471"/>
+   </nlx:collections>
+</rdf:RDF>

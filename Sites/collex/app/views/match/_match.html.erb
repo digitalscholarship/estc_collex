@@ -1,0 +1,68 @@
+
+<%= form_for(@annotation, url: create_match_path, :html => { :multipart => true, :onsubmit => "return confirm('Are you sure you want to make the following match?');" }) do |f| %>
+ 	<%= f.hidden_field :subject, :value => session[:uri] %> 
+	<input type ="hidden" value = '<%= session[:title] %>' name = "title">
+
+	<% if session[:objectparams].present? %>
+		<div id="wrapper">
+		<ul id="list-objects">
+		<% checkerror = true %> 
+
+			<% @matchinfo.each do |obj| %>	
+				<% if obj[:errorMsg].empty? %>
+					<% checkerror = false %>
+				<% end %>
+				<li> 
+					<p id="notice" class="notice" style = "font-weight: bold; font-size: 12pt; color: Red"> <%= obj[:errorMsg] %> </p>
+					<p> <a href = "/fullrecord?action=fullrecord&uri=<%= session[:uri]%> ", target = '_blank'> <%= session[:title] %></a> </p> 
+					<p> <b> <%=  obj[:predicateDisplayname] %> of </b> </p> 					
+					<p> <a href = "/fullrecord?action=fullrecord&uri=<%= obj[:objectUri]%> ", target = '_blank'> <%= obj[:objectTitle] %></a> </p> 
+				</li>			
+			<% end %>
+
+			<h3>Please provide an explanation of the reason for the above associations: </h3>
+			<% if checkerror == false %>
+				<%= f.text_area :feedback, cols: 65, rows: 10 %> 
+			<% else %>
+				<p style = "font-size: 12pt; color: Red"><%= "All the matches has been made already!" %></p>
+				<%= f.text_area :feedback, cols: 65, rows: 10, disabled: true%> 
+			<% end %>
+			<br><br>
+			<%= file_field_tag "documents[]", :multiple => true %>
+			<%= f.button "Close", type: 'button', :id => "closebtn" %> &nbsp;&nbsp;&nbsp;&nbsp;
+			<%= f.submit "Submit", :id => "submitbtn" %>
+		</ul>
+		</div>
+	<% end %>
+<% end %>
+
+<script>
+	var $j = jQuery.noConflict();
+
+	$j("#closebtn").click(function(){ 
+	 window.close();
+	});
+	var textValue = '';
+
+	$j("#annotation_feedback").keyup(function() {
+	 textValue = $j(this).val();
+		if(textValue == '' || $j('#list-objects').children().length == 0){
+			$j("#submitbtn").prop('disabled', true);		
+		}
+		else{
+			$j("#submitbtn").prop('disabled', false);
+		}
+	});
+
+	$j(document).ready(function(){
+		if($j('#list-objects').children().length == 0 || $j("#annotation_feedback").val() == ''){
+			$j('#submitbtn').prop('disabled',true);
+		}
+	});
+
+</script>
+
+
+
+
+

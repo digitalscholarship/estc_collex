@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:bio="http://purl.org/vocab/bio/0.1/" 
+    xmlns:blt="http://www.bl.uk/schemas/bibliographic/blterms#"
+    xmlns:dct="http://purl.org/dc/terms/"  
+    xmlns:daia="http://purl.org/ontology/daia/Service/Openaccess" 
+    xmlns:dc="http://purl.org/dc/elements/1.1/" 
+    xmlns:event="http://purl.org/NET/c4dm/event.owl#" 
+    xmlns:foaf="http://xmlns.com/foaf/0.1/" 
+    xmlns:frbr="http://purl.org/vocab/frbr/core#" 
+    xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" 
+    xmlns:isbd="http://iflastandards.info/ns/isbd/elements/"
+    xmlns:org="http://www.w3.org/ns/org#" 
+    xmlns:owl="http://www.w3.org/2002/07/owl#" 
+    xmlns:prov="http://www.w3.org/ns/prov#" 
+    xmlns:rda="http://rdvocab.info/ElementsGr2/" 
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+    xmlns:role="http://www.loc.gov/loc.terms/relators/"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:time="http://www.w3.org/2006/time#" 
+    xmlns:viaf="http://viaf.org/ontology/1.1/#" >
+
+
+    <rdf:Description rdf:about="http://estc.bl.uk/id/manifestation/R227226">
+        <rdf:type rdf:resource="http://purl.org/dc/terms/BibliographicResource" />
+        <rdf:type rdf:resource="http://purl.org/ontology/bibo/Document" />
+        <rdf:type rdf:resource="http://purl.org/ontology/bibo/DocumentPart" />
+        <rdf:type rdf:resource="http://purl.org/ontology/bibo/CollectedDocument" />
+        <rda:type rdf:resource="http://rdvocab.info/uri/schema/FRBRentitiesRDA/Manifestation" />
+        <dct:title>A Carousse to the Emperor, the Royal Pole, and the Much Wrong'd Duke of Lorrain.</dct:title>
+        <dct:creator>
+            <rdf:Description rdf:about="http://estc.bl.uk/id/person/10034">
+                <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Agent" />
+                <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person" />
+                <rdfs:label>D'Urfey, Thomas, 1653-1723</rdfs:label>
+                <viaf:personalNames rdf:about="http://http://viaf.org/viaf/5060938">
+                    <foaf:name>Thomas D'Urfey</foaf:name>
+                    <foaf:familyName>D'Urfey</foaf:familyName>
+                    <foaf:givenName>Thomas</foaf:givenName>
+                    <bio:event>
+                        <rdf:Description rdf:about="http://http://viaf.org/viaf/5060938">
+                            <rdf:type rdf:resource="http://purl.org/vocab/bio/0.1/Birth" />
+                            <bio:date rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1728</bio:date>
+                            <rdfs:label>1728</rdfs:label>
+                        </rdf:Description>
+                    </bio:event>
+                    <bio:event>
+                        <rdf:Description rdf:about="http://http://viaf.org/viaf/5060938">
+                            <rdf:type rdf:resource="http://purl.org/vocab/bio/0.1/Death" />
+                            <bio:date rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1774</bio:date>
+                            <rdfs:label>1774</rdfs:label>
+                        </rdf:Description>
+                    </bio:event>
+                </viaf:personalNames>
+            </rdf:Description>
+        </dct:creator>
+        <dct:publisher>
+            <rdf:Description rdf:about="http://estc.bl.uk/id/person/10034">
+                <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Agent" />
+                <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person" />
+                <rdfs:label>Printed for P. Brooksby in Pye-Corner</rdfs:label>
+                <viaf:personalNames rdf:about="http://http://viaf.org/viaf/5060938">
+                    <foaf:name>Phillip Brooksby</foaf:name>
+                    <foaf:familyName>Brooksby</foaf:familyName>
+                    <foaf:givenName>Phillip</foaf:givenName>
+                </viaf:personalNames>
+            </rdf:Description>
+        </dct:publisher>
+        
+        <dct:contributor>
+        	<rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Agent" /> 
+        	<rdfs:label>the name of the contributor</rdfs:label>
+        	<rdf:resource="http://uri of resource if it existsts" />
+        </dct:contributor>
+        
+        <dc:date>
+            <rdf:Description rdf:about="http://reference.data.gov.uk/id/ordinalYear/1672-1696">
+                <rdf:type rdf:resource="http://reference.data.gov.uk/def/intervals/ordinalYear" />
+                <rdfs:range>1672-1696</rdfs:range>
+                <rdfs:label>1672-1696</rdfs:label>
+            </rdf:Description>          
+        </dc:date>
+        <dct:subject>
+            <dct:LCSH>
+                <rdfs:label>Ballads, English 17th century</rdfs:label>
+                <rdfs:value>Ballads, English 17th century</rdfs:value>
+            </dct:LCSH>
+        </dct:subject>
+        
+        <frbr:exemplar>
+        	<rdf:resource="http://estc.bl.uk/id/item/1902345" />
+        </frbr:exemplar>
+
+    </rdf:Description>
+    
+    
+    
+	<rdf:Description rdf:about="http://estc.bl.uk/id/item/1902345">
+		<rdf:exemplarOf>
+			<rdf:resource="http://estc.bl.uk/id/manifestation/R227226" />
+		</rdf:Description>
+		<frbr:owner>
+			<rdf:Description rdf:about="http://estc.bl.uk/id/organization/27342">
+				<rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Agent" />
+				<rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Organization" />
+				<rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Homepage">http://www.nls.uk/</rdf:type>
+				<rdfs:label>National Library of Scotland</rdfs:label>
+			</rdf:Description>
+		</frbr:owner>
+		<dct:creator>
+			<rdf:Description rdf:about="http://estc.bl.uk/id/person/10034">
+				<rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Agent" />
+				<rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person" />
+				<rdfs:label>D'Urfey, Thomas, 1653-1723</rdfs:label>
+				<viaf:personalNames rdf:about="http://http://viaf.org/viaf/5060938">
+					<foaf:name>Thomas D'Urfey</foaf:name>
+					<foaf:familyName>D'Urfey</foaf:familyName>
+					<foaf:givenName>Thomas</foaf:givenName>
+					<bio:event>
+						<rdf:Description rdf:about="http://http://viaf.org/viaf/5060938">
+							<rdf:type rdf:resource="http://purl.org/vocab/bio/0.1/Birth" />
+							<bio:date rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1728</bio:date>
+							<rdfs:label>1728</rdfs:label>
+						</rdf:Description>
+					</bio:event>
+					<bio:event>
+						<rdf:Description rdf:about="http://http://viaf.org/viaf/5060938">
+							<rdf:type rdf:resource="http://purl.org/vocab/bio/0.1/Death" />
+							<bio:date rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1774</bio:date>
+							<rdfs:label>1774</rdfs:label>
+						</rdf:Description>
+					</bio:event>
+				</viaf:personalNames>
+			</rdf:Description>
+		</dct:creator>
+		<dct:publisher>
+			<rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Agent" />
+			<rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person" />
+			<rdf:type rdf:resource="http://purl.org/dc/terms/Agent" />
+			<rdfs:label>P. Brooksby  http://viaf.org/viaf/44215745/</rdfs:label>
+		</dct:publisher>
+		<blt:publication>
+			<rdf:Description rdf:about="006000008/publicationevent/ViennaprintedforRSammer1796">
+				<rdf:type rdf:resource="http://www.bl.uk/schemas/bibliographic/blterms#PublicationEvent" />
+				<rdfs:label>Printed for P. Brooksby in Pye-Corner</rdfs:label>
+				<event:place>
+					<rdf:Description rdf:about="http://bnb.data.bl.uk/id/place/London">
+						<rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing" />
+						<rdf:type rdf:resource="http://purl.org/dc/terms/Location" />
+						<rdfs:label>Pye-Corner</rdfs:label>
+						<rdfs:label>Smithfield</rdfs:label>
+						<rdfs:label>London</rdfs:label>
+					</rdf:Description>
+				</event:place>
+				<event:place rdf:resource="http://sws.geonames.org/000000000/" />
+				<event:agent>
+					<rdf:Description rdf:about="http://estc.bl.uk/id/person/20345">
+						<rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Agent" />
+						<rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person" />
+						<rdf:type rdf:resource="http://purl.org/dc/terms/Agent" />
+						<rdfs:label>Brooksby, Phillip</rdfs:label>
+						<viaf:personalNames rdf:about="http://http://viaf.org/viaf/44215745">
+							<foaf:name>Phillip Brooksby</foaf:name>
+							<foaf:familyName>Brooksby</foaf:familyName>
+							<foaf:givenName>Phillip</foaf:givenName>
+						</viaf:personalNames>
+					</rdf:Description>                            
+				</event:agent>
+				<event:time>
+					<rdf:Description rdf:about="http://reference.data.gov.uk/id/ordinalYear/1672-1696">
+						<rdf:type rdf:resource="http://reference.data.gov.uk/def/intervals/ordinalYear" />
+						<rdfs:range>1672-1696</rdfs:range>
+						<rdfs:label>1672-1696</rdfs:label>
+					</rdf:Description>
+				</event:time>
+			</rdf:Description>
+		</blt:publication>
+		<dct:language rdf:resource="http://lexvo.org/id/iso639-3/eng" />
+		<isbd:P1053 xml:lang="en">[2],xii,441,[1]p.,plate</isbd:P1053>
+		<dct:description xml:lang="en">The titlepage is engraved.</dct:description>
+		<dct:description xml:lang="en">With a half-title.</dct:description>
+	</rdf:Description>
+
+
+</rdf:RDF>

@@ -1,0 +1,35 @@
+# This relates folder names to archive names in this set of rdf files.
+# When adding a new archive, also add a line here that says what top level
+# folder that archive is in.
+# The format is <sp><sp>"archive_name":<sp>["arc_rdf_foldername",pageSize, 1000]
+# Use double-quotes around each item. Do not use tabs -- that will break the file.
+#
+# The pageSize is used to give the indexer a clue about how much text is with an archive.
+# When adding an entry just pick a number that is used for a similar archive, then after
+# one run, the log file will contain enough info to change it to a more accurate number.
+#
+# These are listed in the order they will be processed, so I've put the more difficult ones at
+# the end so the easy ones will get indexed quickly.
+#
+# The batches just make it easier to run, since it takes so long to do the entire index.
+
+archives:
+  0:
+    #"nypl": ["arc_rdf_nypl", 1000]
+    #"umich-lib": ["arc_rdf_umich-lib", 1000]
+    #"nines-test": ["arc_rdf_nines-test", 1000]
+    "umich-test": ["arc_rdf_umich-test", 1000]
+    #"intelexAugustine": ["arc_rdf_intelexAugustine", 1000]
+    #"estc": ["arc_rdf_estc", 1000]
+    #"testnewrdf": ["arc_rdf_testnewrdf", 1000]
+    "estc-bib": ["arc_rdf_finalestc_a", 1000]
+    "bl": ["arc_rdf_finalestc_b", 1000]
+    "nypl": ["arc_rdf_nypltest", 1000]
+
+#  TEST:
+#    "TEST_RDF" : ['test_rdf', 1000]  
+
+# The following folders are not indexed:
+#  "lbt"
+#  "rup"
+#  "bancroft"

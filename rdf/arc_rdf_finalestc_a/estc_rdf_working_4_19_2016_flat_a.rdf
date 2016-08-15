@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:gl="http://oai.quod.lib.umich.edu/schema#"
+    xmlns:dct="http://purl.org/dc/terms/#" 
+    xmlns:dc="http://purl.org/dc/elements/1.1/#"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/#"
+    xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos/#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema/#"
+    xmlns:role="http://www.loc.gov/loc.terms/relators/"
+    xmlns:bf="http://bibframe.org/vocab/"
+    xmlns:relators="http://id.loc.gov/vocabulary/relators/"
+    xmlns:collex="http://www.collex.org/schema#" 
+    xmlns:scm="http://schema.org/" >
+ 
+    <gl:estc rdf:about="http://estc.bl.uk/id/manifestation/R227226">
+        <collex:federation>ESTC</collex:federation>
+                <collex:archive>estc-bib</collex:archive>
+ 					
+                        <dct:title>A Carousse to the Emperor, the Royal Pole, and the Much Wrong'd Duke of Lorrain.</dct:title>
+
+						<role:art>Thomas D'Urfey</role:art>
+						
+						<role:asn>Thomas D'Urfey</role:asn>
+                        
+                        <role:att>Thomas D'Urfey</role:att>
+                        
+                        <role:aut>Thomas D'Urfey</role:aut>
+						
+                        <role:dub>Thomas D'Urfey</role:dub>						
+						
+                        <role:bnd>Thomas D'Urfey</role:bnd>						
+						
+                        <role:bsl>Thomas D'Urfey</role:bsl>
+						
+                        <role:ctg>Thomas D'Urfey</role:ctg>
+						
+                        <role:col>Thomas D'Urfey</role:col>	
+											
+                        <role:clr>Thomas D'Urfey</role:clr>						
+												
+                        <role:cmm>Thomas D'Urfey</role:cmm>						
+						
+                        <role:cmp>Thomas D'Urfey</role:cmp>
+						
+                        <role:cmt>Thomas D'Urfey</role:cmt>						
+						
+                        <role:ccp>Thomas D'Urfey</role:ccp>						
+						
+	                    <role:ctb>Thomas D'Urfey</role:ctb>					
+						
+                        <role:cpc>Thomas D'Urfey</role:cpc>												
+						
+                        <role:cre>Thomas D'Urfey</role:cre>
+						
+                        <role:edt>Thomas D'Urfey</role:edt>						
+						
+                        <role:elt>Thomas D'Urfey</role:elt>						
+						
+                        <role:egr>Thomas D'Urfey</role:egr>						
+						
+                        <role:etr>Thomas D'Urfey</role:etr>						
+						
+                        <role:fmo>Thomas D'Urfey</role:fmo>	
+						
+						<role:ilu>Thomas D'Urfey</role:ilu>	
+						
+						<role:ill>Thomas D'Urfey</role:ill>				
+						
+                        <role:ins>Thomas D'Urfey</role:ins>		
+						
+                        <role:lse>Thomas D'Urfey</role:lse>						
+						
+						<role:lso>Thomas D'Urfey</role:lso>
+						
+                        <role:mte>Thomas D'Urfey</role:mte>						
+						
+		                <role:ppm>Thomas D'Urfey</role:ppm>				
+						
+		                <role:plt>Thomas D'Urfey</role:plt>				
+						
+			            <role:prt>Thomas D'Urfey</role:prt>			
+						
+			            <role:pro>Thomas D'Urfey</role:pro>
+						
+			            <role:prn>Thomas D'Urfey</role:prn>	
+						
+						<role:prd>Thomas D'Urfey</role:prd>		
+						
+						<role:aut>Thomas D'Urfey</role:aut>																
+						
+						<role:pbl>Thomas D'Urfey</role:pbl>
+
+						<role:rpy>Thomas D'Urfey</role:rpy>
+
+						<role:scr>Thomas D'Urfey</role:scr>
+						
+						<role:sll>Thomas D'Urfey</role:sll>
+
+						<role:trc>Thomas D'Urfey</role:trc>
+
+						<role:trl>Thomas D'Urfey</role:trl>
+						
+						<role:wde>Thomas D'Urfey</role:wde>
+						
+						<role:wdc>Thomas D'Urfey</role:wdc>
+
+						<relators:pup>Thomas D'Urfey</relators:pup>
+						
+                        <dc:date>1672-1696</dc:date>
+                        
+                        <dct:subject>
+                        	<scm:about rdfs:resrouce="http://id.loc.gov/authorities/subjects/sh85130664">
+                        		<rdfs:label>Ballads, English 17th century</rdfs:label>
+                        	</scm:about>
+                        </dct:subject>
+                        
+                        <scm:url>http://www.someplace.org/path/to/digital/surrogate</scm:url>
+                        
+                        <bf:hasInstance>http://bl.uk/id/20054</bf:hasInstance>
+ 
+ 
+    </gl:estc>
+ 
+</rdf:RDF>
+ 

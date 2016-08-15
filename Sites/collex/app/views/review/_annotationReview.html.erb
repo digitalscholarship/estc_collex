@@ -1,0 +1,66 @@
+
+<script type="text/javascript">
+	window.collex.pageName = '<%= @site_section %>';
+	window.collex.currentUserId = '<%= get_curr_user_id %>';
+	window.collex.isAdmin = <%= is_admin? %>;
+	window.collex.isBibliographer = <%= is_bibliographer? %>;
+	window.collex.isScholar = <%= is_scholar? %>;
+	window.collex.hasTypewright = <%= COLLEX_PLUGINS['typewright'].present? %>;
+	window.collex.myCollexUrl = '<%= MY_COLLEX_URL %>';
+	window.collex.hasFuzzySearch = <%= HAS_FUZZY %>;
+	window.collex.hasLanguage = <%= HAS_LANGUAGE %>;
+	window.collex.hasManyRoles = <%= HAS_MANY_ROLES %>;
+	window.collex.hasPageSearch = <%= PAGE_LEVEL_SEARCH %>;
+	window.collex.facetNames = {
+		access: {
+			fulltext: "Full Text Only",
+			ocr: "Ocr Only",
+			freeculture: "Free Culture Only",
+			typewright: "Typewright Enabled Only"
+		},
+		archives: <%= raw(@archives.to_json) %>
+	};
+	window.collex.images = {
+		spinner: '<%= image_path(PROGRESS_SPINNER_PATH) %>',
+		federationThumbnail: '<%= image_path(DEFAULT_THUMBNAIL_IMAGE_PATH) %>',
+		spinnerTimeout: '<%= image_path(SPINNER_TIMEOUT_PATH) %>',
+		arrow_open: '<%= image_path('arrow.gif') %>',
+		arrow_close: '<%= image_path('arrow_dn.gif') %>'
+	};
+	window.collex.defaultFederation = '<%= Setup.default_federation() %>';
+</script>
+<div class="pagination">
+
+</div>
+
+<% if @annotations.present? %>
+	<%= will_paginate @results %>
+<% end %>
+<br>
+
+  <% if flash[:notice].present? %>    
+    <p id="notice" class="notice" style = "font-weight: bold; font-size: 12pt; color: Red"> <%= flash[:notice] %> </p>
+  <% end %>
+
+<form accept-charset="UTF-8" method="post">
+	<table>
+		<tr>
+			<td><%= " Positive review:" %></td>
+			<td><%= select_tag(:positivereview, options_for_select([ ['0 or more', 0], ['1 or more', 1], ['2 or more', 2], ['3 or more', 3], ['4 or more', 4], ['5 or more', 5], ['6 or more', 6], ['7 or more', 7], ['8 or more', 8], ['9 or more', 9], ['10 or more', 10]], params[:positivereview]), :onchange => "if(this.value){window.location='?positivereview='+this.value+'&predicate='+predicate.value+'&user='+user.value;}", :size => 4) %>
+			</td>
+	 		<td><%= "Verb:" %></td>
+		  	<td><%= select_tag(:predicate,  options_for_select(@predicates.collect{|predicate| [predicate.display_name, predicate.id] }.insert(0, ['All Verbs', 0]), params[:predicate]), :onchange => "window.location='?predicate='+this.value+'&positivereview='+positivereview.value+'&user='+user.value;", :size => 4) %>  
+		  	</td>
+			<td><%= "User: " %></td>
+			<td><%= select_tag(:user,  options_for_select(@users.collect{|user| [user.fullname, user.id] }.insert(0, ['All Users', 0]), params[:user]), :onchange => "window.location='?predicate='+predicate.value+'&positivereview='+positivereview.value+'&user='+this.value;", :size => 4) %>
+			</td>
+		<tr>
+	</table>
+</form>
+
+<div class="review-results">
+
+</div>
+
+
+

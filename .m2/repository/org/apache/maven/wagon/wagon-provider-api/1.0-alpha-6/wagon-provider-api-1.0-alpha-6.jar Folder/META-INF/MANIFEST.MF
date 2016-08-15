@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: brett
+Build-Jdk: 1.5.0_06
+Extension-Name: wagon-provider-api
+Specification-Title: Tools to manage artifacts and deployment
+Specification-Vendor: Apache Software Foundation
+Implementation-Vendor: Apache Software Foundation
+Implementation-Title: wagon-provider-api
+Implementation-Version: 1.0-alpha-6
+

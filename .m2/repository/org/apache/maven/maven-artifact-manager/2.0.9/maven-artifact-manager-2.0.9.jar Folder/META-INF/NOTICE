@@ -1,0 +1,23 @@
+// ------------------------------------------------------------------
+// NOTICE file corresponding to the section 4d of The Apache License,
+// Version 2.0, in this case for Maven Artifact Manager
+// ------------------------------------------------------------------
+
+Maven Artifact Manager
+Copyright 2001-2008 The Apache Software Foundation
+
+This product includes/uses software(s) developed by 'Apache Software Foundation' (http://www.apache.org/)
+  - Maven Wagon API (http://maven.apache.org/wagon/wagon-provider-api)
+
+This product includes/uses software(s) developed by 'Codehaus' (http://www.codehaus.org/)
+  - Default Plexus Container
+  - Plexus Common Utilities (http://plexus.codehaus.org/plexus-utils)
+
+This product includes/uses software(s) developed by 'The Apache Software Foundation' (http://www.apache.org/)
+  - Maven Artifact (http://maven.apache.org/maven-artifact)
+  - Maven Repository Metadata Model (http://maven.apache.org/maven-repository-metadata)
+
+This product includes/uses software(s) developed by 'The Codehaus' (http://codehaus.org/)
+  - classworlds (http://classworlds.codehaus.org/)
+
+

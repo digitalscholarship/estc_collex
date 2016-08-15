@@ -1,0 +1,64 @@
+// ------------------------------------------------------------------
+// NOTICE file corresponding to the section 4d of The Apache License,
+// Version 2.0, in this case for Maven Toolchains
+// ------------------------------------------------------------------
+
+Maven Toolchains
+Copyright 2001-2008 The Apache Software Foundation
+
+This product includes/uses software(s) developed by 'an unknown organization'
+  - CLI
+  - XML Im-/Exporter (http://xml-im-exporter.sourceforge.net)
+  - Unnamed - jdom:jdom:jar:1.0
+  - Unnamed - slide:slide-webdavlib:jar:2.1
+
+This product includes/uses software(s) developed by 'Apache Software Foundation' (http://jakarta.apache.org/)
+  - HttpClient (http://jakarta.apache.org/commons/httpclient/)
+
+This product includes/uses software(s) developed by 'Apache Software Foundation' (http://www.apache.org/)
+  - Maven Wagon File Provider (http://maven.apache.org/wagon/wagon-providers/wagon-file)
+  - Maven Wagon Lightweight HTTP Provider (http://maven.apache.org/wagon/wagon-providers/wagon-http-lightweight)
+  - Maven Wagon HTTP Shared Library (http://maven.apache.org/wagon/wagon-providers/wagon-http-shared)
+  - Maven Wagon API (http://maven.apache.org/wagon/wagon-provider-api)
+  - Maven Wagon SSH Provider (http://maven.apache.org/wagon/wagon-providers/wagon-ssh)
+  - Maven Wagon SSH Common Library (http://maven.apache.org/wagon/wagon-providers/wagon-ssh-common)
+  - Maven Wagon SSH External Provider (http://maven.apache.org/wagon/wagon-providers/wagon-ssh-external)
+  - Maven Wagon WebDav Provider (http://maven.apache.org/wagon/wagon-providers/wagon-webdav)
+  - XML Commons External Components XML APIs (http://xml.apache.org/commons/#external)
+
+This product includes/uses software(s) developed by 'Codehaus' (http://www.codehaus.org/)
+  - Default Plexus Container
+  - Plexus Default Interactivity Handler
+  - Plexus Common Utilities (http://plexus.codehaus.org/plexus-utils)
+
+This product includes/uses software(s) developed by 'jcraft' (http://www.jcraft.com/jsch)
+  - JSch (http://www.jcraft.com/jsch/)
+
+This product includes/uses software(s) developed by 'JTidy' (http://jtidy.sf.net)
+  - JTidy (http://jtidy.sourceforge.net)
+
+This product includes/uses software(s) developed by 'The Apache Software Foundation' (http://jakarta.apache.org)
+  - Logging (http://jakarta.apache.org/commons/logging/)
+
+This product includes/uses software(s) developed by 'The Apache Software Foundation' (http://www.apache.org/)
+  - Maven Artifact (http://maven.apache.org/maven-artifact)
+  - Maven Artifact Manager (http://maven.apache.org/maven-artifact-manager)
+  - Maven Core (http://maven.apache.org/maven-core)
+  - Maven Error Diagnostics (http://maven.apache.org/maven-error-diagnostics)
+  - Maven Model (http://maven.apache.org/maven-model)
+  - Maven Monitor (http://maven.apache.org/maven-monitor)
+  - Maven Plugin API (http://maven.apache.org/maven-plugin-api)
+  - Maven Plugin Descriptor Model (http://maven.apache.org/maven-plugin-descriptor)
+  - Maven Plugin Parameter Documenter API (http://maven.apache.org/maven-plugin-parameter-documenter)
+  - Maven Plugin Registry Model (http://maven.apache.org/maven-plugin-registry)
+  - Maven Profile Model (http://maven.apache.org/maven-profile)
+  - Maven Project Builder (http://maven.apache.org/maven-project)
+  - Maven Repository Metadata Model (http://maven.apache.org/maven-repository-metadata)
+  - Maven Local Settings Model (http://maven.apache.org/maven-settings)
+  - Doxia :: Sink API (http://maven.apache.org/doxia/doxia/doxia-sink-api)
+  - Maven Reporting API (http://maven.apache.org/maven-reporting/maven-reporting-api)
+
+This product includes/uses software(s) developed by 'The Codehaus' (http://codehaus.org/)
+  - classworlds (http://classworlds.codehaus.org/)
+
+

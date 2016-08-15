@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: brianf
+Build-Jdk: 1.6.0_03
+Specification-Title: Maven Reporting API
+Specification-Version: 2.0.9
+Specification-Vendor: The Apache Software Foundation
+Implementation-Title: Maven Reporting API
+Implementation-Version: 2.0.9
+Implementation-Vendor-Id: org.apache.maven.reporting
+Implementation-Vendor: The Apache Software Foundation
+

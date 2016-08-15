@@ -1,0 +1,668 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+  <name>Maven JAR Plugin</name>
+  <description>Builds a Java Archive (JAR) file from the compiled project classes and resources.</description>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-jar-plugin</artifactId>
+  <version>2.3.1</version>
+  <goalPrefix>jar</goalPrefix>
+  <isolatedRealm>false</isolatedRealm>
+  <inheritedByDefault>true</inheritedByDefault>
+  <mojos>
+    <mojo>
+      <goal>help</goal>
+      <description>Display help information on maven-jar-plugin.&lt;br/&gt; Call &lt;pre&gt;  mvn jar:help -Ddetail=true -Dgoal=&amp;lt;goal-name&amp;gt;&lt;/pre&gt; to display parameter details.</description>
+      <requiresDirectInvocation>false</requiresDirectInvocation>
+      <requiresProject>false</requiresProject>
+      <requiresReports>false</requiresReports>
+      <aggregator>false</aggregator>
+      <requiresOnline>false</requiresOnline>
+      <inheritedByDefault>true</inheritedByDefault>
+      <implementation>org.apache.maven.plugin.jar.HelpMojo</implementation>
+      <language>java</language>
+      <instantiationStrategy>per-lookup</instantiationStrategy>
+      <executionStrategy>once-per-session</executionStrategy>
+      <threadSafe>false</threadSafe>
+      <parameters>
+        <parameter>
+          <name>detail</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>If &lt;code&gt;true&lt;/code&gt;, display all settable properties for each goal.</description>
+        </parameter>
+        <parameter>
+          <name>goal</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The name of the goal for which to show help. If unspecified, all goals will be displayed.</description>
+        </parameter>
+        <parameter>
+          <name>indentSize</name>
+          <type>int</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The number of spaces per indentation level, should be positive.</description>
+        </parameter>
+        <parameter>
+          <name>lineLength</name>
+          <type>int</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The maximum length of a display line, should be positive.</description>
+        </parameter>
+      </parameters>
+      <configuration>
+        <detail implementation="boolean" default-value="false">${detail}</detail>
+        <goal implementation="java.lang.String">${goal}</goal>
+        <indentSize implementation="int" default-value="2">${indentSize}</indentSize>
+        <lineLength implementation="int" default-value="80">${lineLength}</lineLength>
+      </configuration>
+    </mojo>
+    <mojo>
+      <goal>sign-verify</goal>
+      <description>Checks the signature of a signed jar using jarsigner.</description>
+      <requiresDependencyResolution>runtime</requiresDependencyResolution>
+      <requiresDirectInvocation>false</requiresDirectInvocation>
+      <requiresProject>true</requiresProject>
+      <requiresReports>false</requiresReports>
+      <aggregator>false</aggregator>
+      <requiresOnline>false</requiresOnline>
+      <inheritedByDefault>true</inheritedByDefault>
+      <phase>package</phase>
+      <implementation>org.apache.maven.plugin.jar.JarSignVerifyMojo</implementation>
+      <language>java</language>
+      <instantiationStrategy>per-lookup</instantiationStrategy>
+      <executionStrategy>once-per-session</executionStrategy>
+      <deprecated>As of version 2.3, this goal is no longer supported in favor of the dedicated maven-jarsigner-plugin.</deprecated>
+      <threadSafe>false</threadSafe>
+      <parameters>
+        <parameter>
+          <name>basedir</name>
+          <type>java.io.File</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description>Directory containing the generated JAR.</description>
+        </parameter>
+        <parameter>
+          <name>checkCerts</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Check certificates. Requires {@link #setVerbose(boolean)}.
+See &lt;a href=&quot;http://java.sun.com/j2se/1.4.2/docs/tooldocs/windows/jarsigner.html#Options&quot;&gt;options&lt;/a&gt;.</description>
+        </parameter>
+        <parameter>
+          <name>errorWhenNotSigned</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>When &lt;code&gt;true&lt;/code&gt; this will make the execute() operation fail,
+throwing an exception, when verifying a non signed jar.
+Primarily to keep backwards compatibility with existing code, and allow reusing the
+bean in unattended operations when set to &lt;code&gt;false&lt;/code&gt;.</description>
+        </parameter>
+        <parameter>
+          <name>finalName</name>
+          <alias>jarname</alias>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>Name of the generated JAR (without classifier and extension).</description>
+        </parameter>
+        <parameter>
+          <name>jarPath</name>
+          <type>java.io.File</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Path of the signed jar. When specified, the finalName is ignored.</description>
+        </parameter>
+        <parameter>
+          <name>verbose</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Enable verbose
+See &lt;a href=&quot;http://java.sun.com/j2se/1.4.2/docs/tooldocs/windows/jarsigner.html#Options&quot;&gt;options&lt;/a&gt;.</description>
+        </parameter>
+        <parameter>
+          <name>workingDirectory</name>
+          <type>java.io.File</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>The working directory in which the jarsigner executable will be run.</description>
+        </parameter>
+      </parameters>
+      <configuration>
+        <basedir implementation="java.io.File">${project.build.directory}</basedir>
+        <checkCerts implementation="boolean" default-value="false">${checkcerts}</checkCerts>
+        <errorWhenNotSigned implementation="boolean" default-value="true">${errorWhenNotSigned}</errorWhenNotSigned>
+        <finalName implementation="java.lang.String">${project.build.finalName}</finalName>
+        <jarPath implementation="java.io.File">${jarpath}</jarPath>
+        <verbose implementation="boolean" default-value="false">${verbose}</verbose>
+        <workingDirectory implementation="java.io.File" default-value="${basedir}">${workingdir}</workingDirectory>
+      </configuration>
+    </mojo>
+    <mojo>
+      <goal>sign</goal>
+      <description>Signs a JAR using jarsigner.</description>
+      <requiresDependencyResolution>runtime</requiresDependencyResolution>
+      <requiresDirectInvocation>false</requiresDirectInvocation>
+      <requiresProject>true</requiresProject>
+      <requiresReports>false</requiresReports>
+      <aggregator>false</aggregator>
+      <requiresOnline>false</requiresOnline>
+      <inheritedByDefault>true</inheritedByDefault>
+      <phase>package</phase>
+      <implementation>org.apache.maven.plugin.jar.JarSignMojo</implementation>
+      <language>java</language>
+      <instantiationStrategy>per-lookup</instantiationStrategy>
+      <executionStrategy>once-per-session</executionStrategy>
+      <deprecated>As of version 2.3, this goal is no longer supported in favor of the dedicated maven-jarsigner-plugin.</deprecated>
+      <threadSafe>false</threadSafe>
+      <parameters>
+        <parameter>
+          <name>alias</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>See &lt;a href=&quot;http://java.sun.com/j2se/1.4.2/docs/tooldocs/windows/jarsigner.html#Options&quot;&gt;options&lt;/a&gt;.</description>
+        </parameter>
+        <parameter>
+          <name>basedir</name>
+          <type>java.io.File</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description>Directory containing the generated JAR.</description>
+        </parameter>
+        <parameter>
+          <name>classifier</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Classifier to use for the generated artifact.
+If not specified, the generated artifact becomes the primary artifact.</description>
+        </parameter>
+        <parameter>
+          <name>finalName</name>
+          <alias>jarname</alias>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>Name of the generated JAR (without classifier and extension).</description>
+        </parameter>
+        <parameter>
+          <name>jarPath</name>
+          <alias>jarpath</alias>
+          <type>java.io.File</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Path of the jar to sign. When specified, the finalName is ignored.</description>
+        </parameter>
+        <parameter>
+          <name>keypass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>See &lt;a href=&quot;http://java.sun.com/j2se/1.4.2/docs/tooldocs/windows/jarsigner.html#Options&quot;&gt;options&lt;/a&gt;.</description>
+        </parameter>
+        <parameter>
+          <name>keystore</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>See &lt;a href=&quot;http://java.sun.com/j2se/1.4.2/docs/tooldocs/windows/jarsigner.html#Options&quot;&gt;options&lt;/a&gt;.</description>
+        </parameter>
+        <parameter>
+          <name>project</name>
+          <type>org.apache.maven.project.MavenProject</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description>The Maven project.</description>
+        </parameter>
+        <parameter>
+          <name>sigfile</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>See &lt;a href=&quot;http://java.sun.com/j2se/1.4.2/docs/tooldocs/windows/jarsigner.html#Options&quot;&gt;options&lt;/a&gt;.</description>
+        </parameter>
+        <parameter>
+          <name>signedjar</name>
+          <type>java.io.File</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>See &lt;a href=&quot;http://java.sun.com/j2se/1.4.2/docs/tooldocs/windows/jarsigner.html#Options&quot;&gt;options&lt;/a&gt;.
+&lt;p/&gt;
+Not specifying this argument will sign the jar in-place (your original jar is going to be overwritten).</description>
+        </parameter>
+        <parameter>
+          <name>skip</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Set this to &lt;code&gt;true&lt;/code&gt; to disable signing.
+Useful to speed up build process in development environment.</description>
+        </parameter>
+        <parameter>
+          <name>storepass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>See &lt;a href=&quot;http://java.sun.com/j2se/1.4.2/docs/tooldocs/windows/jarsigner.html#Options&quot;&gt;options&lt;/a&gt;.</description>
+        </parameter>
+        <parameter>
+          <name>type</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>See &lt;a href=&quot;http://java.sun.com/j2se/1.4.2/docs/tooldocs/windows/jarsigner.html#Options&quot;&gt;options&lt;/a&gt;.
+The corresponding option in the command line is -storetype.</description>
+        </parameter>
+        <parameter>
+          <name>verbose</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Enable verbose.
+See &lt;a href=&quot;http://java.sun.com/j2se/1.4.2/docs/tooldocs/windows/jarsigner.html#Options&quot;&gt;options&lt;/a&gt;.</description>
+        </parameter>
+        <parameter>
+          <name>verify</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Automatically verify a jar after signing it.
+&lt;p/&gt;
+See &lt;a href=&quot;http://java.sun.com/j2se/1.4.2/docs/tooldocs/windows/jarsigner.html#Options&quot;&gt;options&lt;/a&gt;.</description>
+        </parameter>
+        <parameter>
+          <name>workingDirectory</name>
+          <type>java.io.File</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>The working directory in which the jarsigner executable will be run.</description>
+        </parameter>
+      </parameters>
+      <configuration>
+        <alias implementation="java.lang.String">${alias}</alias>
+        <basedir implementation="java.io.File">${project.build.directory}</basedir>
+        <classifier implementation="java.lang.String">${classifier}</classifier>
+        <finalName implementation="java.lang.String">${project.build.finalName}</finalName>
+        <jarPath implementation="java.io.File" default-value="${project.build.directory}/${project.build.finalName}.${project.packaging}"/>
+        <keypass implementation="java.lang.String">${keypass}</keypass>
+        <keystore implementation="java.lang.String">${keystore}</keystore>
+        <project implementation="org.apache.maven.project.MavenProject">${project}</project>
+        <sigfile implementation="java.lang.String">${sigfile}</sigfile>
+        <signedjar implementation="java.io.File">${signedjar}</signedjar>
+        <skip implementation="boolean" default-value="false">${maven.jar.sign.skip}</skip>
+        <storepass implementation="java.lang.String">${storepass}</storepass>
+        <type implementation="java.lang.String">${type}</type>
+        <verbose implementation="boolean" default-value="false">${verbose}</verbose>
+        <verify implementation="boolean" default-value="false">${verify}</verify>
+        <workingDirectory implementation="java.io.File" default-value="${basedir}">${workingdir}</workingDirectory>
+      </configuration>
+      <requirements>
+        <requirement>
+          <role>org.apache.maven.project.MavenProjectHelper</role>
+          <field-name>projectHelper</field-name>
+        </requirement>
+      </requirements>
+    </mojo>
+    <mojo>
+      <goal>test-jar</goal>
+      <description>Build a JAR of the test classes for the current project.</description>
+      <requiresDependencyResolution>test</requiresDependencyResolution>
+      <requiresDirectInvocation>false</requiresDirectInvocation>
+      <requiresProject>true</requiresProject>
+      <requiresReports>false</requiresReports>
+      <aggregator>false</aggregator>
+      <requiresOnline>false</requiresOnline>
+      <inheritedByDefault>true</inheritedByDefault>
+      <phase>package</phase>
+      <implementation>org.apache.maven.plugin.jar.TestJarMojo</implementation>
+      <language>java</language>
+      <instantiationStrategy>per-lookup</instantiationStrategy>
+      <executionStrategy>once-per-session</executionStrategy>
+      <threadSafe>true</threadSafe>
+      <parameters>
+        <parameter>
+          <name>archive</name>
+          <type>org.apache.maven.archiver.MavenArchiveConfiguration</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The archive configuration to use.
+See &lt;a href=&quot;http://maven.apache.org/shared/maven-archiver/index.html&quot;&gt;Maven Archiver Reference&lt;/a&gt;.</description>
+        </parameter>
+        <parameter>
+          <name>defaultManifestFile</name>
+          <type>java.io.File</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description>Path to the default MANIFEST file to use. It will be used if
+&lt;code&gt;useDefaultManifestFile&lt;/code&gt; is set to &lt;code&gt;true&lt;/code&gt;.</description>
+        </parameter>
+        <parameter>
+          <name>excludes</name>
+          <type>java.lang.String[]</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>List of files to exclude. Specified as fileset patterns which are relative to the input directory whose contents
+is being packaged into the JAR.</description>
+        </parameter>
+        <parameter>
+          <name>finalName</name>
+          <alias>jarName</alias>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>Name of the generated JAR.</description>
+        </parameter>
+        <parameter>
+          <name>forceCreation</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Whether creating the archive should be forced.</description>
+        </parameter>
+        <parameter>
+          <name>includes</name>
+          <type>java.lang.String[]</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>List of files to include. Specified as fileset patterns which are relative to the input directory whose contents
+is being packaged into the JAR.</description>
+        </parameter>
+        <parameter>
+          <name>outputDirectory</name>
+          <type>java.io.File</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>Directory containing the generated JAR.</description>
+        </parameter>
+        <parameter>
+          <name>project</name>
+          <type>org.apache.maven.project.MavenProject</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description>The Maven project.</description>
+        </parameter>
+        <parameter>
+          <name>skip</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Set this to &lt;code&gt;true&lt;/code&gt; to bypass unit tests entirely.
+Its use is &lt;b&gt;NOT RECOMMENDED&lt;/b&gt;, but quite convenient on occasion.</description>
+        </parameter>
+        <parameter>
+          <name>testClassesDirectory</name>
+          <type>java.io.File</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>Directory containing the test classes and resource files that should be packaged into the JAR.</description>
+        </parameter>
+        <parameter>
+          <name>useDefaultManifestFile</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Set this to &lt;code&gt;true&lt;/code&gt; to enable the use of the &lt;code&gt;defaultManifestFile&lt;/code&gt;.</description>
+        </parameter>
+      </parameters>
+      <configuration>
+        <defaultManifestFile implementation="java.io.File">${project.build.outputDirectory}/META-INF/MANIFEST.MF</defaultManifestFile>
+        <finalName implementation="java.lang.String" default-value="${project.build.finalName}">${jar.finalName}</finalName>
+        <forceCreation implementation="boolean" default-value="false">${jar.forceCreation}</forceCreation>
+        <outputDirectory implementation="java.io.File">${project.build.directory}</outputDirectory>
+        <project implementation="org.apache.maven.project.MavenProject">${project}</project>
+        <skip implementation="boolean">${maven.test.skip}</skip>
+        <testClassesDirectory implementation="java.io.File">${project.build.testOutputDirectory}</testClassesDirectory>
+        <useDefaultManifestFile implementation="boolean" default-value="false">${jar.useDefaultManifestFile}</useDefaultManifestFile>
+      </configuration>
+      <requirements>
+        <requirement>
+          <role>org.codehaus.plexus.archiver.Archiver</role>
+          <role-hint>jar</role-hint>
+          <field-name>jarArchiver</field-name>
+        </requirement>
+        <requirement>
+          <role>org.apache.maven.project.MavenProjectHelper</role>
+          <field-name>projectHelper</field-name>
+        </requirement>
+      </requirements>
+    </mojo>
+    <mojo>
+      <goal>jar</goal>
+      <description>Build a JAR from the current project.</description>
+      <requiresDependencyResolution>runtime</requiresDependencyResolution>
+      <requiresDirectInvocation>false</requiresDirectInvocation>
+      <requiresProject>true</requiresProject>
+      <requiresReports>false</requiresReports>
+      <aggregator>false</aggregator>
+      <requiresOnline>false</requiresOnline>
+      <inheritedByDefault>true</inheritedByDefault>
+      <phase>package</phase>
+      <implementation>org.apache.maven.plugin.jar.JarMojo</implementation>
+      <language>java</language>
+      <instantiationStrategy>per-lookup</instantiationStrategy>
+      <executionStrategy>once-per-session</executionStrategy>
+      <threadSafe>true</threadSafe>
+      <parameters>
+        <parameter>
+          <name>archive</name>
+          <type>org.apache.maven.archiver.MavenArchiveConfiguration</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The archive configuration to use.
+See &lt;a href=&quot;http://maven.apache.org/shared/maven-archiver/index.html&quot;&gt;Maven Archiver Reference&lt;/a&gt;.</description>
+        </parameter>
+        <parameter>
+          <name>classesDirectory</name>
+          <type>java.io.File</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>Directory containing the classes and resource files that should be packaged into the JAR.</description>
+        </parameter>
+        <parameter>
+          <name>classifier</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Classifier to add to the artifact generated. If given, the artifact will be an attachment instead.</description>
+        </parameter>
+        <parameter>
+          <name>defaultManifestFile</name>
+          <type>java.io.File</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description>Path to the default MANIFEST file to use. It will be used if
+&lt;code&gt;useDefaultManifestFile&lt;/code&gt; is set to &lt;code&gt;true&lt;/code&gt;.</description>
+        </parameter>
+        <parameter>
+          <name>excludes</name>
+          <type>java.lang.String[]</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>List of files to exclude. Specified as fileset patterns which are relative to the input directory whose contents
+is being packaged into the JAR.</description>
+        </parameter>
+        <parameter>
+          <name>finalName</name>
+          <alias>jarName</alias>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>Name of the generated JAR.</description>
+        </parameter>
+        <parameter>
+          <name>forceCreation</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Whether creating the archive should be forced.</description>
+        </parameter>
+        <parameter>
+          <name>includes</name>
+          <type>java.lang.String[]</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>List of files to include. Specified as fileset patterns which are relative to the input directory whose contents
+is being packaged into the JAR.</description>
+        </parameter>
+        <parameter>
+          <name>outputDirectory</name>
+          <type>java.io.File</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>Directory containing the generated JAR.</description>
+        </parameter>
+        <parameter>
+          <name>project</name>
+          <type>org.apache.maven.project.MavenProject</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description>The Maven project.</description>
+        </parameter>
+        <parameter>
+          <name>useDefaultManifestFile</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Set this to &lt;code&gt;true&lt;/code&gt; to enable the use of the &lt;code&gt;defaultManifestFile&lt;/code&gt;.</description>
+        </parameter>
+      </parameters>
+      <configuration>
+        <classesDirectory implementation="java.io.File">${project.build.outputDirectory}</classesDirectory>
+        <defaultManifestFile implementation="java.io.File">${project.build.outputDirectory}/META-INF/MANIFEST.MF</defaultManifestFile>
+        <finalName implementation="java.lang.String" default-value="${project.build.finalName}">${jar.finalName}</finalName>
+        <forceCreation implementation="boolean" default-value="false">${jar.forceCreation}</forceCreation>
+        <outputDirectory implementation="java.io.File">${project.build.directory}</outputDirectory>
+        <project implementation="org.apache.maven.project.MavenProject">${project}</project>
+        <useDefaultManifestFile implementation="boolean" default-value="false">${jar.useDefaultManifestFile}</useDefaultManifestFile>
+      </configuration>
+      <requirements>
+        <requirement>
+          <role>org.codehaus.plexus.archiver.Archiver</role>
+          <role-hint>jar</role-hint>
+          <field-name>jarArchiver</field-name>
+        </requirement>
+        <requirement>
+          <role>org.apache.maven.project.MavenProjectHelper</role>
+          <field-name>projectHelper</field-name>
+        </requirement>
+      </requirements>
+    </mojo>
+  </mojos>
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-plugin-api</artifactId>
+      <type>jar</type>
+      <version>2.0.6</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-project</artifactId>
+      <type>jar</type>
+      <version>2.0.6</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-settings</artifactId>
+      <type>jar</type>
+      <version>2.0.6</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-model</artifactId>
+      <type>jar</type>
+      <version>2.0.6</version>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.plexus</groupId>
+      <artifactId>plexus-utils</artifactId>
+      <type>jar</type>
+      <version>2.0.5</version>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.plexus</groupId>
+      <artifactId>plexus-container-default</artifactId>
+      <type>jar</type>
+      <version>1.0-alpha-9-stable-1</version>
+    </dependency>
+    <dependency>
+      <groupId>classworlds</groupId>
+      <artifactId>classworlds</artifactId>
+      <type>jar</type>
+      <version>1.1-alpha-2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-profile</artifactId>
+      <type>jar</type>
+      <version>2.0.6</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-artifact-manager</artifactId>
+      <type>jar</type>
+      <version>2.0.6</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-repository-metadata</artifactId>
+      <type>jar</type>
+      <version>2.0.6</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-artifact</artifactId>
+      <type>jar</type>
+      <version>2.0.6</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven.wagon</groupId>
+      <artifactId>wagon-provider-api</artifactId>
+      <type>jar</type>
+      <version>1.0-beta-2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-plugin-registry</artifactId>
+      <type>jar</type>
+      <version>2.0.6</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-archiver</artifactId>
+      <type>jar</type>
+      <version>2.4.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.plexus</groupId>
+      <artifactId>plexus-archiver</artifactId>
+      <type>jar</type>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.plexus</groupId>
+      <artifactId>plexus-io</artifactId>
+      <type>jar</type>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.plexus</groupId>
+      <artifactId>plexus-interpolation</artifactId>
+      <type>jar</type>
+      <version>1.13</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+      <type>jar</type>
+      <version>2.1</version>
+    </dependency>
+  </dependencies>
+</plugin>

@@ -1,0 +1,19 @@
+// ------------------------------------------------------------------
+// Transitive dependencies of this project determined from the
+// maven pom organized by organization.
+// ------------------------------------------------------------------
+
+SureFire Booter
+
+
+From: 'Codehaus' (http://www.codehaus.org/)
+  - Plexus Common Utilities (http://plexus.codehaus.org/plexus-utils) org.codehaus.plexus:plexus-utils:jar:3.0.8
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+
+From: 'The Apache Software Foundation' (http://www.apache.org/)
+  - SureFire API (http://maven.apache.org/surefire/surefire-api) org.apache.maven.surefire:surefire-api:jar:2.12.4
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+
+
+
+

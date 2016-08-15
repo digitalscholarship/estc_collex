@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.6.5
+Created-By: 4.1.2 20071124 (Red Hat 4.1.2-42) (Free Software Foundatio
+ n, Inc.)
+Main-Class: com.yahoo.platform.yui.compressor.Bootstrap
+

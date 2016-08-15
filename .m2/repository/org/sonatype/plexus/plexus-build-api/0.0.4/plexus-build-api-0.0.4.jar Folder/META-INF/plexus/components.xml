@@ -1,0 +1,11 @@
+<component-set>
+  <components>
+    <component>
+      <role>org.sonatype.plexus.build.incremental.BuildContext</role>
+      <role-hint>default</role-hint>
+      <implementation>org.sonatype.plexus.build.incremental.DefaultBuildContext</implementation>
+      <description>Filesystem based non-incremental build context implementation which behaves as if all files
+were just created.</description>
+    </component>
+  </components>
+</component-set>

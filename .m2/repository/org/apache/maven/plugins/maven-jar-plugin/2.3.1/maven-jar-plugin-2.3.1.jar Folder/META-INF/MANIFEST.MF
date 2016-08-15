@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: release
+Build-Jdk: 1.5.0_22
+Specification-Title: Maven JAR Plugin
+Specification-Version: 2.3.1
+Specification-Vendor: The Apache Software Foundation
+Implementation-Title: Maven JAR Plugin
+Implementation-Version: 2.3.1
+Implementation-Vendor-Id: org.apache.maven.plugins
+Implementation-Vendor: The Apache Software Foundation
+

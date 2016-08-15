@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:gl="http://oai:quod.lib.umich.edu/schema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:collex="http://www.collex.org/schema#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:dcterms="http//http://purl.org/dc/terms/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:role="http://www.loc.gov/loc.terms/relators/">
+
+    <gl:umich rdf:about="http://oai.quod.lib.umich.edu/IC-TBNMS1IC-X-57741.57745%5D0057741_001_F_GATINEAU.TIF">
+        <collex:federation>MESA</collex:federation>
+        <collex:archive>umich-lib</collex:archive>
+        <dc:title>GATINEAU; 57741.57745 (57741.57745)</dc:title>
+        <role:PBL>Great Lakes Maritime Database</role:PBL>
+        <dc:source>Donald V. Baut; Canadian Registers; Canadian List of Shipping</dc:source>
+        <collex:discipline>History</collex:discipline>
+        <collex:discipline>Archaeology</collex:discipline>
+        <collex:genre>Nonfiction</collex:genre>
+        <collex:genre>Visual Art</collex:genre>
+        <collex:genre>Historiography</collex:genre>
+        <collex:genre>Travel Writing</collex:genre>
+        <dc:type>Still Image</dc:type>
+        <dc:date>1873</dc:date>
+        <rdfs:seeAlso
+            rdf:resource="http://name.umdl.umich.edu/IC-TBNMS1IC-X-57741.57745%5D0057741_001_F_GATINEAU.TIF"/>
+        <collex:fulltext>False</collex:fulltext>
+        <collex:freeculture>True</collex:freeculture>
+        <collex:image
+            rdf:resource="http://quod.lib.umich.edu/cgi/i/image/api/thumb/tbnms1ic/57741.57745/0057741_001_F_GATINEAU.tif"/>
+        <collex:thumbnail
+            rdf:resource="http://quod.lib.umich.edu/cgi/i/image/api/thumb/tbnms1ic/57741.57745/0057741_001_F_GATINEAU.tif"
+        />
+    </gl:umich>
+
+    <gl:umich
+        rdf:about="http://oai.quod.lib.umich.edu/IC-TBNMS1IC-X-57770.166156%5D0057770_004_F_GAULTJOHNC.TIF">
+        <collex:federation>MESA</collex:federation>
+        <collex:archive>umich-lib</collex:archive>
+        <dc:title>GAULT, JOHN C.; FELIX CARBRAY, 1907; CRESCENT, 1915 or 16; 57770.166156
+            (57770.166156)</dc:title>
+        <role:PBL>Great Lakes Maritime Database</role:PBL>
+        <dc:source>William MacDonald Collection, Dossin Great Lakes Museum, Detroit</dc:source>
+        <dc:source>Edward J. Dowling Collection, University of Detroit-Mercy</dc:source>
+        <dc:source>Donald V. Baut</dc:source>
+        <collex:discipline>History</collex:discipline>
+        <collex:genre>Nonfiction</collex:genre>
+        <collex:genre>Ephemera</collex:genre>
+        <dc:type>Still Image</dc:type>
+        <dc:type>Sheet</dc:type>
+        <dc:type>Periodical</dc:type>
+        <dc:date>1881</dc:date>
+        <rdfs:seeAlso
+            rdf:resource="http://name.umdl.umich.edu/IC-TBNMS1IC-X-57770.166156%5D0057770_004_F_GAULTJOHNC.TIF"/>
+        <collex:fulltext>False</collex:fulltext>
+        <collex:freeculture>True</collex:freeculture>
+        <collex:image
+            rdf:resource="http://quod.lib.umich.edu/cgi/i/image/api/thumb/tbnms1ic/57770.57806/0057770_001_F_GAULTJOHNC.tif"/>
+        <collex:thumbnail 
+            rdf:resource="http://quod.lib.umich.edu/cgi/i/image/api/thumb/tbnms1ic/57770.57806/0057770_001_F_GAULTJOHNC.tif"
+        />
+    </gl:umich>
+
+    <gl:mich
+        rdf:about="http://oai.quod.lib.umich.edu/IC-TBNMS1IC-X-57770.166158%5D0057770_005_F_GAULTJOHNC.TIF">
+        <collex:federation>MESA</collex:federation>
+        <collex:archive>umich-lib</collex:archive>
+        <dc:title>GAULT, JOHN C.</dc:title>
+        <dcterms:alternative>FELIX CARBRAY, 1907</dcterms:alternative>
+        <dcterms:alternative>CRESCENT, 1915 or 16</dcterms:alternative>
+        <dcterms:alternative>57770.166158 (57770.166158)</dcterms:alternative>
+        <role:PBL>Great Lakes Maritime Database</role:PBL>
+        <dc:source>William MacDonald Collection, Dossin Great Lakes Museum, Detroit</dc:source>
+        <dc:source>Edward J. Dowling Collection, University of Detroit-Mercy</dc:source>
+        <dc:source>Donald V. Baut</dc:source>
+        <collex:discipline>History</collex:discipline>
+        <collex:genre>Nonfiction</collex:genre>
+        <collex:genre>Ephemera</collex:genre>
+        <dc:type>Still Image</dc:type>
+        <dc:type>Sheet</dc:type>
+        <dc:date>
+            <collex:date>
+                <rdfs:label>1881 to 1916</rdfs:label>
+                <rdf:value>1881,1916</rdf:value>
+            </collex:date>
+        </dc:date>
+        <rdfs:seeAlso
+            rdf:resource="http://name.umdl.umich.edu/IC-TBNMS1IC-X-57770.166158%5D0057770_005_F_GAULTJOHNC.TIF"/>
+        <collex:fulltext>False</collex:fulltext>
+        <collex:freeculture>True</collex:freeculture>
+        <collex:image
+            rdf:resource="http://quod.lib.umich.edu/cgi/i/image/api/thumb/tbnms1ic/57770.57807/0057770_002_F_GAULTJOHNC.tif"/>
+        <collex:thumbnail
+            rdf:resource="http://quod.lib.umich.edu/cgi/i/image/api/thumb/tbnms1ic/57770.57807/0057770_002_F_GAULTJOHNC.tif"
+        />
+    </gl:mich>
+
+    <gl:mich
+        rdf:about="http://oai.quod.lib.umich.edu/IC-TBNMS1IC-X-57770.166160%5D0057770_006_F_GAULTJOHNC.TIF">
+        <collex:federation>MESA</collex:federation>
+        <collex:archive>umich-lib</collex:archive>
+        <dc:title>GAULT, JOHN C.</dc:title>
+        <dcterms:alternative>FELIX CARBRAY, 1907</dcterms:alternative>
+        <dcterms:alternative>CRESCENT, 1915 or 16</dcterms:alternative>
+        <dcterms:alternative>57770.166160 (57770.166160)</dcterms:alternative>
+        <role:PBL>Great Lakes Maritime Database</role:PBL>
+        <dc:source>William MacDonald Collection, Dossin Great Lakes Museum, Detroit</dc:source>
+        <dc:source>Newspaper Clippings</dc:source>
+        <dc:source>Edward J. Dowling Collection, University of Detroit-Mercy</dc:source>
+        <dc:source>Donald V. Baut</dc:source>
+        <collex:discipline>History</collex:discipline>
+        <collex:genre>Nonfiction</collex:genre>
+        <collex:genre>Ephemera</collex:genre>
+        <dc:type>Still Image</dc:type>
+        <dc:type>Sheet</dc:type>
+        <dc:type>Periodical</dc:type>
+        <dc:date>
+            <collex:date>
+                <rdfs:label>1881 to 1916</rdfs:label>
+                <rdf:value>1881,1916</rdf:value>
+            </collex:date>
+        </dc:date>
+        <rdfs:seeAlso
+            rdf:resource="http://quod.lib.umich.edu/cgi/i/image/image-idx?id=S-TBNMS1IC-X-57770.166160%5D0057770_006_F_GAULTJOHNC.TIF"/>
+        <collex:fulltext>False</collex:fulltext>
+        <collex:freeculture>True</collex:freeculture>
+        <collex:image
+            rdf:resource="http://quod.lib.umich.edu/cgi/i/image/api/thumb/tbnms1ic/57770.57820/0057770_003_F_GAULTJOHNC.tif"/>
+        <collex:thumbnail
+            rdf:resource="http://quod.lib.umich.edu/cgi/i/image/api/thumb/tbnms1ic/57770.57820/0057770_003_F_GAULTJOHNC.tif"
+        />
+    </gl:mich>
+
+    <gl:mich rdf:about="http://oai.quod.lib.umich.edu/IC-TBNMS1IC-X-57770.166163%5D0057770_007_F_GAULTJOHNC.TIF">
+        <collex:federation>MESA</collex:federation>
+        <collex:archive>umich-lib</collex:archive>
+        <dc:title>GAULT, JOHN  C.</dc:title>
+        <dcterms:alternative>FELIX CARBRAY, 1907</dcterms:alternative>
+        <dcterms:alternative>CRESCENT, 1915 or 16</dcterms:alternative>
+        <dcterms:alternative>57770.166163 (57770.166163)</dcterms:alternative>
+        <role:PBL>Great Lakes Maritime Database</role:PBL>
+        <dc:source>William MacDonald Collection, Dossin Great Lakes Museum, Detroit</dc:source>
+        <dc:source>Newspaper Clippings</dc:source>
+        <dc:source>Edward J. Dowling Collection, University of Detroit-Mercy</dc:source>
+        <dc:source>Donald V. Baut</dc:source>
+        <collex:discipline>History</collex:discipline>
+        <collex:genre>Nonfiction</collex:genre>
+        <collex:genre>Ephemera</collex:genre>
+        <dc:type>Still Image</dc:type>
+        <dc:type>Sheet</dc:type>
+        <dc:type>Periodical</dc:type>
+        <dc:date>
+            <collex:date>
+                <rdfs:label>1881 to 1916</rdfs:label>
+                <rdf:value>1881,1916</rdf:value>
+            </collex:date>
+        </dc:date>
+        <rdfs:seeAlso rdf:resource="http://name.umdl.umich.edu/IC-TBNMS1IC-X-57770.166163%5D0057770_007_F_GAULTJOHNC.TIF"/>
+        <collex:fulltext>False</collex:fulltext>
+        <collex:freeculture>True</collex:freeculture>
+        <collex:image
+            rdf:resource="http://quod.lib.umich.edu/cgi/i/image/api/thumb/tbnms1ic/57770.166156/0057770_004_F_GAULTJOHNC.tif"/>
+        <collex:thumbnail
+            rdf:resource="http://quod.lib.umich.edu/cgi/i/image/api/thumb/tbnms1ic/57770.166156/0057770_004_F_GAULTJOHNC.tif"
+        />
+    </gl:mich>
+</rdf:RDF>

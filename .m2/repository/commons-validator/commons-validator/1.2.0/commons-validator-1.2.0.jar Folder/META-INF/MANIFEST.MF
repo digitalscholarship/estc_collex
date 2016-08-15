@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.5.3 
+Created-By: Apache Maven
+Built-By: Niall Pemberton
+Package: org.apache.commons.validator
+Build-Jdk: 1.3.1_04
+Extension-Name: commons-validator
+Specification-Title: Commons Validator
+Specification-Vendor: The Apache Software Foundation
+Implementation-Title: org.apache.commons.validator
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Version: 1.2.0
+

@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: jdcasey
+Build-Jdk: 1.6.0_20
+Specification-Title: Maven Common Artifact Filters
+Specification-Version: 1.3
+Specification-Vendor: The Apache Software Foundation
+Implementation-Title: Maven Common Artifact Filters
+Implementation-Version: 1.3
+Implementation-Vendor-Id: org.apache.maven.shared
+Implementation-Vendor: The Apache Software Foundation
+

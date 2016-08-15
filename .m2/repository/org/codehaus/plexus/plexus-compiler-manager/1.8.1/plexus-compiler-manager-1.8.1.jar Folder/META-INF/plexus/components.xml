@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component-set>
+  <components>
+    <component>
+      <role>org.codehaus.plexus.compiler.manager.CompilerManager</role>
+      <role-hint>default</role-hint>
+      <implementation>org.codehaus.plexus.compiler.manager.DefaultCompilerManager</implementation>
+      <description />
+      <isolated-realm>false</isolated-realm>
+      <requirements>
+        <requirement>
+          <role>org.codehaus.plexus.compiler.Compiler</role>
+          <field-name>compilers</field-name>
+        </requirement>
+      </requirements>
+    </component>
+  </components>
+</component-set>

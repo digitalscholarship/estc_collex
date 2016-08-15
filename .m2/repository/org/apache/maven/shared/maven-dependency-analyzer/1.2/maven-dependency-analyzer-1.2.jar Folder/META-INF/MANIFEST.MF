@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: brianf
+Build-Jdk: 1.6.0_23
+Specification-Title: Maven Dependency Analyzer
+Specification-Version: 1.2
+Specification-Vendor: The Apache Software Foundation
+Implementation-Title: Maven Dependency Analyzer
+Implementation-Version: 1.2
+Implementation-Vendor-Id: org.apache.maven.shared
+Implementation-Vendor: The Apache Software Foundation
+

@@ -1,0 +1,285 @@
+// Place all the styles related to the fullrecord controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+body.pg-fullrecord {
+
+.inner_content_container{
+	overflow: auto	
+}
+
+.review_result_data_container {
+	.row {
+		.label {
+			position: absolute;
+			color: gray;
+		}
+		.value {
+			margin-left: 95px;
+			display: block;
+		}
+	}
+}
+.review-result-sub {
+	font-size: 0.8em;
+	margin-bottom: 6px;
+	width: 90%;
+	padding: 4px;
+}
+
+hr.review_results_hr {
+	height:2px;
+	background:#C7C8CB;
+	border:none;
+	margin:15px 0px 15px 0px;
+}
+
+.review_result_left_logged_in {
+	width:125px;
+	margin:0px 15px 0px 0px;
+	float:left;
+	text-align:center;
+}
+
+.review_result_left_logged_in table td {
+	padding:10px 10px 10px 0px;
+}
+
+.review_result_left {
+	width:100px;
+	margin:0px 15px 0px 0px;
+	float:left;
+	text-align:center;
+	padding-bottom:21px;
+}
+
+.review_result_left_for_popup {
+	height:100px;
+	width:500px;
+	margin:0px 15px 0px 0px;
+	float:left;
+	text-align:center;
+}
+
+	.review_result_left input {
+		float: left;
+		margin: 12px 0 0 8px;
+		display: inline-block;
+	}
+
+.review_result_image {
+	width: 100px;
+	float:left;
+	height: 100px;
+	text-align: center;
+	vertical-align: middle;
+	margin: 0px 0px 10px 26px;
+}
+
+.review_result_image a img {
+	border:solid 2px #966C54;
+}
+
+.review_result_right{
+	margin-left: 138px;
+}
+
+.review_result_right .odd{
+	background:#f8f8f8;
+}
+
+.review_result_right .even{
+	background:#EBE6E1;
+}
+
+	.result_row_dlg .search_result_right {
+		margin-left: 0;
+	}
+
+.review_result_data td {
+	text-align:left;
+	padding:1px 25px 0px 0px;
+	vertical-align:top;
+}
+
+.result_row_details .review_result_data td {
+	padding:1px 25px .2em 0px;
+}
+
+.review_result_data_label {
+	width: 95px;
+	color: gray;
+}
+
+.review_result_data_value {
+    width: 75%;
+}
+
+.review_result_full_text_label {
+	color: gray;
+}
+
+.result_row_collected {
+	padding: 5px 0;
+	overflow: auto;
+}
+
+.review_result_header {
+	font-size:1.3em;
+	font-weight:bold;
+	text-align: left;
+}
+
+.review_result_header a.more_link {
+	font-size: 14px;
+	font-weight: normal;
+}
+
+.results_per_page {
+	float:right;
+	font-size:0.6em;
+}
+
+.results_per_page select {
+	font-size:0.9em;
+}
+
+	.sort {
+		float:right;
+		font-size: 13px;
+	}
+
+	button.query_add {
+		font-size: 11px;
+		padding: 4px;
+	}
+
+	button.trash {
+		border: none;
+		background: transparent;
+	}
+
+.result_row_img {
+	text-align: center;
+}
+
+.result_row_img_progress {
+	padding-top: 17px;
+}
+
+/*----------------------------*/
+
+.expand_all_link {
+	float:left;
+}
+
+.review_results_pages {
+	float:right;
+	word-spacing:0.2em;
+}
+
+.current_serp {
+	font-weight:bold;
+}
+
+.snippet em {
+	font-style: normal;
+	font-weight: bold;
+	background: #dcdcdc;
+}
+
+.annotation {
+	background-color: #FFFF99;
+}
+
+.my_tag {
+	font-weight: bold;
+	margin-right: 2px;
+}
+
+.other_tag {
+	margin-right: 8px;
+}
+
+.tags_instructions {
+	font-style: italic;
+}
+
+.result_row_icons {
+	padding-top: 6px;
+	clear: both;
+	font-size: 19px;
+}
+
+.result_row_tooltip {
+	font-size: 14px;
+	text-decoration: none;
+}
+
+span.tooltip:hover span.result_row_tooltip {
+	width:12em;
+}
+
+.free_culture {
+	background-repeat:no-repeat;
+}
+
+.full_text {
+	background-repeat:no-repeat;
+}
+
+.has_xml_source {
+	background-repeat:no-repeat;
+}
+
+.can_typewright {
+	background-repeat:no-repeat;
+}
+
+.uri_link {
+	font-size: .6em;
+	text-decoration: none;
+	color: #cccccc;
+}
+
+.uri_link:hover {
+	color: black;
+}
+
+.pagination {
+  .previous_page { background:#7777ff; color:white }
+  .previous_page.disabled { background: white; color: #777 }
+  .current { background: yellow }
+  .next_page { background: #7777ff; color: white }
+  .next_page.disabled { background: white; color: #777 }
+}
+.expander {
+	background: image-url('arrow.gif') no-repeat scroll 1px 50% transparent;
+	font-family: arial;
+	padding-left: 13px;
+}
+
+.contracter {
+	background-image: image-url('arrow_dn.gif');
+}
+
+table.hiddeninfo {
+	border-top:1px solid #C7C8CB;
+	border-left:1px solid #C7C8CB;
+	width:90%;
+	margin-top:10px;
+}
+
+table.hiddeninfo tr {
+	border-right:1px solid #C7C8CB;
+	border-bottom:1px solid #C7C8CB;
+	background-color: #edf4f2;
+}
+
+table.hiddeninfo td {
+	border-right:1px solid #C7C8CB;
+	border-bottom:1px solid #C7C8CB;
+}
+
+}

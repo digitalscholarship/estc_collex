@@ -1,0 +1,51 @@
+// ------------------------------------------------------------------
+// Transitive dependencies of this project determined from the
+// maven pom organized by organization.
+// ------------------------------------------------------------------
+
+Doxia Sitetools :: Site Renderer Component
+
+
+From: 'an unknown organization'
+  - Unnamed - oro:oro:jar:2.0.8  oro:oro:jar:2.0.8
+
+
+From: 'Codehaus' (http://www.codehaus.org/)
+  - Plexus Classworlds  org.codehaus.plexus:plexus-classworlds:jar:1.2-alpha-9
+
+  - Default Plexus Container  org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-30
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Plexus I18N Component (http://plexus.codehaus.org/plexus-components/plexus-i18n) org.codehaus.plexus:plexus-i18n:jar:1.0-beta-7
+
+  - Plexus Common Utilities (http://plexus.codehaus.org/plexus-utils) org.codehaus.plexus:plexus-utils:jar:1.5.7
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Plexus Velocity Component (http://plexus.codehaus.org/plexus-components/plexus-velocity) org.codehaus.plexus:plexus-velocity:jar:1.1.7
+
+
+From: 'The Apache Software Foundation' (http://jakarta.apache.org)
+  - Collections (http://jakarta.apache.org/commons/collections/) commons-collections:commons-collections:jar:3.2
+    License: The Apache Software License, Version 2.0  (/LICENSE.txt)
+  - Lang (http://jakarta.apache.org/commons/${pom.artifactId.substring(8)}/) commons-lang:commons-lang:jar:2.1
+    License: The Apache Software License, Version 2.0  (/LICENSE.txt)
+
+From: 'The Apache Software Foundation' (http://www.apache.org/)
+  - Doxia :: Core (http://maven.apache.org/doxia/doxia/doxia-core) org.apache.maven.doxia:doxia-core:jar:1.0
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Doxia Sitetools :: Decoration Model (http://maven.apache.org/doxia/doxia-sitetools/doxia-decoration-model) org.apache.maven.doxia:doxia-decoration-model:jar:1.0
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Doxia :: APT Module (http://maven.apache.org/doxia/doxia/doxia-modules/doxia-module-apt) org.apache.maven.doxia:doxia-module-apt:jar:1.0
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Doxia :: FML Module (http://maven.apache.org/doxia/doxia/doxia-modules/doxia-module-fml) org.apache.maven.doxia:doxia-module-fml:jar:1.0
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Doxia :: XDoc Module (http://maven.apache.org/doxia/doxia/doxia-modules/doxia-module-xdoc) org.apache.maven.doxia:doxia-module-xdoc:jar:1.0
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Doxia :: XHTML Module (http://maven.apache.org/doxia/doxia/doxia-modules/doxia-module-xhtml) org.apache.maven.doxia:doxia-module-xhtml:jar:1.0
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Doxia :: Sink API (http://maven.apache.org/doxia/doxia/doxia-sink-api) org.apache.maven.doxia:doxia-sink-api:jar:1.0
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Apache Velocity (http://velocity.apache.org/engine/releases/velocity-1.5/) org.apache.velocity:velocity:pom:1.5
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+
+
+
+

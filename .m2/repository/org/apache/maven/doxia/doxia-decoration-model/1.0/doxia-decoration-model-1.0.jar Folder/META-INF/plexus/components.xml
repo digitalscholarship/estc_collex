@@ -1,0 +1,9 @@
+<component-set>
+  <components>
+    <component>
+      <role>org.apache.maven.doxia.site.decoration.inheritance.DecorationModelInheritanceAssembler</role>
+      <implementation>org.apache.maven.doxia.site.decoration.inheritance.DefaultDecorationModelInheritanceAssembler</implementation>
+      <description>Manage inheritance of the decoration model.</description>
+    </component>
+  </components>
+</component-set>

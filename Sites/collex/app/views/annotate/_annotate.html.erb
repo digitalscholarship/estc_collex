@@ -1,0 +1,72 @@
+
+<%= form_for(@annotation, url: create_annotate_path, :html => { :multipart => true, :onsubmit => "return confirm('Are you sure you want to make the following annotation?');"}) do |f| %>	
+	<% if @errorMsg.present? %>
+		<p id="notice" class="notice" style = "font-weight: bold; font-size: 12pt; color: Red"> <%= f.label @errorMsg %> </p>
+	<% end %>
+
+	<p> <%= link_to session[:annotateTitle], "/fullrecord?action=fullrecord&uri="+session[:annotateUri]+"", :target => "_blank" %> </p>
+	<p> <%= f.select(:predicate,  options_from_collection_for_select(@predicates, 'id', 'display_name'), prompt: "Select a verb") %> <b> of </b></p> 
+	<p> <%= f.text_field :object_uri, size: 50 %> </p> 
+	<p>    
+		<input type="radio" name="annotationoption" value="replace" checked> Replace<br>
+		<input type="radio" name="annotationoption" value="append"> Append<br>
+	</p>
+	<table>
+	  <tr>
+		<td><h3>Please provide an explanation of the reason for the above annotation: </h3></td>
+		<td colspan = "3"> <%= f.text_area :feedback, cols: 50, rows: 10 %> </td>
+	  </tr>
+	  <tr>
+		<td> <%= file_field_tag "documents[]", :multiple => true %> </td>
+		<td> </td>
+		<td> <%= f.button "Close", type: 'button', :id => "closebtn" %></td>
+		<td> <%= f.submit "Submit", :id => "submitbtn" %> </td>
+      </tr>
+	</table>	
+
+<% end %>
+
+<script>
+	var $j = jQuery.noConflict();
+	$j("#closebtn").click(function(){ 
+	 window.close();
+	});
+
+	var objectValue = '';
+	var feedbackValue = '';
+	var predicate = '';
+	
+	$j("#annotation_predicate").change(function(){
+		predicate = $j(this).val();
+		checkControls(objectValue, feedbackValue, predicate);
+	});
+	
+	$j("#annotation_object_uri").keyup(function() {
+	    objectValue = $j(this).val();
+	    checkControls(objectValue, feedbackValue, predicate);
+	});
+
+	$j("#annotation_feedback").keyup(function() {
+		feedbackValue = $j(this).val();
+		checkControls(objectValue, feedbackValue, predicate);
+	});
+
+	$j(document).ready(function(){
+		$j('#submitbtn').prop('disabled',true);		
+	});
+
+	function checkControls(objectValue, feedbackValue, predicate){
+		if (objectValue == '' || feedbackValue == '' || predicate == ''){
+			$j("#submitbtn").prop('disabled', true);
+		}
+		else{
+			$j("#submitbtn").prop('disabled', false);
+		}
+	}
+
+</script>
+
+
+
+
+
