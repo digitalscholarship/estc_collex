@@ -6,6 +6,7 @@
 /.idea/
 /config/database.yml
 /config/secrets.yml
+/solr/server/solr/archives/resources/*
 
 
 # Ignore files from Ruby environment management applications
