@@ -8,6 +8,8 @@
 /config/secrets.yml
 /solr/*
 
+/Sites/collex/logger.txt
+
 
 # Ignore files from Ruby environment management applications
 .rvmrc
