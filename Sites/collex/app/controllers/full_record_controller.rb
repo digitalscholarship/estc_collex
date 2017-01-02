@@ -19,7 +19,7 @@ class FullRecordController < ApplicationController
   def get_fullrecord_info
   	user_id = get_curr_user_id()
   	uri = session[:fullrecorduri]
-  	fullrecord = @solr.get_object(uri)
+    	fullrecord = @solr.get_object(uri)
   	
   	annotations = Annotation.joins(:predicate, :user).select('annotations.id, annotations.subject_uri, annotations.flag, annotations.object_uri, annotations.feedback, annotations.attachment_no, predicates.id as predicateId, predicates.display_name, users.fullname')
     .where(annotations: {subject_uri: uri}).order('annotations.created_at desc')
@@ -106,8 +106,6 @@ class FullRecordController < ApplicationController
 	 @archives = @solr.get_resource_tree()
 	 set_archive_toggle_state(@archives)
 	 @other_federations = []
-	 logger.error("Federation ERROR: #{session[:federations]}")
-
 
 	 session[:federations].each { |key,val| @other_federations.push(key) if key != Setup.default_federation() } if session[:federations]
 	 

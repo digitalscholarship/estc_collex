@@ -62,8 +62,7 @@ class ApplicationController < ActionController::Base
 
 	def session_create
 		logger.warn("Session: #{ session && !session['user'].blank? ? session['user'][:username] : "ANONYMOUS" } #{session ? session.keys : "ERROR"}")
-		puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% #{session[:resource_tree]}"
-	
+		
 		begin
 			ActionMailer::Base.default_url_options[:host] = request.host_with_port
 			if !self.kind_of?(TestJsController)
@@ -89,12 +88,13 @@ class ApplicationController < ActionController::Base
 				  end
 				end
 			end
-			if session[:archives] == nil || session[:carousel] == nil || session[:resource_tree] == nil
+
+			if session[:archives] == nil || session[:carousel] == nil || session[:resource_tree] == nil				
 				solr ||= Catalog.factory_create(session[:use_test_index] == "true")
 				session[:archives] = solr.get_archives()
 				session[:carousel] = solr.get_carousel()
 				session[:resource_tree] = solr.get_resource_tree()
-        session[:languages] = solr.get_languages()
+		        session[:languages] = solr.get_languages()
 			else
 				Catalog.set_cached_data(session[:carousel], session[:resource_tree], session[:archives], session[:languages])
 			end

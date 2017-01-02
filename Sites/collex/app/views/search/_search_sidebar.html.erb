@@ -14,16 +14,16 @@
     limitations under the License.
 ---------------------------------------------------------------------------- %>
 
-<div class="search_left_column ajax-style">
+<div class="search_left_column ajax-style" style="overflow-y:auto;">
 	<div class="right_column_header" <% if @other_federations.length == 0 %>style="display:none"<% end %> >Currently Searching...</div>
-	<table class="limit_to limit_to_federation" <% if @other_federations.length == 0 %>style="display:none"<% end %> >
+	<table class="limit_to limit_to_federation" <% if @other_federations.length == 0 %>style="display:none;"<% end %> >
 		<%= federation_selector(Setup.default_federation(), 0) %>
 		<% for fed in @other_federations %>
-			<%= federation_selector(fed, 0) %>
+			<%= federation_selector(fed, 0) %>      
 		<% end %>
 	</table>
 
-	<div class="right_column_header">Limit Results to...</div>
+<!-- 	<div class="right_column_header">Limit Results to...</div>
     <p>Select a resource below to limit your search results</p>
 
 	<table class="limit_to facet-archive">
@@ -33,23 +33,10 @@
 		</tr>
 	</table>
   <br/> 
-
-  <div class="right_column_header">Other helpful facets...</div>
+ -->
+  <div class="right_column_header">Browse</div>
   <p>Select a facet below to limit your search results</p>
-
-  <% facet_order = Setup.facet_order() %>
-  <% facet_keys = facet_order.keys.sort %>
-  <% facet_keys.each do |key| %>
-    <% case facet_order[key] %>
-      <% when 'access' %>
-          <%= create_access_table(0,0,0) %>
-      <% when 'format' %>
-          <%=  create_format_table([]) %>
-      <% when 'discipline' %>
-          <%=  create_discipline_table([]) %>
-      <% when 'genre' %>
-          <%=  create_genre_table([]) %>
-      <% end %>
-  <% end %>
+  <br>
+  <%=  create_genre_table([]) %>
 
 </div>

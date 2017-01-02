@@ -146,7 +146,6 @@ jQuery(document).ready(function($) {
          window.collex.createPageResultRows(obj);
 
          var page = obj.query.pages_page ? obj.query.pages_page : 1;
-         console.log(page);
          window.collex.createPagination(page, obj.total_pages, obj.page_size, 'pages');
          $(".page-results").show();
 

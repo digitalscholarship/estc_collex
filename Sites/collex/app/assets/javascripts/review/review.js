@@ -12,60 +12,67 @@ jQuery(document).ready(function($) {
 	});
 
 	window.collex.createReviewResultRows = function(obj) {
-		var html = "";
-		var reviewrow = "";
-		var j = 0;
-		
-		for (var i = 0; i < obj.hits.length; i++) {
-			html = "";
-			html += window.pss.createHtmlTag("div", { 'class': 'clear_both' }, "") +
-				window.pss.createHtmlTag("hr", { 'class': 'review_results_hr' });
-			var totalagreeinfo = "";
-			var totaldisagreeinfo = "";
-
-			var subjecturi = "";
-			var object = "";
-			
-			html += window.pss.createHtmlTag("div", {'id': (obj.hits[i])['annotationid'], 'class':'annotationid'});
-			for (var key in obj.hits[i]) {
-				if(key == 'predicate'){				
-					var predicateinfo = window.pss.createHtmlTag("span", { 'class': 'label' }, (obj.hits[i])[key]);	
-					html += window.pss.createHtmlTag("div", { 'class': 'review_result_right' }, predicateinfo);
-					html+= window.pss.createHtmlTag("br");		
-				}
-				else if(key == 'totalAgree'){
-						totalagreeinfo += window.pss.createHtmlTag("span", { 'class': 'label', 'style': 'font-weight: normal;' }, ((obj.hits[i])[key]).toString());
-						totalagreeinfo += window.pss.createHtmlTag("img", { alt: 'Permalink', src: "/assets/thumbs-up.png"});
-				}
-				else if(key == 'totalDisagree'){ 
-						totaldisagreeinfo += window.pss.createHtmlTag("span", { 'class': 'label', 'style': 'font-weight: normal;' }, ((obj.hits[i])[key]).toString());
-						totaldisagreeinfo += window.pss.createHtmlTag("img", { alt: 'Permalink', src: "/assets/thumbs-down.png"});
-						html += window.pss.createHtmlTag("div", { 'class': 'review_result_right' }, totalagreeinfo + totaldisagreeinfo);
-				}	
-				else if(key == 'subject' || key == 'object') {
-					if (key == 'object'){
-						var objinfo = (obj.hits[i])[key];
-						html += (obj.hits[i])["predicateid"] > 2 ? window.pss.createHtmlTag("span", { 'class': 'review_result_right' }, objinfo) : window.collex.createReviewMediaBlock(objinfo, j);						
-						object = (obj.hits[i])["predicateid"] > 2 ? objinfo : objinfo['uri'];
-					}
-					else if (key == 'subject'){
-						subjecturi = ((obj.hits[i])[key])['uri'];
-						html += window.collex.createReviewMediaBlock((obj.hits[i])[key], j);	
-					}			
-					j += 1;
-				}	
-			}	
-			
-			html+= window.pss.createHtmlTag("br");
-			var reviewbtn = ""
-			if (window.collex.isBibliographer || window.collex.isAdmin) 
-				reviewbtn = window.pss.createHtmlTag("button", { 'class': 'reviewbtn' }, "Review");
-			
-			var historybtn = window.pss.createHtmlTag("a", { 'class': 'see_history', 'href': "/fullrecord?action=fullrecord&uri="+subjecturi+"&object="+object, title: ' '}, "See History");
-			var buttons = window.pss.createHtmlTag("div", { 'class': 'review_result_right' }, reviewbtn+"&nbsp;&nbsp;"+historybtn);
-			reviewrow += window.pss.createHtmlTag("div", { 'class': 'reviewrow' }, html+buttons);
+		if(obj.hits.length == 0){
+			$(".no_results_msg").show();
 		}
-		$('.review-results').html(reviewrow);		
+		else{
+			$(".no_results_msg").hide();
+		
+			var html = "";
+			var reviewrow = "";
+			var j = 0;
+			
+			for (var i = 0; i < obj.hits.length; i++) {
+				html = "";
+				html += window.pss.createHtmlTag("div", { 'class': 'clear_both' }, "") +
+					window.pss.createHtmlTag("hr", { 'class': 'review_results_hr' });
+				var totalagreeinfo = "";
+				var totaldisagreeinfo = "";
+
+				var subjecturi = "";
+				var object = "";
+				
+				html += window.pss.createHtmlTag("div", {'id': (obj.hits[i])['annotationid'], 'class':'annotationid'});
+				for (var key in obj.hits[i]) {
+					if(key == 'predicate'){				
+						var predicateinfo = window.pss.createHtmlTag("span", { 'class': 'label' }, (obj.hits[i])[key]);	
+						html += window.pss.createHtmlTag("div", { 'class': 'review_result_right' }, predicateinfo);
+						html+= window.pss.createHtmlTag("br");		
+					}
+					else if(key == 'totalAgree'){
+							totalagreeinfo += window.pss.createHtmlTag("span", { 'class': 'label', 'style': 'font-weight: normal;' }, ((obj.hits[i])[key]).toString());
+							totalagreeinfo += window.pss.createHtmlTag("img", { alt: 'Permalink', src: "/assets/thumbs-up.png"});
+					}
+					else if(key == 'totalDisagree'){ 
+							totaldisagreeinfo += window.pss.createHtmlTag("span", { 'class': 'label', 'style': 'font-weight: normal;' }, ((obj.hits[i])[key]).toString());
+							totaldisagreeinfo += window.pss.createHtmlTag("img", { alt: 'Permalink', src: "/assets/thumbs-down.png"});
+							html += window.pss.createHtmlTag("div", { 'class': 'review_result_right' }, totalagreeinfo + totaldisagreeinfo);
+					}	
+					else if(key == 'subject' || key == 'object') {
+						if (key == 'object'){
+							var objinfo = (obj.hits[i])[key];
+							html += (obj.hits[i])["predicateid"] > 2 ? window.pss.createHtmlTag("span", { 'class': 'review_result_right' }, objinfo) : window.collex.createReviewMediaBlock(objinfo, j);						
+							object = (obj.hits[i])["predicateid"] > 2 ? objinfo : objinfo['uri'];
+						}
+						else if (key == 'subject'){
+							subjecturi = ((obj.hits[i])[key])['uri'];
+							html += window.collex.createReviewMediaBlock((obj.hits[i])[key], j);	
+						}			
+						j += 1;
+					}	
+				}	
+				
+				html+= window.pss.createHtmlTag("br");
+				var reviewbtn = ""
+				if (window.collex.isBibliographer || window.collex.isAdmin) 
+					reviewbtn = window.pss.createHtmlTag("button", { 'class': 'reviewbtn' }, "Review");
+				
+				var historybtn = window.pss.createHtmlTag("a", { 'class': 'see_history', 'href': "/fullrecord?action=fullrecord&uri="+subjecturi+"&object="+object, title: ' '}, "See History");
+				var buttons = window.pss.createHtmlTag("div", { 'class': 'review_result_right' }, reviewbtn+"&nbsp;&nbsp;"+historybtn);
+				reviewrow += window.pss.createHtmlTag("div", { 'class': 'reviewrow' }, html+buttons);
+			}
+			$('.review-results').html(reviewrow);	
+		}	
 	};
 
 	window.collex.createReviewMediaBlock = function(obj, index) {
@@ -149,7 +156,15 @@ jQuery(document).ready(function($) {
 		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Wood Engraver:', obj.role_WDE, true));
 		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Wood Cutter:', obj.role_WDC, true));
 		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Subject:', obj.subject, true));
-		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('digital_surrogats', 'Digital Surrogats:', obj.digital_surrogats, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('single_item', 'Digital Surrogats:', obj.digital_surrogats, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('single_item', 'Coverage:', obj.coverage, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('single_item', 'Sub Location:', obj.subLocation, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('single_item', 'Is Referenced By:', obj.isReferencedBy, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('single_item', 'Shelf Mark:', obj.shelfMark, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('single_item', 'Contributor:', obj.contributor, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('single_item', 'Instance of:', obj.instanceof, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Has Instance:', obj.hasInstance, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Description:', obj.description, true));
 		
 		if (needShowMoreLink) {
 			html += window.pss.createHtmlTag("button", { id: "more-review_result_"+index,  'class': 'nav_link more', onclick: 'removeHidden("more-review_result_' + index + '", "review_result_' + index + '");return false;'}, '[more...]');

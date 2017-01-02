@@ -394,7 +394,6 @@ jQuery(document).ready(function($) {
 		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Interviewer:', obj.role_IVR, true));
 		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Interviewee:', obj.role_IVE, true));
 		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Lithographer:', obj.role_LTG, true));
-		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Owner:', obj.role_OWN, true));
 		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Performer:', obj.role_PRF, true));
 		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Printer:', obj.role_PRT, true));
 		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Printer of plates:', obj.role_POP, true));
@@ -411,7 +410,16 @@ jQuery(document).ready(function($) {
 		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Wood Engraver:', obj.role_WDE, true));
 		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Wood Cutter:', obj.role_WDC, true));
 		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Subject:', obj.subject, true));
-		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('digital_surrogats', 'Digital Surrogats:', obj.digital_surrogats, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('single_item', 'Digital Surrogats:', obj.digital_surrogats, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('single_item', 'Coverage:', obj.coverage, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('single_item', 'Sub Location:', obj.subLocation, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('single_item', 'Is Referenced By:', obj.isReferencedBy, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('single_item', 'Shelf Mark:', obj.shelfMark, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('single_item', 'Contributor:', obj.contributor, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('single_item', 'Instance of:', obj.instanceof, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Has Instance:', obj.hasInstance, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Description:', obj.description, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('single_item', 'URL:', obj.url, true));
 		
 		if (index !== null) {
 			var tags = createTagLine(obj.uri, index, obj.my_tags, obj.tags);
@@ -457,7 +465,7 @@ jQuery(document).ready(function($) {
 		return window.pss.createHtmlTag("div", { 'class': 'search-result-sub' }, resultHeader+resultContents);
 	}
 
-	window.collex.createMediaBlock = function(obj, index, isCollected, collectedDate, hasPredicate) {
+	window.collex.createMediaBlock = function(obj, index, isCollected, collectedDate, hasPredicate, hidden) {
 		var imageBlock = createImageBlock(index, obj);
 
 		var actionButtons = createActionButtons(obj, isCollected, hasPredicate);
@@ -473,10 +481,33 @@ jQuery(document).ready(function($) {
 		var results = window.pss.createHtmlTag("div", { 'class': 'search_result_right' }, resultHeader+resultContents+viewannotationdiv+objectinfo+activeannotations);
 		var html = window.pss.createHtmlTag("div", { 'class': 'clear_both' }, "") +
 			window.pss.createHtmlTag("hr", { 'class': 'search_results_hr' });
+		
+		var hiddenRecord = "";
+		var showRecord = "";
+
 		var klass = "search-result";
+		
 		if (isCollected)
 			klass += " result_row_collected";
+
 		html += window.pss.createHtmlTag("div", { 'id': 'search_result_'+ index, 'class': klass, 'data-index': index, 'data-uri': obj.uri, 'data-url': obj.url, 'data-title': obj.title }, imageBlock+actionButtons+results);
+
+		/*if (hidden){
+			klass += " hidden";
+			hiddenRecord += window.pss.createHtmlTag("div", { 'id': 'search_result_'+ index, 'class': klass, 'data-index': index, 'data-uri': obj.uri, 'data-url': obj.url, 'data-title': obj.title }, imageBlock+actionButtons+results);
+		}
+		else{
+			showRecord += window.pss.createHtmlTag("div", { 'id': 'search_result_'+ index, 'class': klass, 'data-index': index, 'data-uri': obj.uri, 'data-url': obj.url, 'data-title': obj.title }, imageBlock+actionButtons+results);
+		}
+
+		if(hiddenRecord != ""){
+			html += window.pss.createHtmlTag("button", { id: "instance_of_records",  'class': 'nav_link more', onclick: 'removeHidden("more-instance-of-record", "instance-of-records");return false;'}, '[more instanceof records...]');
+			showRecord += html;	
+		}
+		
+		var records = window.pss.createHtmlTag("div", { 'id': 'records', 'class': 'records', 
+			'data-index': index, 'data-uri': obj.uri, 'data-url': obj.url, 'data-title': obj.title }, showRecord+hiddenRecord);
+	*/
 		return html;
 	};
 
@@ -592,13 +623,31 @@ jQuery(document).ready(function($) {
 
 	window.collex.createResultRows = function(obj) {
 		var html = "";
-		console.log(obj.hits);
+		var hiddenRecord = "";
+		var showRecord = "";
+		var count = 0;
 		for (var i = 0; i < obj.hits.length; i++) {
 			var isCollected = obj.collected[obj.hits[i].uri] !== undefined;
 			var hasPredicate = obj.hits[i].hasPart !== undefined;
-			html += window.collex.createMediaBlock(obj.hits[i], i, isCollected, obj.collected[obj.hits[i].uri], hasPredicate);
+			if(obj.hits[i].instanceof === undefined)
+				showRecord += window.collex.createMediaBlock(obj.hits[i], i, isCollected, obj.collected[obj.hits[i].uri], hasPredicate, false);
+			else{
+				count += 1;
+				hiddenRecord += window.collex.createMediaBlock(obj.hits[i], i, isCollected, obj.collected[obj.hits[i].uri], hasPredicate, true);
+			}
 		}
-		$('.search-results').html(html);
+		if(hiddenRecord != ""){
+			html += window.pss.createHtmlTag("hr", { 'class': 'search_results_hr' });
+			html += window.pss.createHtmlTag("button", { id: "instance_of_records",  'class': 'nav_link instance-of-more more', 
+				onclick: 'removeHiddenRecord("instance_of_records", "hidden-records");return false;'}, '[more instanceof records...('+ count +')]');			
+		}
+
+		
+		var hiddendiv = window.pss.createHtmlTag("div", { 'id': 'hidden-records', 'class': 'hidden'}, hiddenRecord);
+		
+		var records = window.pss.createHtmlTag("div", { 'id': 'records', 'class': 'records'}, showRecord + html + hiddendiv);
+		
+		$('.search-results').html(records);
 		
 	};
 });

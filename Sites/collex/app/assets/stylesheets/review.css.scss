@@ -6,7 +6,8 @@
 body.pg-review {
 
 .inner_content_container{
-	overflow: auto	
+	min-height: 100px;
+	overflow: hidden;	
 }
 
 .review_result_data_container {

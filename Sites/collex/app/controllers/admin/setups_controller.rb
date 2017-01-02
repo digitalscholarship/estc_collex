@@ -71,9 +71,6 @@ class Admin::SetupsController < Admin::BaseController
       searchbuttons_keys = ['enable_searchresults_collect', 'enable_searchresults_uncollect', 'enable_searchresults_discuss', 'enable_searchresults_exhibits']
       searchbuttons_keys.each { |key,value|
          rec = Setup.find_by_key(key)
-         puts "-------------------------------------------"
-         puts key
-         puts rec
          if rec
             rec.value = 'false'
          rec.save!

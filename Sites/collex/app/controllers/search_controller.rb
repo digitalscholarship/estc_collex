@@ -42,15 +42,14 @@ class SearchController < ApplicationController
 		    session[:annotateUri] = params[:annotate][:uri] 
 		    session[:annotateUrl] = params[:annotate][:url]
 		end
-
 		session[:objectparams] = ""
 		respond_to do |format|
-			format.html {
+				format.html {
 				render "index", { layout: 'application' }
 			}
 			format.json do
-
             if params.has_key? :pages
+            	puts "iffffffffffffffffffffffffffffffffffffff"
                begin
                   items_per_page = 30
                   page = 1
@@ -58,23 +57,23 @@ class SearchController < ApplicationController
 
 
                   @solr = Catalog.factory_create(session[:use_test_index] == "true") if @solr == nil
-                  results = @solr.search_pages(params[:q], params[:pages], (page.to_i - 1) * items_per_page, items_per_page)
+                  results = @solr.search_pages(params[:q], params[:pages], (page.to_i - 1) * items_per_page, nil)
                   results['message'] = ''
                rescue Catalog::Error => e
                   results = rescue_search_error(e)
                   results['message'] = e.message
                end
             else
+            	puts "elseeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
                	items_per_page = 30
    				page = params[:page].present? ? params[:page] : 1
    				sort_param = params[:srt].present? ? params[:srt] : nil
    				sort_ascending = params[:dir].present? ? params[:dir] == 'asc' : true
    				constraints = process_constraints(params)
-
    				begin
    					@solr = Catalog.factory_create(session[:use_test_index] == "true") if @solr == nil
 
-   					results = @solr.search_direct(constraints, (page.to_i - 1) * items_per_page, items_per_page, sort_param, sort_ascending)
+   					results = @solr.search_direct(constraints, (page.to_i - 1) * items_per_page, nil, sort_param, sort_ascending)
 					Catalog.log_catalog("Results info: ", "#{results}")
 				results['message'] = ''
    				rescue Catalog::Error => e
@@ -178,11 +177,9 @@ class SearchController < ApplicationController
 	 @archives = @solr.get_resource_tree()
 	 set_archive_toggle_state(@archives)
 	 @other_federations = []
-logger.error("Federation ERROR: #{session[:federations]}")
-
 
 	 session[:federations].each { |key,val| @other_federations.push(key) if key != Setup.default_federation() } if session[:federations]
-	 
+	
 @searchable_roles = [
 		 ["r_art", "Artist"],
 		 ["aut", "Author"],

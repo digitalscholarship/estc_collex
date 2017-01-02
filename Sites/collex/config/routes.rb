@@ -382,6 +382,7 @@ Collex::Application.routes.draw do
   post '/create_annotate' => 'annotate#create'
 
   get '/fullrecord' => 'full_record#index'
+  match '/contribute' => 'contribute#index'
   match 'get_fullrecord_info' => 'full_record#get_fullrecord_info'
 	root :to => "home#index"
 end

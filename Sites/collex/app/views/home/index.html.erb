@@ -18,9 +18,8 @@
     	<div id="search_container">
     		
         	<div id="search_box">
-        		<input class="home_btn" value="Contribute to the ESTC" id="contributeto_estc" type="button" /> &nbsp;&nbsp;
-	    		<input class="home_btn" value="Review Contributions" id="review_contributions" type="button" /> 
-	    		<!-- <a class="home_btn" href="www.google.com">Contribute to the ESTC</a> 
+        		
+        		<!-- <a class="home_btn" href="www.google.com">Contribute to the ESTC</a> 
 	    		<a class="home_btn" href="www.google.com">Review Contributions</a> -->
 				<form accept-charset="UTF-8" action="/search" id="do-basic-search" method="get">
                     <div class="search_wrapper">
@@ -34,7 +33,7 @@
                     </div>
 	                <div id="search_note_container">
 	               	  <div id="search_note">Searching <%= number_with_delimiter(session[:num_docs]) %> peer-reviewed digital objects from <%=number_with_delimiter(session[:num_sites])%> federated sites  </div>
-	                    <div id="advanced_link"><%= link_to("Advanced Search", '/search', { :class => 'nav_link' } ) %></div>
+	                    <!-- <div id="advanced_link"><%= link_to("Advanced Search", '/search', { :class => 'nav_link' } ) %></div> -->
 	                    <div class="clear_both"></div>
 	                    <br><br>
 	                    <% if Setup.home_page_text().length > 0 %>

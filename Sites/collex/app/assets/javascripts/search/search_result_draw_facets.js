@@ -22,8 +22,6 @@ jQuery(document).ready(function($) {
 				window.pss.createHtmlTag("td", { 'class': "num_objects" }, window.collex.number_with_delimiter(count)));
 		} else {
 			var button = window.collex.create_facet_button(label, name, "add", dataKey);
-			//console.log(name);
-			//console.log(count);
 			return window.pss.createHtmlTag("tr", {},
 				window.pss.createHtmlTag("td", { 'class': "limit_to_lvl1" }, button) +
 				window.pss.createHtmlTag("td", { 'class': "num_objects" }, window.collex.number_with_delimiter(count)));
@@ -31,15 +29,60 @@ jQuery(document).ready(function($) {
 		}
 	}
 
-	function createFacetBlock(facet_class, hash, dataKey, selected, labels) {
+	function createFacetBlock(facet_class, obj) {
+
 		var html = "";
-		if (typeof selected === 'string') selected = [ selected ];
-		for (var key in hash) {
-			if (hash.hasOwnProperty(key)) {
+		
+		var selected = "";
+		var labels = "";
+
+		var hash_genre = obj.facets.genre;
+		var hash_discipline = obj.facets.discipline;
+		var hash_format = obj.facets.doc_type;
+		var hash_access = obj.facets.access;
+
+		for (var key in hash_genre) {
+			if (hash_genre.hasOwnProperty(key)) {
+				selected = obj.query.g;
+				if (typeof selected === 'string') selected = [ selected ];
 				var selectedIndex = $.inArray(key, selected);
 				var label = key;
 				if (labels) label = labels[key];
-				html += createFacetRow(key, hash[key], dataKey, selectedIndex !== -1, label);
+				html += createFacetRow(key, hash_genre[key], 'g', selectedIndex !== -1, label);
+			}
+		}
+
+		for (var key in hash_discipline) {
+			if (hash_discipline.hasOwnProperty(key)) {
+				selected = obj.query.discipline;
+				if (typeof selected === 'string') selected = [ selected ];
+				var selectedIndex = $.inArray(key, selected);
+				var label = key;
+				if (labels) label = labels[key];
+				html += createFacetRow(key, hash_discipline[key], 'discipline', selectedIndex !== -1, label);
+			}
+		}
+
+		for (var key in hash_format) {
+			if (hash_format.hasOwnProperty(key)) {
+				selected = obj.query.doc_type;
+				if (typeof selected === 'string') selected = [ selected ];
+				var selectedIndex = $.inArray(key, selected);
+				var label = key;
+				if (labels) label = labels[key];
+				html += createFacetRow(key, hash_format[key], 'doc_type', selectedIndex !== -1, label);
+			}
+		}
+
+		for (var key in hash_access) {
+			if (hash_access.hasOwnProperty(key)) {
+				selected = obj.query.o;
+				labels = window.collex.facetNames.access;
+				if (typeof selected === 'string') selected = [ selected ];
+				var selectedIndex = $.inArray(key, selected);
+				var label = key;
+				if (labels) label = labels[key];
+				html += createFacetRow(key, hash_access[key], 'o', selectedIndex !== -1, label);
 			}
 		}
 
@@ -134,10 +177,10 @@ jQuery(document).ready(function($) {
 	}
 
 	window.collex.createFacets = function(obj) {
-		createFacetBlock('facet-genre', obj.facets.genre, 'g', obj.query.g);
-		createFacetBlock('facet-discipline', obj.facets.discipline, 'discipline', obj.query.discipline);
-		createFacetBlock('facet-format', obj.facets.doc_type, 'doc_type', obj.query.doc_type);
-		createFacetBlock('facet-access', obj.facets.access, 'o', obj.query.o, window.collex.facetNames.access);
+		createFacetBlock('facet-genre', obj);
+		/*createFacetBlock('facet-genre', obj.facets.discipline, 'discipline', obj.query.discipline);
+		createFacetBlock('facet-genre', obj.facets.doc_type, 'doc_type', obj.query.doc_type);
+		createFacetBlock('facet-genre', obj.facets.access, 'o', obj.query.o, window.collex.facetNames.access);*/
 		createResourceBlock(obj.facets.archive, obj.query.a);
 	};
 });

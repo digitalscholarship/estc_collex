@@ -1,0 +1,52 @@
+URI, display_name
+http://bibframe.org/vocab/hasInstance,Has Child
+http://bibframe.org/vocab/instanceOf,Has Parent
+http://id.loc.gov/vocabulary/relators/art,Artist
+http://id.loc.gov/vocabulary/relators/asn,Associated name
+http://id.loc.gov/vocabulary/relators/att,Attributed name
+http://id.loc.gov/vocabulary/relators/aut,Author
+http://id.loc.gov/vocabulary/relators/dub,Author - Dubious
+http://id.loc.gov/vocabulary/relators/bnd,Binder
+http://id.loc.gov/vocabulary/relators/bsl,Bookseller
+http://id.loc.gov/vocabulary/relators/ctg,Cartographer
+http://id.loc.gov/vocabulary/relators/col,Collector
+http://id.loc.gov/vocabulary/relators/clr,Colorist
+http://id.loc.gov/vocabulary/relators/cmm,Commentator
+http://id.loc.gov/vocabulary/relators/cmp,Composer
+http://id.loc.gov/vocabulary/relators/cmt,Compositor
+http://id.loc.gov/vocabulary/relators/ccp,Conceptor
+http://id.loc.gov/vocabulary/relators/ctb,Contributor
+http://id.loc.gov/vocabulary/relators/cpc,Copyright claimant
+http://id.loc.gov/vocabulary/relators/cre,Creator
+http://id.loc.gov/vocabulary/relators/edt,Editor
+http://id.loc.gov/vocabulary/relators/elt,Electrotyper
+http://id.loc.gov/vocabulary/relators/egr,Engraver
+http://id.loc.gov/vocabulary/relators/etr,Etcher
+http://id.loc.gov/vocabulary/relators/fmo,Former owner
+http://id.loc.gov/vocabulary/relators/ilu,Illuminator
+http://id.loc.gov/vocabulary/relators/ill,Illustrator
+http://id.loc.gov/vocabulary/relators/ins,Inscriber
+http://id.loc.gov/vocabulary/relators/lse,Licensee
+http://id.loc.gov/vocabulary/relators/lso,Licensor
+http://iflastandards.info/ns/unimarc/unimarcb/elements/2XX/U210__h,Manufacture Date
+http://id.loc.gov/vocabulary/relators/mfp,Manufacture place
+http://id.loc.gov/vocabulary/relators/mfp,Manufacture place
+http://id.loc.gov/vocabulary/relators/mte,Metal-engraver
+http://id.loc.gov/vocabulary/relators/ppm,Papermaker
+http://id.loc.gov/vocabulary/relators/plt,Platemaker
+http://id.loc.gov/vocabulary/relators/prt,Printer
+http://id.loc.gov/vocabulary/relators/pro,Producer
+http://id.loc.gov/vocabulary/relators/prn,Production company
+http://id.loc.gov/vocabulary/relators/prd,Production personnel
+http://iflastandards.info/ns/unimarc/unimarcb/elements/2XX/U210__d,Publication Date
+http://id.loc.gov/vocabulary/relators/pup,Publication place
+http://id.loc.gov/vocabulary/relators/pbl,Publisher
+http://id.loc.gov/vocabulary/relators/rpy,Responsible party
+http://id.loc.gov/vocabulary/relators/scr,Scribe
+http://id.loc.gov/vocabulary/relators/sll,Seller
+http://id.loc.gov/authorities/subjects,Subject
+http://id.loc.gov/vocabulary/relators/trc,Transcriber
+http://id.loc.gov/vocabulary/relators/trl,Translator
+http://id.loc.gov/vocabulary/relators/wde,Wood engraver
+http://id.loc.gov/vocabulary/relators/wdc,Woodcutter
+http://rdaregistry.info/Elements/i/P40001,Has Digital Surrogate

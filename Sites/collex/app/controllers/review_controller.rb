@@ -130,8 +130,6 @@ class ReviewController < ApplicationController
 	 @archives = @solr.get_resource_tree()
 	 set_archive_toggle_state(@archives)
 	 @other_federations = []
-	 logger.error("Federation ERROR: #{session[:federations]}")
-
 
 	 session[:federations].each { |key,val| @other_federations.push(key) if key != Setup.default_federation() } if session[:federations]
 	 

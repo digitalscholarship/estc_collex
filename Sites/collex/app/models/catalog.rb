@@ -31,11 +31,6 @@ class Catalog
       @@resource_tree = resource_tree
       @@archives = archives
       @@languages = languages
-      puts "11============================================================================================================="
-      puts @@resource_tree
-      puts @@carousel
-      puts @@archives
-      puts @@languages
    end
 
    def self.reset_cached_data()
@@ -397,8 +392,12 @@ if nodes != nil
       }
 end
       archives = response['resource_tree']['archives']['archive']
+      puts archives.length
       archives.each { |archive|
-         archive['id'] = id
+         puts archive
+         puts id
+         id = id.to_i
+         archive['id'] = id.to_s
          id += 1
          if archive['carousel']
             if archive['carousel']['federations'] and archive['carousel']['federations']['federation']
@@ -777,7 +776,6 @@ end
       args = params.length > 0 ? "#{params.collect { |item| esc_arg(item) }.join('&')}" : ""
       
       request = "/#{url}.xml"
-      puts ("**************************************#{params}  --  #{request}  --  #{args} ")
       url = URI.parse(Setup.solr_url())
       Catalog.log_catalog("PARAMS info: ", "#{params}")
       Catalog.log_catalog(verb.to_s().upcase(), "#{url}#{request} ARGS: #{args}")

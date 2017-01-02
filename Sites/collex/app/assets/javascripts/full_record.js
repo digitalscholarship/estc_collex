@@ -4,7 +4,7 @@ jQuery(document).ready(function($) {
 
 	var $j = jQuery.noConflict();
 	var query = ""+window.location.search;
-	if(query.includes("action=fullrecord")){
+	if(query.search("action=fullrecord") > -1){
 		$j("#nav_container").hide();
 		$j(".my_collex_link").hide();
 		$j("#subnav_container").hide();
@@ -145,7 +145,15 @@ jQuery(document).ready(function($) {
 		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Wood Engraver:', obj.role_WDE, true));
 		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Wood Cutter:', obj.role_WDC, true));
 		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Subject:', obj.subject, true));
-		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('digital_surrogats', 'Digital Surrogats:', obj.digital_surrogats, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('single_item', 'Digital Surrogats:', obj.digital_surrogats, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('single_item', 'Coverage:', obj.coverage, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('single_item', 'Sub Location:', obj.subLocation, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('single_item', 'Is Referenced By:', obj.isReferencedBy, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('single_item', 'Shelf Mark:', obj.shelfMark, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('single_item', 'Contributor:', obj.contributor, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('single_item', 'Instance of:', obj.instanceof, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Has Instance:', obj.hasInstance, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Description:', obj.description, true));
 		
 		html += createResultContentItem('separate_lines', 'Has Part:', createSubMedia(obj.hasPart), true);
 		html += createResultContentItem('separate_lines', 'Is Part Of:', createSubMedia(obj.isPartOf), true);

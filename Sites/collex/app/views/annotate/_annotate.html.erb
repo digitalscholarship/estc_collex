@@ -64,6 +64,15 @@
 		}
 	}
 
+ $(function() {
+   $j("#annotation_object_uri").viafautox({
+       select: function(event, ui){
+         var item = ui.item;
+         var message = "From First Search Box: " +item.id + " " + item.value + " (type: " + item.nametype +")";
+         alert(message);
+       }
+   });
+});
 </script>
 
 

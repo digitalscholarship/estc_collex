@@ -36,16 +36,33 @@ function removeHidden(more_id, target_id)
 {
 	// This toggles, so see if the more_id contains the text "more" or "less"
 	var btn = $(more_id);
-	console.log(btn);
 	if (btn.innerHTML.indexOf("more") > 0) {
 		$$('#' + target_id + " .hidden").each(function (el) {
 			if( el.tagName !== "IMG")
-				el.removeClassName('hidden'); el.addClassName('was_hidden');
+				el.removeClassName('hidden'); el.addClassName('was_hidden');			
 		});
 		btn.update(btn.innerHTML.gsub("more", "less"));
 		//btn.innerHTML = btn.innerHTML.gsub("more", "less");
 	} else {
-		$$('#' + target_id + " .was_hidden").each(function (el) { el.addClassName('hidden'); });
+		$$('#' + target_id + " .was_hidden").each(function (el) { 
+			el.addClassName('hidden'); 
+			el.removeClassName('was_hidden');
+		});
+		btn.update(btn.innerHTML.gsub("less", "more"));
+	}
+}
+
+function removeHiddenRecord(more_id, target_id)
+{
+	// This toggles, so see if the more_id contains the text "more" or "less"
+	var btn = $(more_id);
+	if (btn.innerHTML.indexOf("more") > 0) {		
+		$(target_id).removeClassName('hidden');
+		$(target_id).addClassName('was_hidden');
+		btn.update(btn.innerHTML.gsub("more", "less"));		
+	} else {
+		$(target_id).addClassName('hidden');
+		$(target_id).removeClassName('was_hidden');		
 		btn.update(btn.innerHTML.gsub("less", "more"));
 	}
 }

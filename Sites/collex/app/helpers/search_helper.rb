@@ -521,7 +521,7 @@ module SearchHelper
 
   def create_genre_table( genre_data )
     html = raw('<table class="limit_to facet-genre">')
-    html += raw("<tr><th>#{Setup.display_name_for_facet_genre}</th><th class=\"num_objects\"># of Objects</th></tr>")
+    #html += raw("<tr><th>#{Setup.display_name_for_facet_genre}</th><th class=\"num_objects\"># of Objects</th></tr>")
     for genre in genre_data
       html += facet_selector( genre, 'g' )
     end
@@ -529,9 +529,9 @@ module SearchHelper
     return raw(html)
   end
 
-  def create_access_table( freeculture_count, fulltext_count, typewright_count )
-    html = raw('<table class="limit_to facet-access">')
-    html += raw("<tr><th>#{Setup.display_name_for_facet_access}</th><th class=\"num_objects\"># of Objects</th></tr>")
+  #def create_access_table( freeculture_count, fulltext_count, typewright_count )
+   # html = raw('<table class="limit_to facet-access">')
+    # html += raw("<tr><th>#{Setup.display_name_for_facet_access}</th><th class=\"num_objects\"># of Objects</th></tr>")
 	# data = [
 	# 	{ exists: access_is_in_constraints?('FreeCultureConstraint'), label: "Free Culture Only", value: 'freeculture', count: freeculture_count },
 	# 	{ exists: access_is_in_constraints?('FullTextConstraint'), label: "Full Text Only", value: 'fulltext', count: fulltext_count }
@@ -543,31 +543,31 @@ module SearchHelper
 	# for acc in data
 	# 	html += facet_selector( acc, 'o' )
 	# end
-    html += raw('</table>')
-    return raw(html)
-  end
+    #html += raw('</table>')
+    #return raw(html)
+  #end
 
 
-  def create_format_table( format_data )
-    html = raw('<table class="limit_to facet-format">')
-    html += raw("<tr><th>#{Setup.display_name_for_facet_format}</th><th class=\"num_objects\"># of Objects</th></tr>")
+#  def create_format_table( format_data )
+ #   html = raw('<table class="limit_to facet-format">')
+    #html += raw("<tr><th>#{Setup.display_name_for_facet_format}</th><th class=\"num_objects\"># of Objects</th></tr>")
     # for format in format_data
     #   html += facet_selector( format, 'doc_type' )
     # end
-    html += raw('</table>')
-    puts raw(html)
-    return raw(html)
-  end
+  #  html += raw('</table>')
+   # puts raw(html)
+    #return raw(html)
+  #end
 
-  def create_discipline_table( discipline_data )
-    html = raw('<table class="limit_to facet-discipline">')
-    html += raw("<tr><th>#{Setup.display_name_for_facet_discipline}</th><th class=\"num_objects\"># of Objects</th></tr>")
+  #def create_discipline_table( discipline_data )
+  #  html = raw('<table class="limit_to facet-discipline">')
+    #html += raw("<tr><th>#{Setup.display_name_for_facet_discipline}</th><th class=\"num_objects\"># of Objects</th></tr>")
     # for discipline in discipline_data
     #   html += facet_selector( discipline, 'discipline' )
     # end
-    html += raw('</table>')
-    return raw(html)
-  end
+   # html += raw('</table>')
+    #return raw(html)
+  #end
 
 	def format_name_facet(name, typ)
 		name[0] = name[0].gsub("\"", "")

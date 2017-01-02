@@ -6,7 +6,8 @@ jQuery(document).ready(function($) {
 	"use strict";
 	var body = $("body");
 
-   // catch the search submit at the last moment and be sure the
+ 	$(".search_left_column").height($(window).height()/2);
+ 	// catch the search submit at the last moment and be sure the
    // action URL on the search form matches the browser URL. Ensures
    // that the correct federations are searched,
 	$("#search_submit").on("click", function(e) {
@@ -36,7 +37,7 @@ jQuery(document).ready(function($) {
       // That is, given "?q=tree&gen=2&gen=5", the return object is: { q: "tree", gen: [ "2", "5" ] }
 		var params = {};
 		var query = ""+window.location.search;
-		if(query.includes("action=match")){
+		if(query.search("action=match") > -1){
 			query = "";
 			sessionStorage.setItem('match', true);
 			var $j = jQuery.noConflict();
@@ -154,7 +155,6 @@ jQuery(document).ready(function($) {
 					delete resp.query[key];
 			}
 		}
-		console.log(resp);
 		body.trigger('RedrawSearchResults', resp);
       window.cancelProgressDialog();
 	}

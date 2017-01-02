@@ -15,8 +15,11 @@
    # limitations under the License.
    # ----------------------------------------------------------------------------  -%>
 <% current_page "Review" -%>
-<div class="inner_content_container">
+   <div class="inner_content_container">
 		<%= render(:partial => 'annotationReview') %>
 	</div>
-	
+	<div class="no_results_msg" style="display:none;text-align: center;">
+      <p>There is no match to review.</p>
+      <img src="<%= image_path(LARGE_THUMBNAIL_IMAGE_PATH) %>" alt=""/>
+   </div>
 </div>
