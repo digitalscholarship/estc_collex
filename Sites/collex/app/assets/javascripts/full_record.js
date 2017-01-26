@@ -77,7 +77,7 @@ jQuery(document).ready(function($) {
 		return window.pss.createHtmlTag("div", { 'class': 'search-result-sub' }, resultHeader+resultContents);
 	}
 
-	function createResultContents(obj, index) {
+	function createResultContentsOriginal(obj, index) {
 		needShowMoreLink = false;
 		var html = "";
 		html += createResultContentItem('one_col', '', obj.alternative, false);
@@ -181,6 +181,103 @@ jQuery(document).ready(function($) {
 
 		return window.pss.createHtmlTag("div", { 'class': 'search_result_data_container', 'data-uri': obj.uri, 'data-url': obj.url }, html);
 	
+	}
+	
+	
+	function createResultContents(obj, index) {
+		console.log(obj);
+		needShowMoreLink = false;
+		var html = "";
+		html += createResultContentItem('one_col', '', obj.alternative, false);
+		html += createResultContentItem('single_item', 'ESTC ID: ', obj.uri.substring(obj.uri.lastIndexOf('/') + 1), false);
+		html += createResultContentItem('single_item', 'Date:', obj.date_label, false);
+		html += createResultContentItem('multiple_item', 'Author:', obj.role_AUT, false);
+		html += createResultContentItem('separate_lines', 'Source:', obj.source, false);
+
+		var table = "";	
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Artist:', obj.role_ART, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Genre:', obj.genre, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Discipline:', obj.discipline, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('single_item', 'Exhibit&nbsp;type:', obj.exhibit_type, false));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('single_item', 'License:', obj.license, false));
+
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Editor:', obj.role_EDT, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Publisher:', obj.role_PBL, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Owner:', obj.role_OWN, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Translator:', obj.role_TRL, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Provenance:', obj.provenance, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Architect:', obj.role_ARC, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Binder:', obj.role_BND, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Book Designer:', obj.role_BKD, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Book Producer:', obj.role_BKP, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Broadcaster:', obj.role_BRD, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Calligrapher:', obj.role_CLL, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Cartographer:', obj.role_CTG, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Collector:', obj.role_COL, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Colorist:', obj.role_CLR, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Commentator:', obj.role_CWT, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Compiler:', obj.role_COM, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Compositor:', obj.role_CMT, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Cinematographer:', obj.role_CNG, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Conductor:', obj.role_CND, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Creator:', obj.role_CRE, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Director:', obj.role_DRT, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Dubious Author:', obj.role_DUB, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Facsimilist:', obj.role_FAC, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Former Owner:', obj.role_FMO, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Illuminator:', obj.role_ILU, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Illustrator:', obj.role_ILL, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Interviewer:', obj.role_IVR, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Interviewee:', obj.role_IVE, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Lithographer:', obj.role_LTG, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Performer:', obj.role_PRF, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Printer:', obj.role_PRT, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Printer of plates:', obj.role_POP, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Printmaker:', obj.role_PRM, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Producer:', obj.role_PRO, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Production Company:', obj.role_PRN, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Repository:', obj.role_RPS, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Rubricator:', obj.role_RBR, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Scribe:', obj.role_SCR, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Sculptor:', obj.role_SCL, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Translator:', obj.role_TRL, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Type Designer:', obj.role_TYD, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Typographer:', obj.role_TYG, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Wood Engraver:', obj.role_WDE, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Wood Cutter:', obj.role_WDC, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Subject:', obj.subject, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('single_item', 'Digital Surrogats:', obj.digital_surrogats, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('single_item', 'Coverage:', obj.coverage, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('single_item', 'Sub Location:', obj.subLocation, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('single_item', 'Is Referenced By:', obj.isReferencedBy, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('single_item', 'Shelf Mark:', obj.shelfMark, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('single_item', 'Contributor:', obj.contributor, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('single_item', 'Instance of:', obj.instanceof, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Description:', obj.description, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('single_item', 'URL:', obj.url, true));
+
+		var exhibits;
+		if (obj.exhibits) {
+			exhibits = [];
+			for (var i = 0; i < obj.exhibits.length; i++) {
+				exhibits.push(formatExhibit(obj.exhibits[i]));
+			}
+		}
+		if (exhibits)
+			html += createResultContentItem('multiple_item', 'Exhibits:', exhibits, true, 'exhibits-row');
+		else
+			html += createBlankResultContentItem('row exhibits-row');
+
+		if (needShowMoreLink) {
+			html += window.pss.createHtmlTag("button", { id: "more-search_result_"+index,  'class': 'nav_link more', onclick: 'removeHidden("more-search_result_' + index + '", "search_result_' + index + '");return false;'}, '[more...]');
+		}
+
+		html += createFullTextExcerpt(obj.text);
+
+		var hiddenlist = window.pss.createHtmlTag("table", {'class': "hiddeninfo"}, table);
+		html += window.pss.createHtmlTag("div", { 'class': "klass" }, hiddenlist);
+
+		return window.pss.createHtmlTag("div", { 'class': 'search_result_data_container', 'data-uri': obj.uri, 'data-url': obj.url }, html);
 	}
 
 	var needShowMoreLink = false;

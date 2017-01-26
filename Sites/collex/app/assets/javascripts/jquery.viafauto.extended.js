@@ -23,6 +23,7 @@
  *
  * Closure function makes $ safe to use here without conflict with prototype et al.
  */
+ 
 (function($) {
   $.widget("oclc.viafautox", $.oclc.viafauto, {
     _setOptions: function( options  ) { this._super( options  ); },
