@@ -4,7 +4,7 @@
 		<p id="notice" class="notice" style = "font-weight: bold; font-size: 12pt; color: Red"> <%= f.label @errorMsg %> </p>
 	<% end %>
 
-	<p> <%= link_to session[:annotateTitle], "/fullrecord?action=fullrecord&uri="+session[:annotateUri]+"", :target => "_blank" %> </p>
+	<p> <%= link_to session[:annotateTitle], "/fullrecord?action=fullrecord&uri="+session[:annotateUri]+"", :target => "_self" %> </p>
 	<p> <%= f.select(:predicate,  options_from_collection_for_select(@predicates, 'id', 'display_name'), prompt: "Select a verb") %> <b> of </b></p> 
 	<p> <%= f.text_field :object_uri, size: 50 %> </p> 
 	<p>    
