@@ -39,14 +39,15 @@ puts ("SOLR_URL::: #{SOLR_URL}")
          @field_list = [ "uri", "archive", "page_num", "page_of" ]
          @facet_fields = []
       else
-         @field_list = [ "uri", "archive", "date_label", 'year', "genre", "source", "image", "thumbnail", "title", "alternative", "url",
+         @field_list = [ "uri", "archive", "date_label", "year", "genre", "source", "image", "thumbnail", "title", "alternative", "url",
    			"role_ART", "role_AUT", "role_EDT", "role_PBL", "role_TRL", "role_EGR", "role_ETR", "role_CRE", "role_OWN", "freeculture",
-   			"is_ocr", "federation", "has_full_text", "source_xml", "provenance", "discipline", 'typewright',
+   			"is_ocr", "federation", "has_full_text", "source_xml", "provenance", "discipline", "typewright",
             "role_ARC", "role_BND", "role_BKD", "role_BKP", "role_CLL", "role_CTG", "role_COL", "role_CLR", "role_CWT", "role_COM", "role_CMT",
             "role_DUB", "role_FAC", "role_ILU", "role_ILL", "role_LTG", "role_PRT", "role_POP", "role_PRM",
             "role_RPS", "role_RBR", "role_SCR", "role_SCL", "role_TYD", "role_TYG", "role_WDE", "role_WDC",
    	      "role_BRD", "role_CNG", "role_CND", "role_DRT", "role_IVR", "role_IVE", "role_OWN", "role_FMO", "role_PRF", "role_PRO", "role_PRN",
-            "has_pages", "hasPart", "isPartOf", "decade", "quarter_century", "half_century", "century", "subject", "digital_surrogats"
+            "has_pages", "hasPart", "isPartOf", "decade", "quarter_century", "half_century", "century", "subject", "digital_surrogats", "hasInstance", "instanceof",
+            "description", "coverage"
          ]
          @facet_fields = ['genre','archive','freeculture', 'has_full_text', 'federation', 'typewright', 'doc_type', 'discipline', 'role']
       end
@@ -56,12 +57,16 @@ puts ("SOLR_URL::: #{SOLR_URL}")
       name = ""
       if federation == ""
          if is_test == :test
+         	puts "loading Test Resources"
             name = "testResources"
          elsif is_test == :live
+            puts "loading Live Resources"
             name = "resources"
          elsif is_test == :pages
+         	puts "loading pages Resources"
             name = "pages"
          elsif is_test == :shards
+         	puts "loading shards Resources"
             name = self.get_archive_core_list()
          else
             raise "Bad parameter in Solr.factory_create"
@@ -260,7 +265,9 @@ end
 
 	end
 
-	def search(options, overrides = {})
+def search(options, overrides = {})
+	puts "SOLR::::::::SEARCH"
+	puts options
     facets = @facet_fields
     facets = options['facet'] if options['facet'].nil? == false
 
@@ -315,7 +322,7 @@ end
     facets = merge_pivot_data( facets, pivots )
 		return { :total => ret['response']['numFound'], :hits => ret['response']['docs'], :facets => facets }
 
-	end
+end
 
 	def adjust_facet_counts(facet, src_options, prior_facets)
 		# if the search included that facet, then do the search again without it to get the facet totals.

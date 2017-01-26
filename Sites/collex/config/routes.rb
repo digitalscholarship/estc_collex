@@ -385,4 +385,6 @@ Collex::Application.routes.draw do
   match '/contribute' => 'contribute#index'
   match 'get_fullrecord_info' => 'full_record#get_fullrecord_info'
 	root :to => "home#index"
+	
+	get '/details/holdings' => 'details#holdings'
 end

@@ -5,10 +5,6 @@ class SearchController < ApplicationController
 	# GET /searches.xml
 	def index
 		query_params = QueryFormat.catalog_format()
-		puts "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ"
-		puts params
-		puts "adding instanceof exclusion to search parameters"
-		params["-field"] = "*"
 		begin
 			QueryFormat.transform_raw_parameters(params)
 
@@ -58,12 +54,12 @@ class SearchController < ApplicationController
 			is_test = Rails.env == 'test' ? :test : :live
 			is_test = :shards if params[:test_index]
 
-			puts "UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU"
-			puts query
-			#ecerything looks good to this point
-
 			solr = Solr.factory_create(is_test)
 			@results = solr.search(query)
+
+puts "-------------------------------------------------------------------------"
+puts query
+puts @results
 
 			respond_to do |format|
 				format.html # index.html.erb
@@ -192,15 +188,13 @@ class SearchController < ApplicationController
 		query_params = QueryFormat.details_format()
 		begin
 			QueryFormat.transform_raw_parameters(params)
-puts "11-------------------------------- #{query_params}"
-puts "22-------------------------------- #{params}"
 			query = QueryFormat.create_solr_query(query_params, params, request.remote_ip)
+			puts(query)
 			is_test = Rails.env == 'test' ? :test : :live
 			is_test = :shards if params[:test_index]
 			solr = Solr.factory_create(is_test)
-			puts "33--------------------- #{query}"
+			
 			@document = solr.details(query)
-
 			respond_to do |format|
 				format.html # index.html.erb
 				format.json { render json: { document: @document } }

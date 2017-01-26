@@ -65,6 +65,7 @@ class SearchController < ApplicationController
                end
             else
             	puts "elseeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+            	puts params
                	items_per_page = 30
    				page = params[:page].present? ? params[:page] : 1
    				sort_param = params[:srt].present? ? params[:srt] : nil
@@ -72,7 +73,7 @@ class SearchController < ApplicationController
    				constraints = process_constraints(params)
    				begin
    					@solr = Catalog.factory_create(session[:use_test_index] == "true") if @solr == nil
-
+						puts constraints
    					results = @solr.search_direct(constraints, (page.to_i - 1) * items_per_page, nil, sort_param, sort_ascending)
 					Catalog.log_catalog("Results info: ", "#{results}")
 				results['message'] = ''
@@ -101,6 +102,7 @@ class SearchController < ApplicationController
 				results['facets']['doc_type'] = {} if results['facets']['doc_type'].blank?
 				results['facets']['discipline'] = {} if results['facets']['discipline'].blank?
 				results['facets']['role'] = {} if results['facets']['role'].blank?
+				
 
 				render :json => results
 			end

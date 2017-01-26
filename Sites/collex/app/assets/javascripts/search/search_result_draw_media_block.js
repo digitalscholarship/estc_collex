@@ -198,6 +198,17 @@ jQuery(document).ready(function($) {
 		row.find('.label').html(label);
 		row.find('.value').html(value);
 	}
+	
+	
+	function httpGetAsync(theUrl, callback) {
+    	var xmlHttp = new XMLHttpRequest();
+    	xmlHttp.onreadystatechange = function() { 
+        	if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            	callback(xmlHttp.responseText);
+    		}
+    	xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+    	xmlHttp.send(null);
+	}
 
 	function createResultContentItem(type, label, value, startHidden, rowClass) {
 		if (!value)
@@ -231,11 +242,57 @@ jQuery(document).ready(function($) {
 				for (var i = 1; i < value.length; i++) {
 					html += "<br>" + window.pss.createHtmlTag("span", { 'class': 'value' }, value[i]);
 				}
-
 				return window.pss.createHtmlTag("div", { 'class': klass }, window.pss.createHtmlTag("td", { 'class': 'label' }, label) + window.pss.createHtmlTag("td", { 'class': 'label' }, html));
 				//return window.pss.createHtmlTag("div", { 'class': klass },
 				//	window.pss.createHtmlTag("td", { 'class': 'label' }, label) +
 				//	window.pss.createHtmlTag("td", { 'class': 'value' }, value));//window.pss.createHtmlTag("span", { 'class': 'value' }, value.join("; ")));
+			
+						
+			// working here to inject the actual holding information
+			case "hasInstanceItem":
+				var html = "";
+				for (var i = 0; i < value.length; i++) {
+					// html += "<br>" + window.pss.createHtmlTag("span", { 'class': 'value' }, value[i]);
+					var plainTextURL = value[i];
+					var baseURL = value[i].replace(/\//g, "%2F");
+					var formattedURL = baseURL.replace(/\:/g, "%3A");
+					var curlURL = "http://estc21.ucr.edu/details/holdings?uri=" + formattedURL;
+					
+					var xmlHttp = new XMLHttpRequest();
+    				xmlHttp.open( "GET", curlURL, false ); // false for synchronous request
+    				xmlHttp.send( null );
+    				var jsonBack = xmlHttp.responseText;
+    				if (i > 0) {
+    				 html += "<br>";
+    				}
+					//html += "<a href=\"http://estc21.ucr.edu/fullrecord?action=fullrecord&uri=" + value[i] + "\">" + window.pss.createHtmlTag("span", { 'class': 'value' }, jsonBack) + "</a>";
+					html += "<a href=\"http://estc21.ucr.edu/fullrecord?action=fullrecord&uri=" + plainTextURL + "\">" + window.pss.createHtmlTag("span", { 'class': 'value' }, jsonBack) + "</a>";
+				}
+				return window.pss.createHtmlTag("div", { 'class': klass }, window.pss.createHtmlTag("td", { 'class': 'label' }, label) + window.pss.createHtmlTag("td", { 'class': 'label' }, html));
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+// 				var html = "Item: " + window.pss.createHtmlTag("span ", { 'class': 'value' }, value[0]);
+//				for (var i = 0; i < value.length; i++) {
+//					var str = value[i];
+//					var repSlash = str.replace(/\//g, "%2F");
+//					var strLink = repSlash.replace(/\:/g, "%3A");
+//					var getHolding = "http://estc21.ucr.edu/details/holdings?uri=" + strLink;
+//					$.get(getHolding, function(responseText) {
+//						html += "<br>Item: " + window.pss.createHtmlTag("span", { 'class': 'value' }, responseText);
+//					});
+//					// html += "<br>Item: " + window.pss.createHtmlTag("span", { 'class': 'value' }, value[i])
+//				}
+
+				return window.pss.createHtmlTag("div", { 'class': klass }, window.pss.createHtmlTag("td", { 'class': 'label' }, label) + window.pss.createHtmlTag("td", { 'class': 'label' }, html));
+				
 			case "one_col":
 				return window.pss.createHtmlTag("div", { 'class': klass },
 					window.pss.createHtmlTag("td", { 'class': 'one-col' }, value));
@@ -338,13 +395,14 @@ jQuery(document).ready(function($) {
 	}
 
 	function createResultContents(obj, index, collectedDate) {
+		console.log(obj);
 		needShowMoreLink = false;
 		var html = "";
 		html += createResultContentItem('one_col', '', obj.alternative, false);
 		html += createResultContentItem('single_item', 'ESTC ID: ', obj.uri.substring(obj.uri.lastIndexOf('/') + 1), false);
-		html += createResultContentItem('separate_lines', 'Source:', obj.source, false);
-		html += createResultContentItem('multiple_item', 'Author:', obj.role_AUT, false);
 		html += createResultContentItem('single_item', 'Date:', obj.date_label, false);
+		html += createResultContentItem('multiple_item', 'Author:', obj.role_AUT, false);
+		html += createResultContentItem('separate_lines', 'Source:', obj.source, false);
 		
 		if (collectedDate)
 			html += createResultContentItem('single_item', 'Collected&nbsp;on:', formatDate(collectedDate), false, 'collected-on');
@@ -417,7 +475,16 @@ jQuery(document).ready(function($) {
 		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('single_item', 'Shelf Mark:', obj.shelfMark, true));
 		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('single_item', 'Contributor:', obj.contributor, true));
 		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('single_item', 'Instance of:', obj.instanceof, true));
-		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Has Instance:', obj.hasInstance, true));
+		
+	
+		
+		// here's where I need to break in and call to a different function that will go out and grab the
+		// holding information for each of these and display that instead of the ID
+		// table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Has Instance Z:', obj.hasInstance, true));
+		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('hasInstanceItem', 'Holdings:', obj.hasInstance, true));
+	
+		
+		
 		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('multiple_item', 'Description:', obj.description, true));
 		table += window.pss.createHtmlTag("tr", {}, createResultContentItem('single_item', 'URL:', obj.url, true));
 		
@@ -427,7 +494,7 @@ jQuery(document).ready(function($) {
 		}
 
 		html += createResultContentItem('separate_lines', 'Has Part:', createSubMedia(obj.hasPart), true);
-		html += createResultContentItem('separate_lines', 'Is Part Of:', createSubMedia(obj.isPartOf), true);
+		html += createResultContentItem('separate_lines', 'Is Part Of:', createSubMedia(obj.partOf), true);
 		var exhibits;
 		if (obj.exhibits) {
 			exhibits = [];
@@ -474,7 +541,7 @@ jQuery(document).ready(function($) {
 		
 		var objectinfo = window.pss.createHtmlTag("div", { 'class': 'object_infos' }); 
 		var activeannotations = window.pss.createHtmlTag("div", { 'class': 'activeannotations' }); 
-		var viewannotation = window.pss.createHtmlTag("a", { 'class': 'viewAnnotation', href: '' }, "View Annotation Info");
+		var viewannotation = "<br>" + window.pss.createHtmlTag("a", { 'class': 'viewAnnotation', href: '' }, "View Annotation Info");
 
 		var viewannotationdiv = window.pss.createHtmlTag("div", { 'class': 'viewannotationdiv' }, viewannotation); 
 		
@@ -622,6 +689,7 @@ jQuery(document).ready(function($) {
 	};
 
 	window.collex.createResultRows = function(obj) {
+		window.showProgressDialog('Loading...');
 		var html = "";
 		var hiddenRecord = "";
 		var showRecord = "";
@@ -629,25 +697,27 @@ jQuery(document).ready(function($) {
 		for (var i = 0; i < obj.hits.length; i++) {
 			var isCollected = obj.collected[obj.hits[i].uri] !== undefined;
 			var hasPredicate = obj.hits[i].hasPart !== undefined;
-			if(obj.hits[i].instanceof === undefined)
+			if(obj.hits[i].instanceof === undefined) {
 				showRecord += window.collex.createMediaBlock(obj.hits[i], i, isCollected, obj.collected[obj.hits[i].uri], hasPredicate, false);
-			else{
-				count += 1;
-				hiddenRecord += window.collex.createMediaBlock(obj.hits[i], i, isCollected, obj.collected[obj.hits[i].uri], hasPredicate, true);
+			//else{
+				//count += 1;
+				//hiddenRecord += window.collex.createMediaBlock(obj.hits[i], i, isCollected, obj.collected[obj.hits[i].uri], hasPredicate, true);
 			}
 		}
-		if(hiddenRecord != ""){
-			html += window.pss.createHtmlTag("hr", { 'class': 'search_results_hr' });
-			html += window.pss.createHtmlTag("button", { id: "instance_of_records",  'class': 'nav_link instance-of-more more', 
-				onclick: 'removeHiddenRecord("instance_of_records", "hidden-records");return false;'}, '[more instanceof records...('+ count +')]');			
-		}
+//		if(hiddenRecord != ""){
+//			html += window.pss.createHtmlTag("hr", { 'class': 'search_results_hr' });
+//			html += window.pss.createHtmlTag("button", { id: "instance_of_records",  'class': 'nav_link instance-of-more more', 
+//				onclick: 'removeHiddenRecord("instance_of_records", "hidden-records");return false;'}, '[more instanceof records...('+ count +')]');			
+//		}
 
 		
-		var hiddendiv = window.pss.createHtmlTag("div", { 'id': 'hidden-records', 'class': 'hidden'}, hiddenRecord);
+//		var hiddendiv = window.pss.createHtmlTag("div", { 'id': 'hidden-records', 'class': 'hidden'}, hiddenRecord);
 		
-		var records = window.pss.createHtmlTag("div", { 'id': 'records', 'class': 'records'}, showRecord + html + hiddendiv);
+//		var records = window.pss.createHtmlTag("div", { 'id': 'records', 'class': 'records'}, showRecord + html + hiddendiv);
+		
+		var records = window.pss.createHtmlTag("div", { 'id': 'records', 'class': 'records'}, showRecord + html);
 		
 		$('.search-results').html(records);
-		
+		window.cancelProgressDialog();
 	};
 });

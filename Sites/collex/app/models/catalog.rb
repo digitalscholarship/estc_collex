@@ -394,30 +394,30 @@ end
       archives = response['resource_tree']['archives']['archive']
       puts archives.length
       archives.each { |archive|
-         puts archive
-         puts id
-         id = id.to_i
-         archive['id'] = id.to_s
-         id += 1
-         if archive['carousel']
-            if archive['carousel']['federations'] and archive['carousel']['federations']['federation']
-               if archive['carousel']['federations']['federation'].kind_of?(Array)
-                  archive['carousel']['federations']['federation'].each { |federation|
-                     if federation.downcase == Setup.site_name().downcase
-                        img = archive['carousel']['image']
-                        img = Setup.solr_url() + img if img
-                        @@carousel.push({ :title => archive['name'], :description => archive['carousel']['description'], :url => archive['site_url'], :image => img })
-                     end
-                  }
-               else
-                  if archive['carousel']['federations']['federation'].downcase == Setup.site_name().downcase
-                     img = archive['carousel']['image']
-                     img = Setup.solr_url() + img if img
-                     @@carousel.push({ :title => archive['name'], :description => archive['carousel']['description'], :url => archive['site_url'], :image => img })
-                  end
-               end
-            end
-         end
+         #puts archive
+         #puts id
+         #id = id.to_i
+         #archive['id'] = id.to_s
+         #id += 1
+#         if archive['carousel']
+#            if archive['carousel']['federations'] and archive['carousel']['federations']['federation']
+#               if archive['carousel']['federations']['federation'].kind_of?(Array)
+#                  archive['carousel']['federations']['federation'].each { |federation|
+#                     if federation.downcase == Setup.site_name().downcase
+#                        img = archive['carousel']['image']
+#                        img = Setup.solr_url() + img if img
+#                        @@carousel.push({ :title => archive['name'], :description => archive['carousel']['description'], :url => archive['site_url'], :image => img })
+#                     end
+#                  }
+#               else
+#                  if archive['carousel']['federations']['federation'].downcase == Setup.site_name().downcase
+#                     img = archive['carousel']['image']
+#                     img = Setup.solr_url() + img if img
+#                     @@carousel.push({ :title => archive['name'], :description => archive['carousel']['description'], :url => archive['site_url'], :image => img })
+#                  end
+#               end
+#            end
+#         end
       }
 
       @@archives = response['resource_tree']['archives']['archive']
@@ -777,7 +777,12 @@ end
       
       request = "/#{url}.xml"
       url = URI.parse(Setup.solr_url())
+      puts "Request URL"
+      puts url
       Catalog.log_catalog("PARAMS info: ", "#{params}")
+      puts "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+      puts params
+      puts args
       Catalog.log_catalog(verb.to_s().upcase(), "#{url}#{request} ARGS: #{args}")
       begin
          res = Net::HTTP.start(url.host, url.port) do |http|

@@ -161,8 +161,8 @@ private
     tabs.push({ :name => Setup.community_tab(), :link => '/communities', :use_long => true }) if Setup.display_community_tab?
     tabs.push({ :name => 'Publications', :link => '/publications', :use_long => true }) if Setup.display_publications_tab?
     tabs.push({ :name => 'Search', :link => search_path }) if Setup.display_search_tab?
-    tabs.push({ :name => 'Review Contribution', :link => '/annotationreview' }) if Setup.display_review_tab?
-    tabs.push({ :name => 'Contribute to the ESTC', :link => '/contribute' }) 
+    tabs.push({ :name => 'Review User Contributions', :link => '/annotationreview' }) if Setup.display_review_tab?
+    #tabs.push({ :name => 'Contribute to the ESTC', :link => '/contribute' }) 
 
     if COLLEX_PLUGINS['typewright']
 		  search = tabs.pop()

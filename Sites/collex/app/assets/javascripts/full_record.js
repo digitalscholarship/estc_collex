@@ -82,9 +82,10 @@ jQuery(document).ready(function($) {
 		var html = "";
 		html += createResultContentItem('one_col', '', obj.alternative, false);
 		html += createResultContentItem('single_item', 'ESTC ID: ', obj.uri.substring(obj.uri.lastIndexOf('/') + 1), false);
-		html += createResultContentItem('separate_lines', 'Source:', obj.source, false);
-		html += createResultContentItem('multiple_item', 'Author:', obj.role_AUT, false);
 		html += createResultContentItem('single_item', 'Date:', obj.date_label, false);
+		html += createResultContentItem('multiple_item', 'Author:', obj.role_AUT, false);
+		html += createResultContentItem('separate_lines', 'Source:', obj.source, false);
+		
 		var enable_site = (window.gon.enable_site)[0].value;
 
 		if (enable_site == 'on'){
