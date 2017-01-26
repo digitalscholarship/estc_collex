@@ -404,7 +404,8 @@ jQuery(document).ready(function($) {
 
 		var a = createTitleLink(obj.title, obj.uri);
 
-		var titleEl = window.pss.createHtmlTag("div", { 'class': 'review_result_header' }, uriLink+a);
+		// var titleEl = window.pss.createHtmlTag("div", { 'class': 'review_result_header' }, uriLink+a);
+		var titleEl = window.pss.createHtmlTag("div", { 'class': 'review_result_header' }, obj.title);
 		return window.pss.createHtmlTag("span", { 'class': 'Z3988', title: createZoteraTitle(obj) }, titleEl);
 	}
 
