@@ -38,7 +38,7 @@ class QueryFormat
 		verifications = {
 			:term => { :exp => /^([+\-]("#{w}( #{w})*"|#{w}))+$/u, :friendly => "A list of alphanumeric terms, starting with either + or - and possibly quoted if there is a space." },
 			:frag => { :exp => /^("#{w}( #{w})*"|#{w})$/u, :friendly => "A list of alphanumeric terms, possibly quoted if there is a space." },
-      :year => { :exp => /^([+\-]\d{1,4}(\s+[tT][oO]\s+\d{1,4})?)$/, :friendly => "[+-] A 1 to 4 digit date." },
+      		:year => { :exp => /^([+\-]\d{1,4}(\s+[tT][oO]\s+\d{1,4})?)$/, :friendly => "[+-] A 1 to 4 digit date." },
 			:archive => { :exp => /^([+\-]\w[\w\- ]*)$/, :friendly => "[+-] One of the predefined archive abbreviations." },
 			:genre => { :exp => /^([+\-]\w[ \w,]*)+$/, :friendly => "[+-] One or more of the predefined genres." },
 			:genre2 => { :exp => /^(\w[ \w,]*)+(;(\w[ \w,]*)+)*$/, :friendly => "One or more of the predefined genres separated by semicolons." },
@@ -64,10 +64,11 @@ class QueryFormat
 			:decimal_array => { :exp => /^\d+(,\d+)*$/, :friendly => "An integer or array of integers separated by commas."},
 			:local_sort => { :exp => /^(title|last_modified) (asc|desc)$/, :friendly => "One of title or last_modified followed by one of asc or desc." },
 			:last_modified => { :exp => /^\d\d\d\d-\d\d-\d\dT\d\d:\d\d:\d\dZ$/, :friendly => "A date/time string in the format: yyyy-mm-ddThh:mm:ssZ." },
-      :fuz_value => { :exp => /^[+\-]?[012]?$/, :friendly => "Fuzzyness: 0 (exact match), 1 (varied spellings) or 2 (most varied spellings)"},
-      :language => { :exp => /^([+\-][^+\-]+)+$/, :friendly => "[+-] Languages separated by ||" },
-      :facet => { :exp => /^(\b(?:doc_type|archive|discipline|genre|free_culture|federation),*)+$/, :friendly => 'One or more of the predefined facets separated by commas (doc_type, archive, discipline, genre, free_culture, federation)'},
-      :period_pivot => { :exp => /^(doc_type|archive|discipline|genre|free_culture|federation)$/, :friendly => 'One of the predefined pivots (doc_type, archive, discipline, genre, free_culture, or federation)'}
+      		:fuz_value => { :exp => /^[+\-]?[012]?$/, :friendly => "Fuzzyness: 0 (exact match), 1 (varied spellings) or 2 (most varied spellings)"},
+      		:language => { :exp => /^([+\-][^+\-]+)+$/, :friendly => "[+-] Languages separated by ||" },
+      		:facet => { :exp => /^(\b(?:doc_type|archive|discipline|genre|free_culture|federation),*)+$/, :friendly => 'One or more of the predefined facets separated by commas (doc_type, archive, discipline, genre, free_culture, federation)'},
+      		:period_pivot => { :exp => /^(doc_type|archive|discipline|genre|free_culture|federation)$/, :friendly => 'One of the predefined pivots (doc_type, archive, discipline, genre, free_culture, or federation)'},
+			:fq => {:exp => /.*/u, :friendly => "A filter query of form fq:XXXXXX" }
 		}
 
 		return verifications[typ]
@@ -92,9 +93,9 @@ class QueryFormat
 	def self.catalog_format()
 		format = {
 				'q' => { :name => 'Query', :param => :term, :default => nil, :can_fuz => true, :transformation => get_proc(:transform_title) },
-        'fuz_q' => { :name => 'Query Fuzz Value', :param => :fuz_value, :default => nil, :transformation => get_proc(:transform_nil) },
+        		'fuz_q' => { :name => 'Query Fuzz Value', :param => :fuz_value, :default => nil, :transformation => get_proc(:transform_nil) },
 				't' => { :name => 'Title', :param => :term, :default => nil, :can_fuz => true, :transformation => get_proc(:transform_title) },
-        'fuz_t' => { :name => 'Title Fuzz Value', :param => :fuz_value, :default => nil, :transformation => get_proc(:transform_nil) },
+        		'fuz_t' => { :name => 'Title Fuzz Value', :param => :fuz_value, :default => nil, :transformation => get_proc(:transform_nil) },
 				'aut' => { :name => 'Author', :param => :term, :default => nil, :transformation => get_proc(:transform_author) },
 				'ed' => { :name => 'Editor', :param => :term, :default => nil, :transformation => get_proc(:transform_editor) },
 				'pub' => { :name => 'Publisher', :param => :term, :default => nil, :transformation => get_proc(:transform_publisher) },
@@ -102,59 +103,60 @@ class QueryFormat
 				'a' => { :name => 'Archive', :param => :archive, :default => nil, :transformation => get_proc(:transform_archive) },
 				'g' => { :name => 'Genre', :param => :genre, :default => nil, :transformation => get_proc(:transform_genre) },
 				'f' => { :name => 'Federation', :param => :federation, :default => nil, :transformation => get_proc(:transform_federation) },
-        'facet' => { :name => 'Facet', :param => :facet, :default => nil, :transformation => get_proc(:transform_facet) },
+        		'facet' => { :name => 'Facet', :param => :facet, :default => nil, :transformation => get_proc(:transform_facet) },
 				'o' => { :name => 'Other Facet', :param => :other_facet, :default => nil, :transformation => get_proc(:transform_other) },
 				'sort' => { :name => 'Sort', :param => :sort, :default => nil, :transformation => get_proc(:transform_sort) },
 				'start' => { :name => 'Starting Row', :param => :starting_row, :default => '0', :transformation => get_proc(:transform_field) },
 				'max' => { :name => 'Maximum Results', :param => :max, :default => '30', :transformation => get_proc(:transform_max) },
 				'hl' => { :name => 'Highlighting', :param => :highlighting, :default => 'off', :transformation => get_proc(:transform_highlight) },
 				'test_index' => { :name => 'Use Testing Index', :param => :boolean, :default => nil, :transformation => get_proc(:transform_nil) },
-        'r_own' => { :name => 'Owner', :param => :string, :default => nil, :transformation => get_proc(:transform_role_owner)},
-        'r_art' => { :name => 'Artist', :param => :string, :default => nil, :transformation => get_proc(:transform_role_artist)},
-        'lang' => { :name => 'Language', :param => :language, :default => nil, :transformation => get_proc(:transform_language)},
-        'doc_type' => { :name => 'Format', :param => :string, :default => nil, :transformation => get_proc(:transform_doc_type)},
-        'discipline' => { :name => 'Discipline', :param => :string, :default => nil, :transformation => get_proc(:transform_discipline)},
-        'role_TRL' => { :name => 'Translator', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-        'role_ARC' => { :name => 'Architect', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-        'role_BND' => { :name => 'Binder', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-        'role_BKD' => { :name => 'Book Designer', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-        'role_BKP' => { :name => 'Book Producer', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-		    'role_BRD' => { :name => 'Broadcaster', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-        'role_CLL' => { :name => 'Calligrapher', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-        'role_CTG' => { :name => 'Cartographer', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-        'role_COL' => { :name => 'Collector', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-        'role_CLR' => { :name => 'Colorist', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-        'role_CWT' => { :name => 'Commentator', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-        'role_COM' => { :name => 'Compiler', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-        'role_CMT' => { :name => 'Compositor', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-		    'role_CNG' => { :name => 'Cinematographer', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-	    	'role_CND' => { :name => 'Conductor', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-	    	'role_CRE' => { :name => 'Creator', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-	    	'role_DRT' => { :name => 'Director', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-        'role_DUB' => { :name => 'Dubious Author', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-        'role_FAC' => { :name => 'Facsimilist', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-		    'role_FMO' => { :name => 'Former Owner', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-        'role_ILU' => { :name => 'Illuminator', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-        'role_ILL' => { :name => 'Illustrator', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-		    'role_IVR' => { :name => 'Interviewer', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-		    'role_IVE' => { :name => 'Interviewee', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-        'role_LTG' => { :name => 'Lithographer', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-		    'role_OWN' => { :name => 'Owner', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-        'role_PRT' => { :name => 'Printer', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-        'role_POP' => { :name => 'Printer of plates', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-		    'role_PRF' => { :name => 'Performer', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-        'role_PRM' => { :name => 'Printmaker', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-		    'role_PRN' => { :name => 'Production Company', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-		    'role_PRO' => { :name => 'Producer', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-        'role_RPS' => { :name => 'Repository', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-        'role_RBR' => { :name => 'Rubricator', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-        'role_SCR' => { :name => 'Scribe', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-        'role_SCL' => { :name => 'Sculptor', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-        'role_TYD' => { :name => 'Type Designer', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-        'role_TYG' => { :name => 'Typographer', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-        'role_WDE' => { :name => 'Wood Engraver', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-        'role_WDC' => { :name => 'Wood Cutter', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
-        'period_pivot' => { :name => 'Period Pivot', :param => :period_pivot, :default => nil, :transformation => get_proc(:transform_pivot) },
+        		'r_own' => { :name => 'Owner', :param => :string, :default => nil, :transformation => get_proc(:transform_role_owner)},
+        		'r_art' => { :name => 'Artist', :param => :string, :default => nil, :transformation => get_proc(:transform_role_artist)},
+        		'lang' => { :name => 'Language', :param => :language, :default => nil, :transformation => get_proc(:transform_language)},
+        		'doc_type' => { :name => 'Format', :param => :string, :default => nil, :transformation => get_proc(:transform_doc_type)},
+        		'discipline' => { :name => 'Discipline', :param => :string, :default => nil, :transformation => get_proc(:transform_discipline)},
+        		'role_TRL' => { :name => 'Translator', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'role_ARC' => { :name => 'Architect', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'role_BND' => { :name => 'Binder', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'role_BKD' => { :name => 'Book Designer', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'role_BKP' => { :name => 'Book Producer', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+		    	'role_BRD' => { :name => 'Broadcaster', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'role_CLL' => { :name => 'Calligrapher', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'role_CTG' => { :name => 'Cartographer', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'role_COL' => { :name => 'Collector', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'role_CLR' => { :name => 'Colorist', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'role_CWT' => { :name => 'Commentator', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'role_COM' => { :name => 'Compiler', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'role_CMT' => { :name => 'Compositor', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+		    	'role_CNG' => { :name => 'Cinematographer', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+	    		'role_CND' => { :name => 'Conductor', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+	    		'role_CRE' => { :name => 'Creator', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+	    		'role_DRT' => { :name => 'Director', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'role_DUB' => { :name => 'Dubious Author', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'role_FAC' => { :name => 'Facsimilist', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+		    	'role_FMO' => { :name => 'Former Owner', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'role_ILU' => { :name => 'Illuminator', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'role_ILL' => { :name => 'Illustrator', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+		    	'role_IVR' => { :name => 'Interviewer', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+		    	'role_IVE' => { :name => 'Interviewee', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'role_LTG' => { :name => 'Lithographer', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+		    	'role_OWN' => { :name => 'Owner', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'role_PRT' => { :name => 'Printer', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'role_POP' => { :name => 'Printer of plates', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+		    	'role_PRF' => { :name => 'Performer', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'role_PRM' => { :name => 'Printmaker', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+		    	'role_PRN' => { :name => 'Production Company', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+		    	'role_PRO' => { :name => 'Producer', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'role_RPS' => { :name => 'Repository', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'role_RBR' => { :name => 'Rubricator', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'role_SCR' => { :name => 'Scribe', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'role_SCL' => { :name => 'Sculptor', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'role_TYD' => { :name => 'Type Designer', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'role_TYG' => { :name => 'Typographer', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'role_WDE' => { :name => 'Wood Engraver', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'role_WDC' => { :name => 'Wood Cutter', :param => :string, :default => nil, :transformation => get_proc(:transform_role_generic)},
+        		'period_pivot' => { :name => 'Period Pivot', :param => :period_pivot, :default => nil, :transformation => get_proc(:transform_pivot) },
+        		'fq' => { :name => 'Query Filter', :param => :fq, :default => nil, :transformation => get_proc(:transform_fq) },
 		}
 		return self.add_to_format(format)
 	end
@@ -641,6 +643,11 @@ class QueryFormat
 		}
 		return { 'fq' => results.join(' ') }
 	end
+	
+	def self.transform_fq(key,val)
+		return { 'fq' => val }
+	end
+	
 
   def self.transform_facet(key,val)
     val = val.split(',')
@@ -770,75 +777,80 @@ class QueryFormat
 		# Defaults are added if it doesn't exist and a default was specified in the format.
 
 		# If this isn't an authorized call, then only return free culture items.
-	if request_ip && !Federation.request_from_federation(request_ip)
-			if params['o'].blank?
-				params['o'] = '+freeculture'
-			else
-				params['o'] = params['o'].gsub(/[+-]freeculture/, '') + '+freeculture'
-			end
-    end
-    fuz_values = {}
-    params.select{ |key, value| key.match(/^fuz_/) != nil}.each { |key, val|
-      
-	definition = format[key]
+		if request_ip && !Federation.request_from_federation(request_ip)
+				if params['o'].blank?
+					params['o'] = '+freeculture'
+				else
+					params['o'] = params['o'].gsub(/[+-]freeculture/, '') + '+freeculture'
+				end
+		end
+		fuz_values = {}
+		params.select{ |key, value| key.match(/^fuz_/) != nil}.each { |key, val|
+	  
+		definition = format[key]
 
-      raise(ArgumentError, "Unknown parameter: #{key}") if definition == nil
-      raise(ArgumentError, "Bad parameter (#{key}): (#{definition[:name]}) was passed as an array.") if val.kind_of?(Array) && definition[:can_be_array] != true
-      if val.kind_of?(Array)
-        val.each { |v|
-          raise(ArgumentError, "Bad parameter (#{key}): (#{v}). Must match: #{definition[:exp]}") if definition[:exp].match(v) == nil
-        }
-      else
-        raise(ArgumentError, "Bad parameter (#{key}): (#{val}). Must match: #{definition[:exp]}") if definition[:exp].match(val) == nil
-      end
-      fuz_values[key.sub(/^fuz_/, '')] = val.sub(/[+-]/, '')
-    }
+		  raise(ArgumentError, "Unknown parameter: #{key}") if definition == nil
+		  raise(ArgumentError, "Bad parameter (#{key}): (#{definition[:name]}) was passed as an array.") if val.kind_of?(Array) && definition[:can_be_array] != true
+		  if val.kind_of?(Array)
+			val.each { |v|
+			  raise(ArgumentError, "Bad parameter (#{key}): (#{v}). Must match: #{definition[:exp]}") if definition[:exp].match(v) == nil
+			}
+		  else
+			raise(ArgumentError, "Bad parameter (#{key}): (#{val}). Must match: #{definition[:exp]}") if definition[:exp].match(val) == nil
+		  end
+		  fuz_values[key.sub(/^fuz_/, '')] = val.sub(/[+-]/, '')
+		}
 
-		query = {}
-		params.each { |key,val|
-      		val.gsub!(/^\+"'/,'+"');  # remove single quotes surrounded by double quotes
-      		val.gsub!(/'"$/,'"');
-			definition = format[key]
-			raise(ArgumentError, "Unknown parameter: #{key}") if definition == nil
-			raise(ArgumentError, "Bad parameter (#{key}): (#{definition[:name]}) was passed as an array.") if val.kind_of?(Array) && definition[:can_be_array] != true
-			if val.kind_of?(Array)
-				val.each { |v|
-					raise(ArgumentError, "Bad parameter (#{key}): (#{v}). Must match: #{definition[:exp]}") if definition[:exp].match(v) == nil
-				}
-			else
-				raise(ArgumentError, "Bad parameter (#{key}): (#{val}). Must match: #{definition[:exp]}") if definition[:exp].match(val) == nil
-      		end
+		   query = {}
+		   params.each { |key,val|
+				val.gsub!(/^\+"'/,'+"');  # remove single quotes surrounded by double quotes
+				val.gsub!(/'"$/,'"');
+				
+				definition = format[key]
+				raise(ArgumentError, "Unknown parameter: #{key}") if definition == nil
+				raise(ArgumentError, "Bad parameter (#{key}): (#{definition[:name]}) was passed as an array.") if val.kind_of?(Array) && definition[:can_be_array] != true
+				if val.kind_of?(Array)
+					val.each { |v|
+						raise(ArgumentError, "Bad parameter (#{key}): (#{v}). Must match: #{definition[:exp]}") if definition[:exp].match(v) == nil
+					}
+				else
+					# puts "Fail point 4"
+					raise(ArgumentError, "Bad parameter (#{key}): (#{val}). Must match: #{definition[:exp]}") if definition[:exp].match(val) == nil
+				end
 
-	      	if definition[:can_fuz]
-	        	if fuz_values[key]
-	          		solr_hash = definition[:transformation].call(key,val, fuz_values[key])
-	        	else
-	          		solr_hash = definition[:transformation].call(key,val, nil)
-	        	end
-	      	else
-
-	        	solr_hash = definition[:transformation].call(key,val)
-	      	end
+				if definition[:can_fuz]
+					if fuz_values[key]
+						solr_hash = definition[:transformation].call(key,val, fuz_values[key])
+					else
+						solr_hash = definition[:transformation].call(key,val, nil)
+					end
+				else
+					solr_hash = definition[:transformation].call(key,val)
+				end
 				
 
-			query.merge!(solr_hash) {|k, oldval, newval|
-					oldval + " " + newval
-				}
-		}
-		
-		# add defaults
-		format.each { |key, definition|
-			if params[key] == nil && definition[:default] != nil
-				solr_hash = definition[:transformation].call(key,definition[:default])
 				query.merge!(solr_hash) {|k, oldval, newval|
-					oldval + " " + newval
+						oldval + " " + newval
 				}
-			end
-		}
+			}
+		
+			# add defaults
+			format.each { |key, definition|
+				if params[key] == nil && definition[:default] != nil
+					solr_hash = definition[:transformation].call(key,definition[:default])
+					query.merge!(solr_hash) {|k, oldval, newval|
+						oldval + " " + newval
+					}
+				end
+			}
 
-		# add standard boosts
-		#query[:bq] = 'genre:Citation^0.1'
+			# add standard boosts
+			#query[:bq] = 'genre:Citation^0.1'
+			
+			puts "UUUUUUUUUUUUUUUUUUU"
+			puts query
+			puts "UUUUUUUUUUUUUUUUUUU"
 
-		return query
-	     end
+			return query
+	    end
 end

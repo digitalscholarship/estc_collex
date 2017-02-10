@@ -89,6 +89,11 @@ puts ("SOLR_URL::: #{SOLR_URL}")
 			options['q'] = "*:*"
 		end
 		begin
+		
+		    puts "MMMMMMMMMMMMMMMMMMMMMMMMM"
+		    puts options
+		    puts "MMMMMMMMMMMMMMMMMMMMMMMMM"
+		
 			ret = @solr.post( 'select', :data => options )
 		rescue Errno::ECONNREFUSED => e
 			raise SolrException.new("Cannot connect to the search engine at this time.")

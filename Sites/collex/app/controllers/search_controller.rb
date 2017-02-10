@@ -48,6 +48,24 @@ class SearchController < ApplicationController
 				render "index", { layout: 'application' }
 			}
 			format.json do
+			
+			
+			###############################################
+			# I THINK RIGHT HERE I CAN ADD A SLICE TO 	params
+			# TO IGNORE RECORDS THAT HAVE A PARENT
+			# SEE http://www.solrtutorial.com/solr-query-syntax.html
+			# this doesn't work
+			###############################################
+			#params["-instanceof"] = "http*"
+			#params[:q] = params[:q] + "+AND+-instanceof%3Ahttp*"
+			#params[:q] = params[:q] + "-instanceof:http*"
+			#puts "params"
+			#puts params[:fq]
+			#params.push({key: fq, val: "-instanceof:http*"})
+			
+			
+			
+			
             if params.has_key? :pages
             	puts "iffffffffffffffffffffffffffffffffffffff"
                begin
@@ -125,7 +143,7 @@ class SearchController < ApplicationController
 	   constraints = []
 	   return constraints if query.blank?
 
-	   legal_constraints = [ 'q', 'f', 'o', 'g', 'a', 't', 'aut', 'ed', 'pub', 'r_art', 'r_own', 'fuz_q', 'fuz_t', 'y', 'lang', 'doc_type', 'discipline', 'fuz_q', 'fuz_t' ]
+	   legal_constraints = [ 'q', 'f', 'o', 'g', 'a', 't', 'aut', 'ed', 'pub', 'r_art', 'r_own', 'fuz_q', 'fuz_t', 'y', 'lang', 'doc_type', 'discipline', 'fuz_q', 'fuz_t', 'fq' ]
 	   @searchable_roles.each { |role|
 		   legal_constraints.push(role[0])
 	   }
@@ -147,6 +165,13 @@ class SearchController < ApplicationController
 			   end
 		   end
 	   }
+	   
+	   #################################################################
+	   # This is where I might want to add my exclusion of child records
+	   #################################################################
+	   
+	   
+	   
 	   # if there is no federation constraint, we use the default federation.
 	   if !found_federation
 		   constraints.push({ key: 'f', val: Setup.default_federation() })
@@ -156,6 +181,8 @@ class SearchController < ApplicationController
 		   other = constraints.index('q')
 		   constraints.delete(fuz) if !other
 	   end
+	   
+	   constraints.push({key: 'fq', val: "-instanceof:http*"})
 
 	   return constraints
    end

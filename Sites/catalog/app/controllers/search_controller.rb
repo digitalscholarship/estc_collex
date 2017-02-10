@@ -7,11 +7,16 @@ class SearchController < ApplicationController
 		query_params = QueryFormat.catalog_format()
 		puts "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ"
 		puts params
-		puts "adding instanceof exclusion to search parameters"
-		params["-field"] = "*"
+		puts "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY"
+		puts query_params
+		
+		#puts "adding instanceof exclusion to search parameters"
+		#params["-instanceof"] = "http*"
+		
 		begin
 			QueryFormat.transform_raw_parameters(params)
-
+			puts "Past call to transform_raw_parameters"
+			puts params
 			# NOTES: When a search is fuzzy, the query string is not analyzed by solr.
 			# This means (among other things) no stemming is done. Since
 			# stemming happens at index-time, this can often result in no matches being found
@@ -27,7 +32,7 @@ class SearchController < ApplicationController
      			orig_prefix = original_q[0]
      			orig_term = original_q[1..original_q.length]
      			stemmed_term = Stemmer::stem_word(orig_term)
-          stemmed_term.force_encoding("UTF-8")
+          		stemmed_term.force_encoding("UTF-8")
      			params[:q] = "#{orig_prefix}#{stemmed_term}"
      			extra_query = "content:#{orig_term}^80"
      	   end
@@ -43,7 +48,9 @@ class SearchController < ApplicationController
             extra_fq = "title:#{orig_term}^80"
          end
 
+			puts "Starting QueryFormat.create_solr_query"
 			query = QueryFormat.create_solr_query(query_params, params, request.remote_ip)
+			puts "Finished QueryFormat.create_solr_query"
 
 			if !extra_query.blank?
 			   q=query['q']

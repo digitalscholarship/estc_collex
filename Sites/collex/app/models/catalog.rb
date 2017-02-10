@@ -132,6 +132,10 @@ class Catalog
          constraints = [{:key=>'q', :val=>q}]
          params = parse_constraints(constraints)
       end
+      
+      # try pushing a parameter to skip child records in the search
+      #params.push("-instanceof=http*")
+      
       params.push("uri=#{uri}")
       params.push(start) if start.length > 0
       params.push(max) if max.length > 0
