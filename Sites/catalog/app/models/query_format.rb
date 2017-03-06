@@ -21,6 +21,12 @@ class QueryFormat
 		params.delete('controller')
 		params.delete('action')
 		params.delete('format')
+		
+		# remove the estc parameter
+		if params.key?('estc')
+			params.delete('estc')
+		end
+
 
 		# add the closing quote to the needed fields
 		if params['q']

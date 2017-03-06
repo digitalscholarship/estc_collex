@@ -19,7 +19,9 @@ jQuery(document).ready(function($) {
 			lang: 'Language',
 			fuz_q: 'Search Term Fuzziness',
 			fuz_t: 'Title Fuzziness',
-			pages: 'Pages of'
+			pages: 'Pages of',
+			uri: 'ESCT ID'
+			
 		};
 		if (types[key])
 			return types[key];
@@ -60,7 +62,7 @@ jQuery(document).ready(function($) {
 	}
 
 	function newSearchTerm(roles, disabled ) {
-		var searchTypes = [ ['Search Term', 'q'], ['Title', 't'] ];
+		var searchTypes = [ ['Search Term', 'q'], ['ESTC ID', 'uri'], ['Title', 't'] ];
 		if (window.collex.hasLanguage)
 			searchTypes.push(['Language', 'lang']);
 
@@ -91,6 +93,11 @@ jQuery(document).ready(function($) {
 			searchTypes.push(['Owner', 'r_own']);
 		}
 		searchTypes.push(['Year (YYYY)', 'y']);
+		
+		// try adding more facets here
+		
+		
+		
 		var selectTypeOptions = "";
 		for (var i = 0; i < searchTypes.length; i++)
 			selectTypeOptions += window.pss.createHtmlTag("option", {value: searchTypes[i][1] }, searchTypes[i][0]);

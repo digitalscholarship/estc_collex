@@ -755,7 +755,12 @@ end
 				   val = val.join("")
 			   end
 			   val = val[0] == '-' || val[0] == '+' ? val : '+'+val
-			   params.push("#{constraint[:key]}=#{val}")
+			   params.push("#{constraint[:key]}=#{val}") 	
+			   
+			   
+			   # IMINGHT BE ABLE TO HACK SOMETHING IN HERE
+			   
+			   	   
 		   end
 	   }
 
@@ -815,7 +820,7 @@ end
       begin
          results = Hash.from_xml(res.body)
 
-Catalog.log_catalog("Results Info", results)
+	  Catalog.log_catalog("Results Info", results)
 
       rescue Exception => e
          msg = res.body

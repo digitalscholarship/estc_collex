@@ -49,23 +49,6 @@ class SearchController < ApplicationController
 			}
 			format.json do
 			
-			
-			###############################################
-			# I THINK RIGHT HERE I CAN ADD A SLICE TO 	params
-			# TO IGNORE RECORDS THAT HAVE A PARENT
-			# SEE http://www.solrtutorial.com/solr-query-syntax.html
-			# this doesn't work
-			###############################################
-			#params["-instanceof"] = "http*"
-			#params[:q] = params[:q] + "+AND+-instanceof%3Ahttp*"
-			#params[:q] = params[:q] + "-instanceof:http*"
-			#puts "params"
-			#puts params[:fq]
-			#params.push({key: fq, val: "-instanceof:http*"})
-			
-			
-			
-			
             if params.has_key? :pages
             	puts "iffffffffffffffffffffffffffffffffffffff"
                begin
@@ -84,6 +67,7 @@ class SearchController < ApplicationController
             else
             	puts "elseeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
             	puts params
+            	
                	items_per_page = 30
    				page = params[:page].present? ? params[:page] : 1
    				sort_param = params[:srt].present? ? params[:srt] : nil
@@ -143,12 +127,16 @@ class SearchController < ApplicationController
 	   constraints = []
 	   return constraints if query.blank?
 
-	   legal_constraints = [ 'q', 'f', 'o', 'g', 'a', 't', 'aut', 'ed', 'pub', 'r_art', 'r_own', 'fuz_q', 'fuz_t', 'y', 'lang', 'doc_type', 'discipline', 'fuz_q', 'fuz_t', 'fq' ]
+	   legal_constraints = [ 'q', 'f', 'o', 'g', 'a', 't', 'aut', 'ed', 'pub', 'r_art', 'r_own', 'fuz_q', 'fuz_t', 'y', 'lang', 'doc_type', 'discipline', 'fuz_q', 'fuz_t', 'fq', 'uri' ]
 	   @searchable_roles.each { |role|
 		   legal_constraints.push(role[0])
 	   }
-
+		
+	   fqconstraint = ''
 	   found_federation = false
+	   if query.key?("uri")
+	     query.delete("q")
+	   end
 	   query.each { |key, val|
 		   found_federation = true if key == 'f'
 		   if legal_constraints.include?(key) && val.present?
@@ -160,10 +148,16 @@ class SearchController < ApplicationController
 				   constraints.push({key: key, val: "#{val.to_i-1}"}) if query['q']
 			   elsif key == 'fuz_t'
 				   constraints.push({key: key, val: "#{val.to_i-1}"}) if query['t']
+				 elsif key == 'uri'
+				   constraints.push(key: "q", val: "uri=\"http://estc.bl.uk/#{val}\"" )
 			   else
 				   constraints.push({key: key, val: val})
 			   end
 		   end
+		   
+		   #if key== 'estc'
+		   #		fqconstraint = "uri:http://estc.bl.uk/" + val
+		   #end
 	   }
 	   
 	   #################################################################
@@ -182,8 +176,14 @@ class SearchController < ApplicationController
 		   constraints.delete(fuz) if !other
 	   end
 	   
-	   constraints.push({key: 'fq', val: "-instanceof:http*"})
-
+	   #if fqconstraint.length > 0
+	   #		fqconstraint = fqconstraint + " -instanceof:http*"
+	   #else
+	   		fqconstraint = "-instanceof:http*"
+	   #end
+	   
+	   constraints.push({key: 'fq', val: fqconstraint})
+	   
 	   return constraints
    end
 
