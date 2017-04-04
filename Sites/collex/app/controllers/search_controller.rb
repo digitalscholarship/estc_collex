@@ -134,55 +134,63 @@ class SearchController < ApplicationController
 		
 	   fqconstraint = ''
 	   found_federation = false
+	   
+	   
+	   # this part is working to capture the search submission if a
+	   # URI parameter is sent.  Now I just need to figure out what
+	   # query I can actually send that will work
 	   if query.key?("uri")
-	     query.delete("q")
+	     
+	     #constraints.push({key: 'q', val: ''})
+	     #fulluri = "http://estc.bl.uk/" + query['uri']
+	     #fullquery = "uri:\"#{fulluri}\""
+	     #constraints.push({key: 'q', val: 'king'})
+	     fullquery = "uri:*" + query['uri']
+	     constraints.push({key: 'q', val: fullquery})
+	     
+	   else
+	     
+	     #query['q'] = "uri:*T164511"
+
+  	   query.each { |key, val|
+  		   found_federation = true if key == 'f'
+  		   if legal_constraints.include?(key) && val.present?
+  			   #if key == 'q' || key == 't' || key == 'aut' || key == 'pub' || key == 'ed' || key == 'r_own' || key == 'r_art' || key == 'uri'
+  				 if key == 'q' || key == 't' || key == 'aut' || key == 'pub' || key == 'ed' || key == 'r_own' || key == 'r_art'
+  				   val = process_q_param(val)
+  			   end
+  			   # if we were passed fuzzy constraints, make sure that the corresponding other value is set
+  			   if key == 'fuz_q'
+  				   constraints.push({key: key, val: "#{val.to_i-1}"}) if query['q']
+  			   elsif key == 'fuz_t'
+  				   constraints.push({key: key, val: "#{val.to_i-1}"}) if query['t']			
+  				 elsif key != 'uri'
+  				   constraints.push({key: key, val: val})
+  			   end
+  		   end
+  	   }
+	  
+  	   #################################################################
+  	   # This is where I might want to add my exclusion of child records
+  	   #################################################################
+  	   
+  	   
+  	   
+  	   # if there is no federation constraint, we use the default federation.
+  	   if !found_federation
+  		   constraints.push({ key: 'f', val: Setup.default_federation() })
+  	   end
+  	   fuz = constraints.index('fuz_q')
+  	   
+  	   
+  	   if query
+  		   other = constraints.index('q')
+  		   constraints.delete(fuz) if !other
+  	   end
+
+  	   fqconstraint = "-instanceof:http*"
+  	   constraints.push({key: 'fq', val: fqconstraint})
 	   end
-	   query.each { |key, val|
-		   found_federation = true if key == 'f'
-		   if legal_constraints.include?(key) && val.present?
-			   if key == 'q' || key == 't' || key == 'aut' || key == 'pub' || key == 'ed' || key == 'r_own' || key == 'r_art'
-				   val = process_q_param(val)
-			   end
-			   # if we were passed fuzzy constraints, make sure that the corresponding other value is set
-			   if key == 'fuz_q'
-				   constraints.push({key: key, val: "#{val.to_i-1}"}) if query['q']
-			   elsif key == 'fuz_t'
-				   constraints.push({key: key, val: "#{val.to_i-1}"}) if query['t']
-				 elsif key == 'uri'
-				   constraints.push(key: "q", val: "uri=\"http://estc.bl.uk/#{val}\"" )
-			   else
-				   constraints.push({key: key, val: val})
-			   end
-		   end
-		   
-		   #if key== 'estc'
-		   #		fqconstraint = "uri:http://estc.bl.uk/" + val
-		   #end
-	   }
-	   
-	   #################################################################
-	   # This is where I might want to add my exclusion of child records
-	   #################################################################
-	   
-	   
-	   
-	   # if there is no federation constraint, we use the default federation.
-	   if !found_federation
-		   constraints.push({ key: 'f', val: Setup.default_federation() })
-	   end
-	   fuz = constraints.index('fuz_q')
-	   if query
-		   other = constraints.index('q')
-		   constraints.delete(fuz) if !other
-	   end
-	   
-	   #if fqconstraint.length > 0
-	   #		fqconstraint = fqconstraint + " -instanceof:http*"
-	   #else
-	   		fqconstraint = "-instanceof:http*"
-	   #end
-	   
-	   constraints.push({key: 'fq', val: fqconstraint})
 	   
 	   return constraints
    end
@@ -201,7 +209,7 @@ class SearchController < ApplicationController
    end
 
    def init_view_options
-     @site_section = :search
+   @site_section = :search
 	 @solr = Catalog.factory_create(session[:use_test_index] == "true")
 	 @archives = @solr.get_resource_tree()
 	 set_archive_toggle_state(@archives)

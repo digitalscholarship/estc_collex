@@ -89,12 +89,6 @@ puts ("SOLR_URL::: #{SOLR_URL}")
 			options['q'] = "*:*"
 		end
 		
-		#if options['q'].match(/\w\d+/) 
-		#	options['q'] = options['q'].gsub(/\+/, "")
-		#	options['q'] = options['q'].upcase
-		#	options['q'] = "uri:\"http://estc.bl.uk/" + options['q'] + "\""
-		#end
-		
 		begin
 		
 		    puts "MMMMMMMMMMMMMMMMMMMMMMMMM"

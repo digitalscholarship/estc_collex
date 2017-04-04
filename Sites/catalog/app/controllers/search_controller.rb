@@ -7,8 +7,9 @@ class SearchController < ApplicationController
 		query_params = QueryFormat.catalog_format()
 		puts "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ"
 		puts params
-		puts "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY"
-		puts query_params
+		puts "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY111111"
+		# puts query_params
+		puts "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 		
 		#puts "adding instanceof exclusion to search parameters"
 		#params["-instanceof"] = "http*"
@@ -28,7 +29,7 @@ class SearchController < ApplicationController
 			extra_query = ""
 			fuzzy = params[:fuz_q]
 			if params.has_key?(:fuz_q) && fuzzy != "+0"  # SKIP THIS FOR FUZZY 0: Exact match!
-  			   original_q = params[:q]
+  			  original_q = params[:q]
      			orig_prefix = original_q[0]
      			orig_term = original_q[1..original_q.length]
      			stemmed_term = Stemmer::stem_word(orig_term)
@@ -59,18 +60,38 @@ class SearchController < ApplicationController
 			if !extra_fq.blank?
             fq=query['fq']
             query['fq'] = "#{extra_fq} #{fq}"
-         end
-
+      end
 
 			is_test = Rails.env == 'test' ? :test : :live
 			is_test = :shards if params[:test_index]
 
 			puts "UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU"
-			puts query
+			#puts query
 			#ecerything looks good to this point
 
 			solr = Solr.factory_create(is_test)
 			@results = solr.search(query)
+			
+			
+			#TODO: This is where I think I can hack things so that
+			#once I've gotten back the raw query I can then parse the results, 
+			#pulling out each hasInstance, looking up that item, and then
+			#adding the bib info for held items to the DOM that gets
+			#returned to Collex. Best solution is to load the original search and then
+      #parse out all of the hasInstances and build them into one long
+      #uri query.  When I get these results back, parse out the relevant data
+      #from the instances and parse them into the DOM that gets returned ot the user.
+      #This involves going to the DB only two times for the whole thing.
+      #
+      #The second query should look like this:
+      #uri:("http://estc.bl.uk/T160916"||"http://estc.bl.uk/N10001")
+      #
+      #For how to work with xml DOM to do the parsing in and out 
+      #see: http://stackoverflow.com/questions/1611237/how-to-manipulate-dom-with-ruby-on-rails
+      #
+      #For how to work with a JSON object to do parsing ina and out
+      #https://github.com/rails/jbuilder
+      			
 
 			respond_to do |format|
 				format.html # index.html.erb
