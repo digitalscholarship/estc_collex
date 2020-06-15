@@ -99,7 +99,7 @@ under the License.
     <dependency>
       <groupId>commons-collections</groupId>
       <artifactId>commons-collections</artifactId>
-      <version>3.2</version>
+      <version>3.2.2</version>
     </dependency>
     <!-- The modules are not in doxia core anymore so you have to state a dependency so that
          the component descriptor gets picked up. -->
